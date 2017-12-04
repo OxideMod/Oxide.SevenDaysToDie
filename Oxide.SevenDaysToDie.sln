@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 15.0
+Project("{1E95AE79-C74F-4C52-9917-36A6296574DE}") = "Oxide.SevenDaysToDie", "src\Oxide.SevenDaysToDie.csproj", "{6A987A21-D407-41C6-AD9F-E5D3DF22D617}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A987A21-D407-41C6-AD9F-E5D3DF22D617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A987A21-D407-41C6-AD9F-E5D3DF22D617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A987A21-D407-41C6-AD9F-E5D3DF22D617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A987A21-D407-41C6-AD9F-E5D3DF22D617}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
