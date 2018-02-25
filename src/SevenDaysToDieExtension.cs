@@ -41,6 +41,11 @@ namespace Oxide.Game.SevenDays
         public override VersionNumber Version => AssemblyVersion;
 
         /// <summary>
+        /// Gets the branch of this extension
+        /// </summary>
+        public override string Branch => "public"; // TODO: Handle this programmatically
+
+        /// <summary>
         /// Default game-specific references for use in plugins
         /// </summary>
         internal static readonly HashSet<string> DefaultReferences = new HashSet<string>
@@ -199,7 +204,7 @@ namespace Oxide.Game.SevenDays
                 var dateTime = Convert.ToDateTime($"{GameUtils.WorldTimeToHours(gameTime)}:{GameUtils.WorldTimeToMinutes(gameTime)}").ToString("h:mm tt");
                 return $"{dateTime.ToLower()}, {GamePrefs.GetString(EnumGamePrefs.GameWorld)} [{GamePrefs.GetString(EnumGamePrefs.GameName)}]";
             };
-            Interface.Oxide.ServerConsole.Status3Right = () => $"Oxide {OxideMod.Version} for {GamePrefs.GetString(EnumGamePrefs.GameVersion)}";
+            Interface.Oxide.ServerConsole.Status3Right = () => $"Oxide.SevenDaysToDie {AssemblyVersion}";
             Interface.Oxide.ServerConsole.Status3RightColor = ConsoleColor.Yellow;
         }
 
