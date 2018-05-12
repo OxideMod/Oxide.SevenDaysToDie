@@ -82,12 +82,19 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// <summary>
         /// Gets if the player is connected
         /// </summary>
-        public bool IsConnected => false; // TODO: Implement when possible
+        public bool IsConnected => ConnectionManager.Instance.GetClientInfoForPlayerId(Id) != null;
 
         /// <summary>
         /// Returns if the player is sleeping
         /// </summary>
-        public bool IsSleeping => false;
+        public bool IsSleeping
+        {
+            get
+            {
+                EntityPlayer entity = Object as EntityPlayer;
+                return entity != null && entity.IsSleeping;
+            }
+        }
 
         /// <summary>
         /// Returns if the player is the server
