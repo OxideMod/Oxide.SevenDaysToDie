@@ -103,35 +103,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 339,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "a0",
-            "HookTypeName": "Simple",
-            "Name": "OnPlayerConnected",
-            "HookName": "OnPlayerConnected",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "RequestToSpawnPlayer",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "System.Int32",
-                "PlayerProfile"
-              ]
-            },
-            "MSILHash": "jd8LhUl1izHvZ4GrIXGkM6JqCosRUtSbj9F0KgZBSAM=",
-            "BaseHookName": null,
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 0,
+            "InjectionIndex": 4,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 2,
             "ArgumentString": "",
@@ -373,7 +345,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 350,
+            "InjectionIndex": 335,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
             "ArgumentString": "a0",
@@ -394,7 +366,7 @@
               ]
             },
             "MSILHash": "jd8LhUl1izHvZ4GrIXGkM6JqCosRUtSbj9F0KgZBSAM=",
-            "BaseHookName": "OnPlayerConnected",
+            "BaseHookName": null,
             "HookCategory": "Player"
           }
         },
@@ -454,7 +426,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 457,
+            "InjectionIndex": 388,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
             "ArgumentString": "a0, a1, a2",
@@ -476,8 +448,64 @@
                 "System.String"
               ]
             },
-            "MSILHash": "44w5CvT+84WDxz3VAanFsVpkqblb+uAamukM7GjxcF8=",
+            "MSILHash": "Tj1kJVHYkb7vXbYU/DM5V+/s1iOmNL9eTm18M9U7BJE=",
             "BaseHookName": null,
+            "HookCategory": "Player"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionIndex": 8,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0",
+            "HookTypeName": "Simple",
+            "Name": "OnPlayerConnected",
+            "HookName": "OnPlayerConnected",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 2,
+              "Name": "PlayerSpawnedInWorld",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "ClientInfo",
+                "RespawnType",
+                "Vector3i"
+              ]
+            },
+            "MSILHash": "kr+Gv3HD2Ex5M4bBwornPROFzU2bU552WSj1WiMzMlw=",
+            "BaseHookName": null,
+            "HookCategory": "Player"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionIndex": 24,
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0, a1",
+            "HookTypeName": "Simple",
+            "Name": "OnPlayerRespawn",
+            "HookName": "OnPlayerRespawn",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 2,
+              "Name": "PlayerSpawnedInWorld",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "ClientInfo",
+                "RespawnType",
+                "Vector3i"
+              ]
+            },
+            "MSILHash": "kr+Gv3HD2Ex5M4bBwornPROFzU2bU552WSj1WiMzMlw=",
+            "BaseHookName": "OnPlayerConnected",
             "HookCategory": "Player"
           }
         }
