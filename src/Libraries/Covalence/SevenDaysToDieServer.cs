@@ -115,11 +115,17 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         public void Ban(string id, string reason, TimeSpan duration = default(TimeSpan))
         {
             // Check if already banned
-            if (IsBanned(id)) return;
+            if (!IsBanned(id))
+            {
+                // Ban player with reason
+                GameManager.Instance.adminTools.AddBan(id, null, new DateTime(duration.Ticks), reason);
 
-            // Ban and kick user
-            GameManager.Instance.adminTools.AddBan(id, null, new DateTime(duration.Ticks), reason);
-            //if (IsConnected) Kick(reason); // TODO: Implement if possible
+                // Kick player if connected
+                if (IsConnected(id))
+                {
+                    Kick(id, reason);
+                }
+            }
         }
 
         /// <summary>
@@ -139,6 +145,30 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         public bool IsBanned(string id)
         {
             return GameManager.Instance.adminTools.IsBanned(id);
+        }
+
+        /// <summary>
+        /// Gets if the player is connected
+        /// </summary>
+        /// <param name="id"></param>
+        public bool IsConnected(string id)
+        {
+            return ConnectionManager.Instance.GetClientInfoForPlayerId(id) != null;
+        }
+
+        /// <summary>
+        /// Kicks the player for the specified reason
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="reason"></param>
+        public void Kick(string id, string reason)
+        {
+            ClientInfo client = ConnectionManager.Instance.GetClientInfoForPlayerId(id);
+            if (client != null)
+            {
+                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, DateTime.Now, reason);
+                GameUtils.KickPlayerForClientInfo(client, kickData);
+            }
         }
 
         /// <summary>
