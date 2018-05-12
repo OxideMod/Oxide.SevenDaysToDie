@@ -49,7 +49,6 @@ namespace Oxide.Game.SevenDays
             }
 
             // Let covalence know
-            Covalence.PlayerManager.PlayerJoin(client.steamId.m_SteamID, client.playerName); // TODO: Move to OnUserApprove hook once available
             Covalence.PlayerManager.PlayerConnected(client);
             Interface.Call("OnUserConnected", Covalence.PlayerManager.FindPlayerById(client.playerId));
         }
@@ -72,6 +71,34 @@ namespace Oxide.Game.SevenDays
         /// <param name="client"></param>
         [HookMethod("OnPlayerSpawn")]
         private void OnPlayerSpawn(ClientInfo client) => Interface.Call("OnUserSpawn", Covalence.PlayerManager.FindPlayerById(client.playerId));
+
+        /// <summary>
+        /// Called when the player is attempting to connect
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        [HookMethod("IOnUserApprove")]
+        private object IOnUserApprove(ClientInfo client)
+        {
+            string id = client.steamId.m_SteamID.ToString();
+
+            // Let covalence know
+            Covalence.PlayerManager.PlayerJoin(client.steamId.m_SteamID, client.playerName);
+
+            // Call out and see if we should reject
+            object canLogin = Interface.Call("CanClientLogin", client) ?? Interface.Call("CanUserLogin", "Unnamed", id, client.ip); // TODO: Localization
+
+            if (canLogin is string || canLogin is bool && !(bool)canLogin)
+            {
+                string reason = canLogin is string ? canLogin.ToString() : "Connection was rejected"; // TODO: Localization
+                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.PlayerLimitExceeded, 0, default(DateTime), reason);
+                GameUtils.KickPlayerForClientInfo(client, kickData);
+                return true;
+            }
+
+            // Call game and covalence hooks
+            return Interface.Call("OnUserApprove", client) ?? Interface.Call("OnUserApproved", "Unnamed", id, client.ip); // TODO: Localization
+        }
 
         #endregion Player Hooks
     }
