@@ -1,12 +1,15 @@
 ﻿using Oxide.Core;
+using Oxide.Core.Configuration;
+using Oxide.Core.Libraries.Covalence;
 using Oxide.Core.Plugins;
+using System;
 
 namespace Oxide.Game.SevenDays
 {
     /// <summary>
     /// Game hooks and wrappers for the core 7 Days to Die plugin
     /// </summary>
-    public partial class SevenDaysCore : CSPlugin
+    public partial class SevenDaysCore
     {
         #region Player Hooks
 
@@ -16,7 +19,10 @@ namespace Oxide.Game.SevenDays
         /// <param name="id"></param>
         /// <param name="entity"></param>
         [HookMethod("ICanUseDoor")]
-        private void ICanUseDoor(string id, TileEntitySecure entity) => Interface.Call("CanUseDoor", ConsoleHelper.ParseParamIdOrName(id), entity);
+        private object ICanUseDoor(string id, TileEntitySecure entity)
+        {
+            return Interface.Call("CanUseDoor", ConsoleHelper.ParseParamIdOrName(id), entity);
+        }
 
         /// <summary>
         /// Called when the player sends a message
@@ -26,11 +32,15 @@ namespace Oxide.Game.SevenDays
         [HookMethod("IOnPlayerChat")]
         private object IOnPlayerChat(ClientInfo client, string message)
         {
-            if (client == null || string.IsNullOrEmpty(message)) return null;
+            if (client != null && !string.IsNullOrEmpty(message))
+            {
+                IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
+                object chatSpecific = Interface.Call("OnPlayerChat", client, message);
+                object chatCovalence = iplayer != null ? Interface.Call("OnUserChat", iplayer, message) : null;
+                return chatSpecific ?? chatCovalence;
+            }
 
-            var chatSpecific = Interface.Call("OnPlayerChat", client, message);
-            var chatCovalence = Interface.Call("OnUserChat", Covalence.PlayerManager.FindPlayerById(client.playerId), message);
-            return chatSpecific ?? chatCovalence;
+            return null;
         }
 
         /// <summary>
@@ -59,7 +69,13 @@ namespace Oxide.Game.SevenDays
 
             // Let covalence know
             Covalence.PlayerManager.PlayerConnected(client);
-            Interface.Call("OnUserConnected", Covalence.PlayerManager.FindPlayerById(client.playerId));
+
+            // Call covalence hook
+            IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
+            if (iplayer != null)
+            {
+                Interface.Call("OnUserConnected", iplayer);
+            }
         }
 
         /// <summary>
@@ -69,8 +85,14 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnPlayerDisconnected")]
         private void OnPlayerDisconnected(ClientInfo client)
         {
+            // Call covalence hook
+            IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
+            if (iplayer != null)
+            {
+                Interface.Call("OnUserDisconnected", iplayer, "Unknown");
+            }
+
             // Let covalence know
-            Interface.Call("OnUserDisconnected", Covalence.PlayerManager.FindPlayerById(client.playerId), "Unknown");
             Covalence.PlayerManager.PlayerDisconnected(client);
         }
 
@@ -79,7 +101,14 @@ namespace Oxide.Game.SevenDays
         /// </summary>
         /// <param name="client"></param>
         [HookMethod("OnPlayerSpawn")]
-        private void OnPlayerSpawn(ClientInfo client) => Interface.Call("OnUserSpawn", Covalence.PlayerManager.FindPlayerById(client.playerId));
+        private void OnPlayerSpawn(ClientInfo client)
+        {
+            IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
+            if (iplayer != null)
+            {
+                Interface.Call("OnUserSpawn", iplayer);
+            }
+        }
 
         /// <summary>
         /// Called when the player is attempting to connect

@@ -165,43 +165,48 @@ namespace Oxide.Game.SevenDays
         {
             CSharpPluginLoader.PluginReferences.UnionWith(DefaultReferences);
 
-            if (!Interface.Oxide.EnableConsole()) return;
-
-            Application.logMessageReceived += HandleLog;
-
-            Interface.Oxide.ServerConsole.Input += ServerConsoleOnInput;
-            Interface.Oxide.ServerConsole.Completion = input =>
+            if (Interface.Oxide.EnableConsole())
             {
-                return string.IsNullOrEmpty(input) ? null : SdtdConsole.Instance.GetCommands().SelectMany(g => g.GetCommands()).Where(c => c.StartsWith(input.ToLower())).ToArray();
-            };
+                Application.logMessageReceived += HandleLog;
+
+                Interface.Oxide.ServerConsole.Input += ServerConsoleOnInput;
+                Interface.Oxide.ServerConsole.Completion = input =>
+                {
+                    return string.IsNullOrEmpty(input) ? null : SdtdConsole.Instance.GetCommands().SelectMany(g => g.GetCommands())
+                            .Where(c => c.StartsWith(input.ToLower())).ToArray();
+                };
+            }
         }
 
         internal static void ServerConsole()
         {
-            if (Interface.Oxide.ServerConsole == null) return;
+            if (Interface.Oxide.ServerConsole == null)
+            {
+                return;
+            }
 
             Interface.Oxide.ServerConsole.Title = () => $"{GameManager.Instance.World.Players.Count} | {GamePrefs.GetString(EnumGamePrefs.ServerName)}";
 
             Interface.Oxide.ServerConsole.Status1Left = () => GamePrefs.GetString(EnumGamePrefs.ServerName);
             Interface.Oxide.ServerConsole.Status1Right = () =>
             {
-                var time = TimeSpan.FromSeconds(Time.realtimeSinceStartup);
-                var uptime = $"{time.TotalHours:00}h{time.Minutes:00}m{time.Seconds:00}s".TrimStart(' ', 'd', 'h', 'm', 's', '0');
+                TimeSpan time = TimeSpan.FromSeconds(Time.realtimeSinceStartup);
+                string uptime = $"{time.TotalHours:00}h{time.Minutes:00}m{time.Seconds:00}s".TrimStart(' ', 'd', 'h', 'm', 's', '0');
                 return $"{Mathf.RoundToInt(1f / Time.smoothDeltaTime)}fps, {uptime}";
             };
 
             Interface.Oxide.ServerConsole.Status2Left = () =>
             {
-                var players = $"{GameManager.Instance.World.Players.Count}/{GamePrefs.GetInt(EnumGamePrefs.ServerMaxPlayerCount)}";
-                var entities = GameManager.Instance.World.Entities.Count;
+                string players = $"{GameManager.Instance.World.Players.Count}/{GamePrefs.GetInt(EnumGamePrefs.ServerMaxPlayerCount)}";
+                int entities = GameManager.Instance.World.Entities.Count;
                 return $"{players}, {entities + (entities.Equals(1) ? " entity" : " entities")}";
             };
             Interface.Oxide.ServerConsole.Status2Right = () => string.Empty; // TODO: Network in/out
 
             Interface.Oxide.ServerConsole.Status3Left = () =>
             {
-                var gameTime = GameManager.Instance.World.worldTime;
-                var dateTime = Convert.ToDateTime($"{GameUtils.WorldTimeToHours(gameTime)}:{GameUtils.WorldTimeToMinutes(gameTime)}").ToString("h:mm tt");
+                ulong gameTime = GameManager.Instance.World.worldTime;
+                string dateTime = Convert.ToDateTime($"{GameUtils.WorldTimeToHours(gameTime)}:{GameUtils.WorldTimeToMinutes(gameTime)}").ToString("h:mm tt");
                 return $"{dateTime.ToLower()}, {GamePrefs.GetString(EnumGamePrefs.GameWorld)} [{GamePrefs.GetString(EnumGamePrefs.GameName)}]";
             };
             Interface.Oxide.ServerConsole.Status3Right = () => $"Oxide.SevenDaysToDie {AssemblyVersion}";
@@ -211,16 +216,22 @@ namespace Oxide.Game.SevenDays
         private static void ServerConsoleOnInput(string input)
         {
             input = input.Trim();
-            var result = SdtdConsole.Instance.ExecuteSync(input, null);
-            if (result != null) Interface.Oxide.ServerConsole.AddMessage(string.Join("\n", result.ToArray()));
+            List<string> result = SdtdConsole.Instance.ExecuteSync(input, null);
+            if (result != null)
+            {
+                Interface.Oxide.ServerConsole.AddMessage(string.Join("\n", result.ToArray()));
+            }
         }
 
         private static void HandleLog(string message, string stackTrace, LogType type)
         {
-            if (string.IsNullOrEmpty(message) || Filter.Any(message.Contains)) return;
+            if (string.IsNullOrEmpty(message) || Filter.Any(message.Contains))
+            {
+                return;
+            }
 
-            var color = ConsoleColor.Gray;
-            var remoteType = "generic";
+            ConsoleColor color = ConsoleColor.Gray;
+            string remoteType = "generic";
 
             if (type == LogType.Warning)
             {

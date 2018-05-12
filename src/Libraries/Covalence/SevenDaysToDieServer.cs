@@ -18,8 +18,8 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// </summary>
         public string Name
         {
-            get { return GamePrefs.GetString(EnumGamePrefs.ServerName); }
-            set { GamePrefs.Set(EnumGamePrefs.ServerName, value); }
+            get => GamePrefs.GetString(EnumGamePrefs.ServerName);
+            set => GamePrefs.Set(EnumGamePrefs.ServerName, value);
         }
 
         private static IPAddress address;
@@ -33,10 +33,13 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
             {
                 try
                 {
-                    if (address != null) return address;
+                    if (address == null)
+                    {
+                        WebClient webClient = new WebClient();
+                        IPAddress.TryParse(webClient.DownloadString("http://api.ipify.org"), out address);
+                        return address;
+                    }
 
-                    var webClient = new WebClient();
-                    IPAddress.TryParse(webClient.DownloadString("http://api.ipify.org"), out address);
                     return address;
                 }
                 catch (Exception ex)
@@ -77,8 +80,8 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// </summary>
         public int MaxPlayers
         {
-            get { return GamePrefs.GetInt(EnumGamePrefs.ServerMaxPlayerCount); }
-            set { GamePrefs.Set(EnumGamePrefs.ServerMaxPlayerCount, value); }
+            get => GamePrefs.GetInt(EnumGamePrefs.ServerMaxPlayerCount);
+            set => GamePrefs.Set(EnumGamePrefs.ServerMaxPlayerCount, value);
         }
 
         /// <summary>
@@ -88,10 +91,10 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         {
             get
             {
-                var time = GameManager.Instance.World.worldTime;
+                ulong time = GameManager.Instance.World.worldTime;
                 return Convert.ToDateTime($"{GameUtils.WorldTimeToHours(time)}:{GameUtils.WorldTimeToMinutes(time)}");
             }
-            set { GameUtils.DayTimeToWorldTime(value.Day, value.Hour, value.Minute); }
+            set => GameUtils.DayTimeToWorldTime(value.Day, value.Hour, value.Minute);
         }
 
         /// <summary>
@@ -123,13 +126,20 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// Gets the amount of time remaining on the player's ban
         /// </summary>
         /// <param name="id"></param>
-        public TimeSpan BanTimeRemaining(string id) => GameManager.Instance.adminTools.GetAdminToolsClientInfo(id).BannedUntil.TimeOfDay;
+        public TimeSpan BanTimeRemaining(string id)
+        {
+            AdminToolsClientInfo adminClient = GameManager.Instance.adminTools.GetAdminToolsClientInfo(id);
+            return adminClient.BannedUntil.TimeOfDay;
+        }
 
         /// <summary>
         /// Gets if the player is banned
         /// </summary>
         /// <param name="id"></param>
-        public bool IsBanned(string id) => GameManager.Instance.adminTools.IsBanned(id);
+        public bool IsBanned(string id)
+        {
+            return GameManager.Instance.adminTools.IsBanned(id);
+        }
 
         /// <summary>
         /// Saves the server and any related information
@@ -147,10 +157,11 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         public void Unban(string id)
         {
             // Check if unbanned already
-            if (!IsBanned(id)) return;
-
-            // Set to unbanned
-            GameManager.Instance.adminTools.RemoveBan(id);
+            if (IsBanned(id))
+            {
+                // Set to unbanned
+                GameManager.Instance.adminTools.RemoveBan(id);
+            }
         }
 
         #endregion Administration
@@ -166,7 +177,8 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         public void Broadcast(string message, string prefix, params object[] args)
         {
             message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
-            var formatted = prefix != null ? $"{prefix} {message}" : message;
+            string formatted = prefix != null ? $"{prefix} {message}" : message;
+
             GameManager.Instance.GameMessageServer(null, EnumGameMessages.Chat, formatted, null, false, null, false);
         }
 

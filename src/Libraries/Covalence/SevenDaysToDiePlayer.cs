@@ -17,7 +17,10 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
 
         internal SevenDaysPlayer(ulong id, string name)
         {
-            if (libPerms == null) libPerms = Interface.Oxide.GetLibrary<Permission>();
+            if (libPerms == null)
+            {
+                libPerms = Interface.Oxide.GetLibrary<Permission>();
+            }
 
             Name = name.Sanitize();
             Id = id.ToString();
@@ -113,17 +116,30 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         public void Ban(string reason, TimeSpan duration = default(TimeSpan))
         {
             // Check if already banned
-            if (IsBanned) return;
+            if (!IsBanned)
+            {
+                // Ban player with reason
+                GameManager.Instance.adminTools.AddBan(Id, null, new DateTime(duration.Ticks), reason);
 
-            // Ban and kick user
-            GameManager.Instance.adminTools.AddBan(Id, null, new DateTime(duration.Ticks), reason);
-            if (IsConnected) Kick(reason);
+                // Kick player if connected
+                if (IsConnected)
+                {
+                    Kick(reason);
+                }
+            }
         }
 
         /// <summary>
         /// Gets the amount of time remaining on the player's ban
         /// </summary>
-        public TimeSpan BanTimeRemaining => GameManager.Instance.adminTools.GetAdminToolsClientInfo(Id).BannedUntil.TimeOfDay;
+        public TimeSpan BanTimeRemaining
+        {
+            get
+            {
+                AdminToolsClientInfo adminClient = GameManager.Instance.adminTools.GetAdminToolsClientInfo(Id);
+                return adminClient.BannedUntil.TimeOfDay;
+            }
+        }
 
         /// <summary>
         /// Heals the player's character by specified amount
@@ -131,7 +147,7 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// <param name="amount"></param>
         public void Heal(float amount)
         {
-            var entity = GameManager.Instance.World.GetEntity(client.entityId) as EntityAlive;
+            EntityPlayer entity = Object as EntityPlayer;
             entity?.AddHealth((int)amount);
         }
 
@@ -142,13 +158,16 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         {
             get
             {
-                var entity = GameManager.Instance.World.GetEntity(client.entityId) as EntityAlive;
+                EntityPlayer entity = Object as EntityPlayer;
                 return entity?.Health ?? 0f;
             }
             set
             {
-                var entity = GameManager.Instance.World.GetEntity(client.entityId) as EntityAlive;
-                if (entity != null) entity.Stats.Health.Value = value;
+                EntityPlayer entity = Object as EntityPlayer;
+                if (entity != null)
+                {
+                    entity.Stats.Health.Value = value;
+                }
             }
         }
 
@@ -158,7 +177,7 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// <param name="amount"></param>
         public void Hurt(float amount)
         {
-            var entity = GameManager.Instance.World.GetEntity(client.entityId) as EntityAlive;
+            EntityPlayer entity = Object as EntityPlayer;
             entity?.DamageEntity(new DamageSource(EnumDamageSourceType.Undef), (int)amount, false);
         }
 
@@ -166,14 +185,18 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// Kicks the player from the game
         /// </summary>
         /// <param name="reason"></param>
-        public void Kick(string reason) => GameUtils.KickPlayerForClientInfo(client, new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, DateTime.Now, reason));
+        public void Kick(string reason)
+        {
+            GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, DateTime.Now, reason);
+            GameUtils.KickPlayerForClientInfo(client, kickData);
+        }
 
         /// <summary>
         /// Causes the player's character to die
         /// </summary>
         public void Kill()
         {
-            var entity = GameManager.Instance.World.GetEntity(client.entityId) as EntityAlive;
+            EntityPlayer entity = Object as EntityPlayer;
             entity?.Kill(DamageResponse.New(new DamageSource(EnumDamageSourceType.Undef), true));
         }
 
@@ -184,13 +207,16 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         {
             get
             {
-                var entity = GameManager.Instance.World.GetEntity(client.entityId) as EntityAlive;
+                EntityPlayer entity = Object as EntityPlayer;
                 return entity?.GetMaxHealth() ?? 0f;
             }
             set
             {
-                var entity = GameManager.Instance.World.GetEntity(client.entityId) as EntityAlive;
-                if (entity != null) entity.Stats.Health.BaseMax = value;
+                EntityPlayer entity = Object as EntityPlayer;
+                if (entity != null)
+                {
+                    entity.Stats.Health.BaseMax = value;
+                }
             }
         }
 
@@ -211,7 +237,7 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// <param name="z"></param>
         public void Teleport(float x, float y, float z)
         {
-            var entity = GameManager.Instance.World.GetEntity(client.entityId) as EntityAlive;
+            EntityPlayer entity = Object as EntityPlayer;
             entity?.SetPosition(new Vector3(x, y, z));
         }
 
@@ -227,10 +253,11 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         public void Unban()
         {
             // Check if unbanned already
-            if (!IsBanned) return;
-
-            // Set to unbanned
-            GameManager.Instance.adminTools.RemoveBan(Id);
+            if (IsBanned)
+            {
+                // Set to unbanned
+                GameManager.Instance.adminTools.RemoveBan(Id);
+            }
         }
 
         #endregion Administration
@@ -245,8 +272,8 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// <param name="z"></param>
         public void Position(out float x, out float y, out float z)
         {
-            var entity = GameManager.Instance.World.GetEntity(client.entityId);
-            var pos = entity.gameObject.transform.position;
+            EntityPlayer entity = Object as EntityPlayer;
+            Vector3 pos = entity?.gameObject.transform.position ?? new Vector3();
             x = pos.x;
             y = pos.y;
             z = pos.z;
@@ -258,8 +285,8 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         /// <returns></returns>
         public GenericPosition Position()
         {
-            var entity = GameManager.Instance.World.GetEntity(client.entityId);
-            var pos = entity.transform.position;
+            EntityPlayer entity = Object as EntityPlayer;
+            Vector3 pos = entity?.transform.position ?? new Vector3();
             return new GenericPosition(pos.x, pos.y, pos.z);
         }
 
@@ -276,7 +303,8 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         public void Message(string message, string prefix, params object[] args)
         {
             message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
-            var formatted = prefix != null ? $"{prefix} {message}" : message;
+            string formatted = prefix != null ? $"{prefix} {message}" : message;
+
             client.SendPackage(new NetPackageGameMessage(EnumGameMessages.Chat, formatted, null, false, null, false));
         }
 
