@@ -43,9 +43,18 @@ namespace Oxide.Game.SevenDays
             if (permission.IsLoaded)
             {
                 permission.UpdateNickname(client.playerId, client.playerName);
-                var defaultGroups = Interface.Oxide.Config.Options.DefaultGroups;
-                if (!permission.UserHasGroup(client.playerId, defaultGroups.Players)) permission.AddUserGroup(client.playerId, defaultGroups.Players);
-                // TODO: Admin group automation
+
+                OxideConfig.DefaultGroups defaultGroups = Interface.Oxide.Config.Options.DefaultGroups;
+
+                if (!permission.UserHasGroup(client.playerId, defaultGroups.Players))
+                {
+                    permission.AddUserGroup(client.playerId, defaultGroups.Players);
+                }
+
+                if (GameManager.Instance.adminTools.IsAdmin(client.playerId) && !permission.UserHasGroup(client.playerId, defaultGroups.Administrators))
+                {
+                    permission.AddUserGroup(client.playerId, defaultGroups.Administrators);
+                }
             }
 
             // Let covalence know
