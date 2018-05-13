@@ -56,8 +56,6 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
                 playerData.Add(id, record);
                 allPlayers.Add(id, new SevenDaysPlayer(userId, name));
             }
-
-            ProtoStorage.Save(playerData, "oxide.covalence");
         }
 
         internal void PlayerConnected(ClientInfo client)
@@ -67,6 +65,8 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         }
 
         internal void PlayerDisconnected(ClientInfo client) => connectedPlayers.Remove(client.playerId);
+
+        internal void SavePlayerData() => ProtoStorage.Save(playerData, "oxide.covalence");
 
         #region Player Finding
 

@@ -74,6 +74,7 @@ namespace Oxide.Game.SevenDays
 
             // Add core misc commands
             AddCovalenceCommand(new[] { "oxide.lang", "o.lang" }, "LangCommand");
+            AddCovalenceCommand(new[] { "oxide.save", "o.save" }, "SaveCommand");
             AddCovalenceCommand(new[] { "oxide.version", "o.version" }, "VersionCommand");
 
             // Register messages for localization
@@ -140,10 +141,24 @@ namespace Oxide.Game.SevenDays
         }
 
         /// <summary>
+        /// Called when the server is saved
+        /// </summary>
+        [HookMethod("OnServerSave")]
+        private void OnServerSave()
+        {
+            Interface.Oxide.OnSave();
+            Covalence.PlayerManager.SavePlayerData();
+        }
+
+        /// <summary>
         /// Called when the server is shutting down
         /// </summary>
         [HookMethod("OnServerShutdown")]
-        private void OnServerShutdown() => Interface.Oxide.OnShutdown();
+        private void OnServerShutdown()
+        {
+            Interface.Oxide.OnShutdown();
+            Covalence.PlayerManager.SavePlayerData();
+        }
 
         #endregion Core Hooks
 
