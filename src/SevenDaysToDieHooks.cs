@@ -34,13 +34,41 @@ namespace Oxide.Game.SevenDays
         {
             if (client != null && !string.IsNullOrEmpty(message))
             {
-                IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
+                IPlayer iplayer = client.IPlayer;
                 object chatSpecific = Interface.Call("OnPlayerChat", client, message);
                 object chatCovalence = iplayer != null ? Interface.Call("OnUserChat", iplayer, message) : null;
                 return chatSpecific ?? chatCovalence;
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Called when the player is attempting to connect
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        [HookMethod("IOnUserApprove")]
+        private object IOnUserApprove(ClientInfo client)
+        {
+            string id = client.steamId.m_SteamID.ToString();
+
+            // Let covalence know
+            Covalence.PlayerManager.PlayerJoin(client.steamId.m_SteamID, client.playerName);
+
+            // Call out and see if we should reject
+            object canLogin = Interface.Call("CanClientLogin", client) ?? Interface.Call("CanUserLogin", client.playerName, id, client.ip); // TODO: Localization
+
+            if (canLogin is string || canLogin is bool && !(bool)canLogin)
+            {
+                string reason = canLogin is string ? canLogin.ToString() : "Connection was rejected"; // TODO: Localization
+                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.PlayerLimitExceeded, 0, default(DateTime), reason);
+                GameUtils.KickPlayerForClientInfo(client, kickData);
+                return true;
+            }
+
+            // Call game and covalence hooks
+            return Interface.Call("OnUserApprove", client) ?? Interface.Call("OnUserApproved", client.playerName, id, client.ip); // TODO: Localization
         }
 
         /// <summary>
@@ -84,10 +112,10 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnPlayerDisconnected")]
         private void OnPlayerDisconnected(ClientInfo client)
         {
-            // Call covalence hook
-            IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
+            IPlayer iplayer = client.IPlayer;
             if (iplayer != null)
             {
+                // Call covalence hook
                 Interface.Call("OnUserDisconnected", iplayer, "Unknown");
             }
 
@@ -102,39 +130,12 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnPlayerSpawn")]
         private void OnPlayerSpawn(ClientInfo client)
         {
-            IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
+            IPlayer iplayer = client.IPlayer;
             if (iplayer != null)
             {
+                // Call covalence hook
                 Interface.Call("OnUserSpawn", iplayer);
             }
-        }
-
-        /// <summary>
-        /// Called when the player is attempting to connect
-        /// </summary>
-        /// <param name="client"></param>
-        /// <returns></returns>
-        [HookMethod("IOnUserApprove")]
-        private object IOnUserApprove(ClientInfo client)
-        {
-            string id = client.steamId.m_SteamID.ToString();
-
-            // Let covalence know
-            Covalence.PlayerManager.PlayerJoin(client.steamId.m_SteamID, client.playerName);
-
-            // Call out and see if we should reject
-            object canLogin = Interface.Call("CanClientLogin", client) ?? Interface.Call("CanUserLogin", "Unnamed", id, client.ip); // TODO: Localization
-
-            if (canLogin is string || canLogin is bool && !(bool)canLogin)
-            {
-                string reason = canLogin is string ? canLogin.ToString() : "Connection was rejected"; // TODO: Localization
-                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.PlayerLimitExceeded, 0, default(DateTime), reason);
-                GameUtils.KickPlayerForClientInfo(client, kickData);
-                return true;
-            }
-
-            // Call game and covalence hooks
-            return Interface.Call("OnUserApprove", client) ?? Interface.Call("OnUserApproved", "Unnamed", id, client.ip); // TODO: Localization
         }
 
         #endregion Player Hooks
