@@ -69,11 +69,10 @@ namespace Oxide.Game.SevenDays
 
             // Let covalence know
             Covalence.PlayerManager.PlayerConnected(client);
-
-            // Call covalence hook
             IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
             if (iplayer != null)
             {
+                client.IPlayer = iplayer;
                 Interface.Call("OnUserConnected", iplayer);
             }
         }
