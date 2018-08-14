@@ -2,7 +2,7 @@
 using Oxide.Core.Plugins;
 using System.Collections.Generic;
 
-namespace Oxide.Game.SevenDays.Libraries.Covalence
+namespace Oxide.Game.SevenDays
 {
     /// <summary>
     /// Represents a binding to a generic command system

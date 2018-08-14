@@ -1,6 +1,6 @@
 ﻿using Oxide.Core.Libraries.Covalence;
 
-namespace Oxide.Game.SevenDays.Libraries.Covalence
+namespace Oxide.Game.SevenDays
 {
     /// <summary>
     /// Provides Covalence functionality for the game "7 Days to Die"

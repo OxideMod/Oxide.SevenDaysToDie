@@ -4,7 +4,7 @@ using System;
 using System.Globalization;
 using System.Net;
 
-namespace Oxide.Game.SevenDays.Libraries.Covalence
+namespace Oxide.Game.SevenDays
 {
     /// <summary>
     /// Represents the server hosting the game instance
@@ -23,6 +23,7 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
         }
 
         private static IPAddress address;
+        private static IPAddress localAddress;
 
         /// <summary>
         /// Gets the public-facing IP address of the server, if known
@@ -35,17 +36,45 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
                 {
                     if (address == null)
                     {
-                        WebClient webClient = new WebClient();
-                        IPAddress.TryParse(webClient.DownloadString("http://api.ipify.org"), out address);
-                        return address;
+                        string serverIp = GamePrefs.GetString(EnumGamePrefs.ServerIP);
+                        if (Utility.ValidateIPv4(serverIp) && !Utility.IsLocalIP(serverIp))
+                        {
+                            IPAddress.TryParse(serverIp, out address);
+                            Interface.Oxide.LogDebug($"IP address from command-line: {address}");
+                        }
+                        else
+                        {
+                            WebClient webClient = new WebClient();
+                            IPAddress.TryParse(webClient.DownloadString("http://api.ipify.org"), out address);
+                            Interface.Oxide.LogDebug($"IP address from external API: {address}");
+                        }
                     }
 
                     return address;
                 }
                 catch (Exception ex)
                 {
-                    RemoteLogger.Exception("Couldn't get server IP address", ex);
-                    return new IPAddress(0);
+                    RemoteLogger.Exception("Couldn't get server's public IP address", ex);
+                    return IPAddress.Any;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the local IP address of the server, if known
+        /// </summary>
+        public IPAddress LocalAddress
+        {
+            get
+            {
+                try
+                {
+                    return localAddress ?? (localAddress = Utility.GetLocalIP());
+                }
+                catch (Exception ex)
+                {
+                    RemoteLogger.Exception("Couldn't get server's local IP address", ex);
+                    return IPAddress.Any;
                 }
             }
         }

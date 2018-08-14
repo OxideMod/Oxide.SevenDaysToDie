@@ -5,7 +5,7 @@ using System;
 using System.Globalization;
 using UnityEngine;
 
-namespace Oxide.Game.SevenDays.Libraries.Covalence
+namespace Oxide.Game.SevenDays
 {
     /// <summary>
     /// Represents a player, either connected or not

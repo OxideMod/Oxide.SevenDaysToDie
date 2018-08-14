@@ -1,7 +1,6 @@
 ﻿using Oxide.Core;
 using Oxide.Core.Extensions;
 using Oxide.Core.RemoteConsole;
-using Oxide.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,10 +45,19 @@ namespace Oxide.Game.SevenDays
         public override string Branch => "public"; // TODO: Handle this programmatically
 
         /// <summary>
-        /// Default game-specific references for use in plugins
+        /// Commands that plugins can't override
         /// </summary>
-        internal static readonly HashSet<string> DefaultReferences = new HashSet<string>
+        internal static IEnumerable<string> RestrictedCommands => new[]
         {
+            ""
+        };
+
+        /// <summary>
+        /// List of default game-specific references for use in plugins
+        /// </summary>
+        public override string[] DefaultReferences => new[]
+        {
+            ""
         };
 
         /// <summary>
@@ -163,8 +171,6 @@ namespace Oxide.Game.SevenDays
         /// </summary>
         public override void OnModLoad()
         {
-            CSharpPluginLoader.PluginReferences.UnionWith(DefaultReferences);
-
             if (Interface.Oxide.EnableConsole())
             {
                 Application.logMessageReceived += HandleLog;
@@ -172,7 +178,7 @@ namespace Oxide.Game.SevenDays
                 Interface.Oxide.ServerConsole.Input += ServerConsoleOnInput;
                 Interface.Oxide.ServerConsole.Completion = input =>
                 {
-                    return string.IsNullOrEmpty(input) ? null : SdtdConsole.Instance.GetCommands().SelectMany(g => g.GetCommands())
+                    return String.IsNullOrEmpty(input) ? null : SdtdConsole.Instance.GetCommands().SelectMany(g => g.GetCommands())
                             .Where(c => c.StartsWith(input.ToLower())).ToArray();
                 };
             }
@@ -201,7 +207,7 @@ namespace Oxide.Game.SevenDays
                 int entities = GameManager.Instance.World.Entities.Count;
                 return $"{players}, {entities + (entities.Equals(1) ? " entity" : " entities")}";
             };
-            Interface.Oxide.ServerConsole.Status2Right = () => string.Empty; // TODO: Network in/out
+            Interface.Oxide.ServerConsole.Status2Right = () => String.Empty; // TODO: Network in/out
 
             Interface.Oxide.ServerConsole.Status3Left = () =>
             {
@@ -219,13 +225,13 @@ namespace Oxide.Game.SevenDays
             List<string> result = SdtdConsole.Instance.ExecuteSync(input, null);
             if (result != null)
             {
-                Interface.Oxide.ServerConsole.AddMessage(string.Join("\n", result.ToArray()));
+                Interface.Oxide.ServerConsole.AddMessage(String.Join("\n", result.ToArray()));
             }
         }
 
         private static void HandleLog(string message, string stackTrace, LogType type)
         {
-            if (string.IsNullOrEmpty(message) || Filter.Any(message.Contains))
+            if (String.IsNullOrEmpty(message) || Filter.Any(message.Contains))
             {
                 return;
             }

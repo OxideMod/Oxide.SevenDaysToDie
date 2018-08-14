@@ -2,7 +2,6 @@
 using Oxide.Core.Libraries;
 using Oxide.Core.Libraries.Covalence;
 using Oxide.Core.Plugins;
-using Oxide.Game.SevenDays.Libraries.Covalence;
 using System;
 using System.Collections.Generic;
 
@@ -27,21 +26,13 @@ namespace Oxide.Game.SevenDays
         }
 
         // Libraries
-        //internal readonly Command cmdlib = Interface.Oxide.GetLibrary<Command>();
         internal readonly Lang lang = Interface.Oxide.GetLibrary<Lang>();
         internal readonly Permission permission = Interface.Oxide.GetLibrary<Permission>();
-        //internal readonly Player Player = Interface.Oxide.GetLibrary<Player>();
 
         // Instances
         internal static readonly SevenDaysCovalenceProvider Covalence = SevenDaysCovalenceProvider.Instance;
         internal readonly PluginManager pluginManager = Interface.Oxide.RootPluginManager;
         internal readonly IServer Server = Covalence.CreateServer();
-
-        // Commands that a plugin can't override
-        internal static IEnumerable<string> RestrictedCommands => new[]
-        {
-            ""
-        };
 
         private bool serverInitialized;
 
@@ -78,7 +69,7 @@ namespace Oxide.Game.SevenDays
             AddCovalenceCommand(new[] { "oxide.version", "o.version" }, "VersionCommand");
 
             // Register messages for localization
-            foreach (var language in Core.Localization.languages)
+            foreach (KeyValuePair<string, Dictionary<string, string>> language in Core.Localization.languages)
             {
                 lang.RegisterMessages(language.Value, this, language.Key);
             }
@@ -118,9 +109,9 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnPluginLoaded")]
         private void OnPluginLoaded(Plugin plugin)
         {
-            // Call OnServerInitialized for hotloaded plugins
             if (serverInitialized)
             {
+                // Call OnServerInitialized for hotloaded plugins
                 plugin.CallHook("OnServerInitialized");
             }
         }
@@ -134,6 +125,8 @@ namespace Oxide.Game.SevenDays
             if (!serverInitialized)
             {
                 Analytics.Collect();
+
+                // Show the server console, if enabled
                 SevenDaysExtension.ServerConsole();
 
                 serverInitialized = true;
@@ -146,7 +139,10 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnServerSave")]
         private void OnServerSave()
         {
+            // Trigger save process
             Interface.Oxide.OnSave();
+
+            // Save Oxide groups, users, and other data
             Covalence.PlayerManager.SavePlayerData();
         }
 
@@ -156,7 +152,10 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnServerShutdown")]
         private void OnServerShutdown()
         {
+            // Trigger shutdown process
             Interface.Oxide.OnShutdown();
+
+            // Save Oxide groups, users, and other data
             Covalence.PlayerManager.SavePlayerData();
         }
 

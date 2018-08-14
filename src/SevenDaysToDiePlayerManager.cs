@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Oxide.Game.SevenDays.Libraries.Covalence
+namespace Oxide.Game.SevenDays
 {
     /// <summary>
     /// Represents a generic player manager
@@ -32,7 +32,7 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
             allPlayers = new Dictionary<string, SevenDaysPlayer>();
             connectedPlayers = new Dictionary<string, SevenDaysPlayer>();
 
-            foreach (var pair in playerData)
+            foreach (KeyValuePair<string, PlayerRecord> pair in playerData)
             {
                 allPlayers.Add(pair.Key, new SevenDaysPlayer(pair.Value.Id, pair.Value.Name));
             }
@@ -60,8 +60,9 @@ namespace Oxide.Game.SevenDays.Libraries.Covalence
 
         internal void PlayerConnected(ClientInfo client)
         {
-            allPlayers[client.playerId] = new SevenDaysPlayer(client);
-            connectedPlayers[client.playerId] = new SevenDaysPlayer(client);
+            SevenDaysPlayer player = new SevenDaysPlayer(client);
+            allPlayers[client.playerId] = player;
+            connectedPlayers[client.playerId] = player;
         }
 
         internal void PlayerDisconnected(ClientInfo client) => connectedPlayers.Remove(client.playerId);
