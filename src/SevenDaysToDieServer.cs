@@ -40,13 +40,13 @@ namespace Oxide.Game.SevenDays
                         if (Utility.ValidateIPv4(serverIp) && !Utility.IsLocalIP(serverIp))
                         {
                             IPAddress.TryParse(serverIp, out address);
-                            Interface.Oxide.LogDebug($"IP address from command-line: {address}");
+                            Interface.Oxide.LogInfo($"IP address from command-line: {address}");
                         }
                         else
                         {
                             WebClient webClient = new WebClient();
                             IPAddress.TryParse(webClient.DownloadString("http://api.ipify.org"), out address);
-                            Interface.Oxide.LogDebug($"IP address from external API: {address}");
+                            Interface.Oxide.LogInfo($"IP address from external API: {address}");
                         }
                     }
 

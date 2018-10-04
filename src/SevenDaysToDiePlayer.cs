@@ -230,24 +230,6 @@ namespace Oxide.Game.SevenDays
         }
 
         /// <summary>
-        /// Teleports the player's character to the specified position
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        public void Teleport(float x, float y, float z)
-        {
-            EntityPlayer entity = Object as EntityPlayer;
-            entity?.SetPosition(new Vector3(x, y, z));
-        }
-
-        /// <summary>
-        /// Teleports the player's character to the specified generic position
-        /// </summary>
-        /// <param name="pos"></param>
-        public void Teleport(GenericPosition pos) => Teleport(pos.X, pos.Y, pos.Z);
-
-        /// <summary>
         /// Unbans the player
         /// </summary>
         public void Unban()
@@ -289,6 +271,31 @@ namespace Oxide.Game.SevenDays
             Vector3 pos = entity?.transform.position ?? new Vector3();
             return new GenericPosition(pos.x, pos.y, pos.z);
         }
+
+        /// <summary>
+        /// Teleports the player's character to the specified position
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        public void Teleport(float x, float y, float z)
+        {
+            NetPackageTeleportPlayer netPackageTeleportPlayer = new NetPackageTeleportPlayer(new Vector3(x, y, z));
+            if (client != null)
+            {
+                client.SendPackage(netPackageTeleportPlayer);
+            }
+            else
+            {
+                netPackageTeleportPlayer.ProcessPackage(GameManager.Instance.World, GameManager.Instance);
+            }
+        }
+
+        /// <summary>
+        /// Teleports the player's character to the specified generic position
+        /// </summary>
+        /// <param name="pos"></param>
+        public void Teleport(GenericPosition pos) => Teleport(pos.X, pos.Y, pos.Z);
 
         #endregion Location
 
