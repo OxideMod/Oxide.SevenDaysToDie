@@ -34,13 +34,13 @@ namespace Oxide.Game.SevenDays
 
             foreach (KeyValuePair<string, PlayerRecord> pair in playerData)
             {
-                allPlayers.Add(pair.Key, new SevenDaysPlayer(pair.Value.Id, pair.Value.Name));
+                allPlayers.Add(pair.Key, new SevenDaysPlayer(pair.Value.Id.ToString(), pair.Value.Name));
             }
         }
 
-        internal void PlayerJoin(ulong userId, string name)
+        internal void PlayerJoin(string id, string name)
         {
-            string id = userId.ToString();
+            ulong userId = ulong.Parse(id);
 
             PlayerRecord record;
             if (playerData.TryGetValue(id, out record))
@@ -48,13 +48,13 @@ namespace Oxide.Game.SevenDays
                 record.Name = name;
                 playerData[id] = record;
                 allPlayers.Remove(id);
-                allPlayers.Add(id, new SevenDaysPlayer(userId, name));
+                allPlayers.Add(id, new SevenDaysPlayer(id, name));
             }
             else
             {
                 record = new PlayerRecord { Id = userId, Name = name };
                 playerData.Add(id, record);
-                allPlayers.Add(id, new SevenDaysPlayer(userId, name));
+                allPlayers.Add(id, new SevenDaysPlayer(id, name));
             }
         }
 

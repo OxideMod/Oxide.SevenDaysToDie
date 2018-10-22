@@ -15,7 +15,7 @@ namespace Oxide.Game.SevenDays
         private static Permission libPerms;
         private readonly ClientInfo client;
 
-        internal SevenDaysPlayer(ulong id, string name)
+        internal SevenDaysPlayer(string id, string name)
         {
             if (libPerms == null)
             {
@@ -23,10 +23,10 @@ namespace Oxide.Game.SevenDays
             }
 
             Name = name.Sanitize();
-            Id = id.ToString();
+            Id = id;
         }
 
-        internal SevenDaysPlayer(ClientInfo client) : this(client.steamId.m_SteamID, client.playerName)
+        internal SevenDaysPlayer(ClientInfo client) : this(client.playerId, client.playerName)
         {
             this.client = client;
         }

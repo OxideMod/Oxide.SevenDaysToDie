@@ -51,13 +51,11 @@ namespace Oxide.Game.SevenDays
         [HookMethod("IOnUserApprove")]
         private object IOnUserApprove(ClientInfo client)
         {
-            string id = client.steamId.m_SteamID.ToString();
-
             // Let covalence know
-            Covalence.PlayerManager.PlayerJoin(client.steamId.m_SteamID, client.playerName);
+            Covalence.PlayerManager.PlayerJoin(client.playerId, client.playerName);
 
             // Call out and see if we should reject
-            object canLogin = Interface.Call("CanClientLogin", client) ?? Interface.Call("CanUserLogin", client.playerName, id, client.ip); // TODO: Localization
+            object canLogin = Interface.Call("CanClientLogin", client) ?? Interface.Call("CanUserLogin", client.playerName, client.playerId, client.ip); // TODO: Localization
 
             if (canLogin is string || canLogin is bool && !(bool)canLogin)
             {
@@ -68,7 +66,7 @@ namespace Oxide.Game.SevenDays
             }
 
             // Call game and covalence hooks
-            return Interface.Call("OnUserApprove", client) ?? Interface.Call("OnUserApproved", client.playerName, id, client.ip); // TODO: Localization
+            return Interface.Call("OnUserApprove", client) ?? Interface.Call("OnUserApproved", client.playerName, client.playerId, client.ip); // TODO: Localization
         }
 
         /// <summary>
