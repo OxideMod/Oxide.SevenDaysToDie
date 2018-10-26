@@ -173,12 +173,12 @@ namespace Oxide.Game.SevenDays
         {
             if (Interface.Oxide.EnableConsole())
             {
-                Application.logMessageReceived += HandleLog;
+                Application.logMessageReceivedThreaded += HandleLog;
 
                 Interface.Oxide.ServerConsole.Input += ServerConsoleOnInput;
                 Interface.Oxide.ServerConsole.Completion = input =>
                 {
-                    return String.IsNullOrEmpty(input) ? null : SdtdConsole.Instance.GetCommands().SelectMany(g => g.GetCommands())
+                    return string.IsNullOrEmpty(input) ? null : SdtdConsole.Instance.GetCommands().SelectMany(g => g.GetCommands())
                             .Where(c => c.StartsWith(input.ToLower())).ToArray();
                 };
             }
@@ -207,7 +207,7 @@ namespace Oxide.Game.SevenDays
                 int entities = GameManager.Instance.World.Entities.Count;
                 return $"{players}, {entities + (entities.Equals(1) ? " entity" : " entities")}";
             };
-            Interface.Oxide.ServerConsole.Status2Right = () => String.Empty; // TODO: Network in/out
+            Interface.Oxide.ServerConsole.Status2Right = () => string.Empty; // TODO: Network in/out
 
             Interface.Oxide.ServerConsole.Status3Left = () =>
             {
@@ -225,13 +225,13 @@ namespace Oxide.Game.SevenDays
             List<string> result = SdtdConsole.Instance.ExecuteSync(input, null);
             if (result != null)
             {
-                Interface.Oxide.ServerConsole.AddMessage(String.Join("\n", result.ToArray()));
+                Interface.Oxide.ServerConsole.AddMessage(string.Join("\n", result.ToArray()));
             }
         }
 
         private static void HandleLog(string message, string stackTrace, LogType type)
         {
-            if (String.IsNullOrEmpty(message) || Filter.Any(message.Contains))
+            if (string.IsNullOrEmpty(message) || Filter.Any(message.Contains))
             {
                 return;
             }

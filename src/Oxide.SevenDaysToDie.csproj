@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project>
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
   <PropertyGroup>
@@ -10,7 +10,7 @@
     <PackageLicenseUrl>https://github.com/OxideMod/Oxide.SevenDaysToDie/blob/develop/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/OxideMod/Oxide.SevenDaysToDie</PackageProjectUrl>
     <PackageIconUrl>https://avatars1.githubusercontent.com/u/10712027?s=64</PackageIconUrl>
-    <Copyright>Copyright (c) 2014-$([System.DateTime]::Now.Year) $(Authors)</Copyright>
+    <Copyright>Copyright (c) 2013-$([System.DateTime]::Now.Year) $(Authors)</Copyright>
     <PackageTags>gaming modding plugins unity unity3d</PackageTags>
     <TargetFramework>net35</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
