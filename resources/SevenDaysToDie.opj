@@ -520,6 +520,40 @@
           "Flagged": false
         }
       ]
+    },
+    {
+      "AssemblyName": "LogLibrary.dll",
+      "Hooks": [
+        {
+          "Type": "Modify",
+          "Hook": {
+            "InjectionIndex": 10,
+            "RemoveCount": 2,
+            "Instructions": [],
+            "HookTypeName": "Modify",
+            "Name": "masterLogStandalone",
+            "HookName": "OnmasterLogStandalone",
+            "AssemblyName": "LogLibrary.dll",
+            "TypeName": "Logger",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 0,
+              "Name": "masterLogStandalone",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "System.String",
+                "System.String",
+                "UnityEngine.LogType"
+              ]
+            },
+            "MSILHash": "C3JloDm6xZaq/3eCcXpj9kVnY3+k+NasSxQj6tA3IQY=",
+            "BaseHookName": null,
+            "HookCategory": null
+          }
+        }
+      ],
+      "Modifiers": [],
+      "Fields": []
     }
   ]
 }

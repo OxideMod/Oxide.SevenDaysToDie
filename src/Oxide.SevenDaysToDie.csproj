@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
   <PropertyGroup>
@@ -40,6 +40,9 @@
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>Dependencies\Patched\$(ManagedDir)\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="LogLibrary">
+      <HintPath>Dependencies\Patched\$(ManagedDir)\LogLibrary.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>Dependencies\Patched\$(ManagedDir)\UnityEngine.dll</HintPath>
