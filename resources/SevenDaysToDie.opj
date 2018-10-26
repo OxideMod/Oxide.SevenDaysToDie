@@ -129,32 +129,6 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 3,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 3,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "OnPlayerRespawned",
-            "HookName": "OnPlayerRespawned",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "EntityPlayer",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Respawn",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "RespawnType"
-              ]
-            },
-            "MSILHash": "Fpz3l5SYFlypQzvsyvMaO+Pr7fdU0U/6eXqhWyX2UOc=",
-            "BaseHookName": null,
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
             "InjectionIndex": 0,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 4,
@@ -205,32 +179,6 @@
             "MSILHash": "uk7cFwMwRlQXLwDOpmfDZsqqI1MHuz0jO5F/6rEYqHg=",
             "BaseHookName": null,
             "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 0,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 3,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "OnEntityDeath",
-            "HookName": "OnEntityDeath",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "Entity",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Kill",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "DamageResponse"
-              ]
-            },
-            "MSILHash": "5vgFx84HYQirHwyFEmSqah/uZCSdnXkvpJETfKZmiHk=",
-            "BaseHookName": null,
-            "HookCategory": "Entity"
           }
         },
         {
@@ -345,7 +293,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 335,
+            "InjectionIndex": 0,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
             "ArgumentString": "a0",
@@ -484,29 +432,25 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 24,
+            "InjectionIndex": 79,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
-            "ArgumentString": "a0, a1",
+            "ArgumentString": "this, ",
             "HookTypeName": "Simple",
-            "Name": "OnPlayerRespawn",
-            "HookName": "OnPlayerRespawn",
+            "Name": "OnEntityDeath",
+            "HookName": "OnEntityDeath",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
+            "TypeName": "EntityAlive",
             "Flagged": false,
             "Signature": {
               "Exposure": 2,
-              "Name": "PlayerSpawnedInWorld",
+              "Name": "OnEntityDeath",
               "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "RespawnType",
-                "Vector3i"
-              ]
+              "Parameters": []
             },
-            "MSILHash": "kr+Gv3HD2Ex5M4bBwornPROFzU2bU552WSj1WiMzMlw=",
-            "BaseHookName": "OnPlayerConnected",
-            "HookCategory": "Player"
+            "MSILHash": "Rbmsg/ygpkFFiCzsbKq2sjhNUZmFHOA9We4qhVhWiWU=",
+            "BaseHookName": null,
+            "HookCategory": "Entity"
           }
         }
       ],
@@ -531,8 +475,8 @@
             "RemoveCount": 2,
             "Instructions": [],
             "HookTypeName": "Modify",
-            "Name": "masterLogStandalone",
-            "HookName": "OnmasterLogStandalone",
+            "Name": "RemoveConsoleWriteLine [patch]",
+            "HookName": "RemoveConsoleWriteLine",
             "AssemblyName": "LogLibrary.dll",
             "TypeName": "Logger",
             "Flagged": false,
@@ -548,7 +492,7 @@
             },
             "MSILHash": "C3JloDm6xZaq/3eCcXpj9kVnY3+k+NasSxQj6tA3IQY=",
             "BaseHookName": null,
-            "HookCategory": null
+            "HookCategory": "_Patches"
           }
         }
       ],
