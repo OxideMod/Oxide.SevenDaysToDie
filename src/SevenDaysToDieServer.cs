@@ -1,15 +1,15 @@
-﻿using Oxide.Core;
-using Oxide.Core.Libraries.Covalence;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Net;
+using uMod.Libraries.Universal;
+using uMod.Logging;
 
-namespace Oxide.Game.SevenDays
+namespace uMod.SevenDaysToDie
 {
     /// <summary>
     /// Represents the server hosting the game instance
     /// </summary>
-    public class SevenDaysServer : IServer
+    public class SevenDaysToDieServer : IServer
     {
         #region Information
 
@@ -40,13 +40,13 @@ namespace Oxide.Game.SevenDays
                         if (Utility.ValidateIPv4(serverIp) && !Utility.IsLocalIP(serverIp))
                         {
                             IPAddress.TryParse(serverIp, out address);
-                            Interface.Oxide.LogInfo($"IP address from command-line: {address}");
+                            Interface.uMod.LogInfo($"IP address from command-line: {address}");
                         }
                         else
                         {
                             WebClient webClient = new WebClient();
                             IPAddress.TryParse(webClient.DownloadString("http://api.ipify.org"), out address);
-                            Interface.Oxide.LogInfo($"IP address from external API: {address}");
+                            Interface.uMod.LogInfo($"IP address from external API: {address}");
                         }
                     }
 
@@ -237,7 +237,6 @@ namespace Oxide.Game.SevenDays
         {
             message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
             string formatted = prefix != null ? $"{prefix} {message}" : message;
-
             GameManager.Instance.GameMessageServer(null, EnumGameMessages.Chat, formatted, null, false, null, false);
         }
 

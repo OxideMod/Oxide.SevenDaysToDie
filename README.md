@@ -1,1 +1,1 @@
-Oxide.SevenDaysToDie
+uMod.SevenDaysToDie

@@ -1,15 +1,14 @@
-﻿using Oxide.Core;
-using Oxide.Core.Configuration;
-using Oxide.Core.Libraries.Covalence;
-using Oxide.Core.Plugins;
-using System;
+﻿using System;
+using uMod.Configuration;
+using uMod.Libraries.Universal;
+using uMod.Plugins;
 
-namespace Oxide.Game.SevenDays
+namespace uMod.SevenDaysToDie
 {
     /// <summary>
     /// Game hooks and wrappers for the core 7 Days to Die plugin
     /// </summary>
-    public partial class SevenDaysCore
+    public partial class SevenDaysToDie
     {
         #region Player Hooks
 
@@ -21,6 +20,7 @@ namespace Oxide.Game.SevenDays
         [HookMethod("ICanUseDoor")]
         private object ICanUseDoor(string id, TileEntitySecure entity)
         {
+            // Let plugins know
             return Interface.Call("CanUseDoor", ConsoleHelper.ParseParamIdOrName(id), entity);
         }
 
@@ -34,10 +34,11 @@ namespace Oxide.Game.SevenDays
         {
             if (client != null && !string.IsNullOrEmpty(message))
             {
-                IPlayer iplayer = client.IPlayer;
+                // Let plugins know
+                IPlayer player = client.IPlayer;
                 object chatSpecific = Interface.Call("OnPlayerChat", client, message);
-                object chatCovalence = iplayer != null ? Interface.Call("OnUserChat", iplayer, message) : null;
-                return chatSpecific ?? chatCovalence;
+                object chatUniversal = player != null ? Interface.Call("OnPlayerChat", player, message) : null;
+                return chatSpecific ?? chatUniversal;
             }
 
             return null;
@@ -51,22 +52,24 @@ namespace Oxide.Game.SevenDays
         [HookMethod("IOnUserApprove")]
         private object IOnUserApprove(ClientInfo client)
         {
-            // Let covalence know
-            Covalence.PlayerManager.PlayerJoin(client.playerId, client.playerName);
+            // Let universal know
+            Universal.PlayerManager.PlayerJoin(client.playerId, client.playerName); // TODO: Handle this automatically
 
-            // Call out and see if we should reject
-            object canLogin = Interface.Call("CanClientLogin", client) ?? Interface.Call("CanUserLogin", client.playerName, client.playerId, client.ip); // TODO: Localization
-
+            // Call universal hook
+            object canLogin = Interface.Call("CanPlayerLogin", client.playerName, client.playerId, client.ip);
             if (canLogin is string || canLogin is bool && !(bool)canLogin)
             {
+                // Reject player with message
                 string reason = canLogin is string ? canLogin.ToString() : "Connection was rejected"; // TODO: Localization
                 GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.PlayerLimitExceeded, 0, default(DateTime), reason);
                 GameUtils.KickPlayerForClientInfo(client, kickData);
                 return true;
             }
 
-            // Call game and covalence hooks
-            return Interface.Call("OnUserApprove", client) ?? Interface.Call("OnUserApproved", client.playerName, client.playerId, client.ip); // TODO: Localization
+            // Let plugins know
+            Interface.Call("OnPlayerApproved", client.playerName, client.playerId, client.ip);
+
+            return null;
         }
 
         /// <summary>
@@ -78,28 +81,32 @@ namespace Oxide.Game.SevenDays
         {
             if (permission.IsLoaded)
             {
+                // Update player's stored username
                 permission.UpdateNickname(client.playerId, client.playerName);
 
-                OxideConfig.DefaultGroups defaultGroups = Interface.Oxide.Config.Options.DefaultGroups;
-
+                // Set default groups, if necessary
+                uModConfig.DefaultGroups defaultGroups = Interface.uMod.Config.Options.DefaultGroups;
                 if (!permission.UserHasGroup(client.playerId, defaultGroups.Players))
                 {
                     permission.AddUserGroup(client.playerId, defaultGroups.Players);
                 }
-
                 if (GameManager.Instance.adminTools.IsAdmin(client.playerId) && !permission.UserHasGroup(client.playerId, defaultGroups.Administrators))
                 {
                     permission.AddUserGroup(client.playerId, defaultGroups.Administrators);
                 }
             }
 
-            // Let covalence know
-            Covalence.PlayerManager.PlayerConnected(client);
-            IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
-            if (iplayer != null)
+            // Let universal know
+            Universal.PlayerManager.PlayerConnected(client);
+
+            IPlayer player = Universal.PlayerManager.FindPlayerById(client.playerId);
+            if (player != null)
             {
-                client.IPlayer = iplayer;
-                Interface.Call("OnUserConnected", iplayer);
+                // Set IPlayer object on ClientInfo
+                client.IPlayer = player;
+
+                // Call universal hook
+                Interface.Call("OnPlayerConnected", player);
             }
         }
 
@@ -110,15 +117,15 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnPlayerDisconnected")]
         private void OnPlayerDisconnected(ClientInfo client)
         {
-            IPlayer iplayer = client.IPlayer;
-            if (iplayer != null)
-            {
-                // Call covalence hook
-                Interface.Call("OnUserDisconnected", iplayer, "Unknown");
-            }
+            // Let universal know
+            Universal.PlayerManager.PlayerDisconnected(client);
 
-            // Let covalence know
-            Covalence.PlayerManager.PlayerDisconnected(client);
+            IPlayer player = client.IPlayer;
+            if (player != null)
+            {
+                // Call universal hook
+                Interface.Call("OnPlayerDisconnected", player, "Unknown");
+            }
         }
 
         /// <summary>
@@ -128,11 +135,11 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnPlayerSpawn")]
         private void OnPlayerSpawn(ClientInfo client)
         {
-            IPlayer iplayer = client.IPlayer;
-            if (iplayer != null)
+            IPlayer player = client.IPlayer;
+            if (player != null)
             {
-                // Call covalence hook
-                Interface.Call("OnUserSpawn", iplayer);
+                // Call universal hook
+                Interface.Call("OnPlayerSpawn", player);
             }
         }
 

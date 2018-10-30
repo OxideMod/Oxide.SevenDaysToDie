@@ -1,19 +1,19 @@
-﻿using Oxide.Core;
-using Oxide.Core.Extensions;
-using Oxide.Core.RemoteConsole;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using uMod.Extensions;
+using uMod.Unity;
 using UnityEngine;
 
-namespace Oxide.Game.SevenDays
+namespace uMod.SevenDaysToDie
 {
     /// <summary>
     /// The extension class that represents this extension
     /// </summary>
     public class SevenDaysExtension : Extension
     {
+        // Get assembly info
         internal static Assembly Assembly = Assembly.GetExecutingAssembly();
         internal static AssemblyName AssemblyName = Assembly.GetName();
         internal static VersionNumber AssemblyVersion = new VersionNumber(AssemblyName.Version.Major, AssemblyName.Version.Minor, AssemblyName.Version.Build);
@@ -27,7 +27,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets the name of this extension
         /// </summary>
-        public override string Name => "SevenDays";
+        public override string Name => "SevenDaysToDie";
 
         /// <summary>
         /// Gets the author of this extension
@@ -65,7 +65,7 @@ namespace Oxide.Game.SevenDays
         /// </summary>
         public override string[] WhitelistAssemblies => new[]
         {
-            "Assembly-CSharp", "mscorlib", "Oxide.Core", "System", "System.Core", "UnityEngine"
+            "Assembly-CSharp", "mscorlib", "uMod", "System", "System.Core", "UnityEngine"
         };
 
         /// <summary>
@@ -171,12 +171,12 @@ namespace Oxide.Game.SevenDays
         /// </summary>
         public override void OnModLoad()
         {
-            if (Interface.Oxide.EnableConsole())
+            if (Interface.uMod.EnableConsole())
             {
                 Application.logMessageReceivedThreaded += HandleLog;
 
-                Interface.Oxide.ServerConsole.Input += ServerConsoleOnInput;
-                Interface.Oxide.ServerConsole.Completion = input =>
+                Interface.uMod.ServerConsole.Input += ServerConsoleOnInput;
+                Interface.uMod.ServerConsole.Completion = input =>
                 {
                     return string.IsNullOrEmpty(input) ? null : SdtdConsole.Instance.GetCommands().SelectMany(g => g.GetCommands())
                             .Where(c => c.StartsWith(input.ToLower())).ToArray();
@@ -186,37 +186,37 @@ namespace Oxide.Game.SevenDays
 
         internal static void ServerConsole()
         {
-            if (Interface.Oxide.ServerConsole == null)
+            if (Interface.uMod.ServerConsole == null)
             {
                 return;
             }
 
-            Interface.Oxide.ServerConsole.Title = () => $"{GameManager.Instance.World.Players.Count} | {GamePrefs.GetString(EnumGamePrefs.ServerName)}";
+            Interface.uMod.ServerConsole.Title = () => $"{GameManager.Instance.World.Players.Count} | {GamePrefs.GetString(EnumGamePrefs.ServerName)}";
 
-            Interface.Oxide.ServerConsole.Status1Left = () => GamePrefs.GetString(EnumGamePrefs.ServerName);
-            Interface.Oxide.ServerConsole.Status1Right = () =>
+            Interface.uMod.ServerConsole.Status1Left = () => GamePrefs.GetString(EnumGamePrefs.ServerName);
+            Interface.uMod.ServerConsole.Status1Right = () =>
             {
                 TimeSpan time = TimeSpan.FromSeconds(Time.realtimeSinceStartup);
                 string uptime = $"{time.TotalHours:00}h{time.Minutes:00}m{time.Seconds:00}s".TrimStart(' ', 'd', 'h', 'm', 's', '0');
                 return $"{Mathf.RoundToInt(1f / Time.smoothDeltaTime)}fps, {uptime}";
             };
 
-            Interface.Oxide.ServerConsole.Status2Left = () =>
+            Interface.uMod.ServerConsole.Status2Left = () =>
             {
                 string players = $"{GameManager.Instance.World.Players.Count}/{GamePrefs.GetInt(EnumGamePrefs.ServerMaxPlayerCount)}";
                 int entities = GameManager.Instance.World.Entities.Count;
                 return $"{players}, {entities + (entities.Equals(1) ? " entity" : " entities")}";
             };
-            Interface.Oxide.ServerConsole.Status2Right = () => string.Empty; // TODO: Network in/out
+            Interface.uMod.ServerConsole.Status2Right = () => string.Empty; // TODO: Network in/out
 
-            Interface.Oxide.ServerConsole.Status3Left = () =>
+            Interface.uMod.ServerConsole.Status3Left = () =>
             {
                 ulong gameTime = GameManager.Instance.World.worldTime;
                 string dateTime = Convert.ToDateTime($"{GameUtils.WorldTimeToHours(gameTime)}:{GameUtils.WorldTimeToMinutes(gameTime)}").ToString("h:mm tt");
                 return $"{dateTime.ToLower()}, {GamePrefs.GetString(EnumGamePrefs.GameWorld)} [{GamePrefs.GetString(EnumGamePrefs.GameName)}]";
             };
-            Interface.Oxide.ServerConsole.Status3Right = () => $"Oxide.SevenDaysToDie {AssemblyVersion}";
-            Interface.Oxide.ServerConsole.Status3RightColor = ConsoleColor.Yellow;
+            Interface.uMod.ServerConsole.Status3Right = () => $"uMod.SevenDaysToDie {AssemblyVersion}";
+            Interface.uMod.ServerConsole.Status3RightColor = ConsoleColor.Yellow;
         }
 
         private static void ServerConsoleOnInput(string input)
@@ -225,39 +225,16 @@ namespace Oxide.Game.SevenDays
             List<string> result = SdtdConsole.Instance.ExecuteSync(input, null);
             if (result != null)
             {
-                Interface.Oxide.ServerConsole.AddMessage(string.Join("\n", result.ToArray()));
+                Interface.uMod.ServerConsole.AddMessage(string.Join("\n", result.ToArray()));
             }
         }
 
-        private static void HandleLog(string message, string stackTrace, LogType type)
+        private static void HandleLog(string message, string stackTrace, LogType logType)
         {
-            if (string.IsNullOrEmpty(message) || Filter.Any(message.Contains))
+            if (!string.IsNullOrEmpty(message) && !Filter.Any(message.Contains))
             {
-                return;
+                Interface.uMod.RootLogger.HandleMessage(message, stackTrace, logType.ToLogType());
             }
-
-            ConsoleColor color = ConsoleColor.Gray;
-            string remoteType = "generic";
-
-            if (type == LogType.Warning)
-            {
-                color = ConsoleColor.Yellow;
-                remoteType = "warning";
-            }
-            else if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert)
-            {
-                color = ConsoleColor.Red;
-                remoteType = "error";
-            }
-
-            Interface.Oxide.ServerConsole.AddMessage(message, color);
-            Interface.Oxide.RemoteConsole.SendMessage(new RemoteMessage
-            {
-                Message = message,
-                Identifier = 0,
-                Type = remoteType,
-                Stacktrace = stackTrace
-            });
         }
     }
 }

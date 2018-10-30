@@ -1,13 +1,13 @@
-﻿using Oxide.Core.Plugins;
-using System;
+﻿using System;
+using uMod.Plugins;
 
-namespace Oxide.Game.SevenDays
+namespace uMod.SevenDaysToDie
 {
     /// <summary>
-    /// Responsible for loading 7 Days to Die core plugins
+    /// Responsible for loading the core 7 Days To Die plugin
     /// </summary>
     public class SevenDaysPluginLoader : PluginLoader
     {
-        public override Type[] CorePlugins => new[] { typeof(SevenDaysCore) };
+        public override Type[] CorePlugins => new[] { typeof(SevenDaysToDie) };
     }
 }

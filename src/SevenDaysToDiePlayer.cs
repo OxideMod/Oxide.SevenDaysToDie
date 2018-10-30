@@ -1,32 +1,31 @@
-﻿using Oxide.Core;
-using Oxide.Core.Libraries;
-using Oxide.Core.Libraries.Covalence;
-using System;
+﻿using System;
 using System.Globalization;
+using uMod.Libraries;
+using uMod.Libraries.Universal;
 using UnityEngine;
 
-namespace Oxide.Game.SevenDays
+namespace uMod.SevenDaysToDie
 {
     /// <summary>
     /// Represents a player, either connected or not
     /// </summary>
-    public class SevenDaysPlayer : IPlayer, IEquatable<IPlayer>
+    public class SevenDaysToDiePlayer : IPlayer, IEquatable<IPlayer>
     {
         private static Permission libPerms;
         private readonly ClientInfo client;
 
-        internal SevenDaysPlayer(string id, string name)
+        internal SevenDaysToDiePlayer(string id, string name)
         {
             if (libPerms == null)
             {
-                libPerms = Interface.Oxide.GetLibrary<Permission>();
+                libPerms = Interface.uMod.GetLibrary<Permission>();
             }
 
             Name = name.Sanitize();
             Id = id;
         }
 
-        internal SevenDaysPlayer(ClientInfo client) : this(client.playerId, client.playerName)
+        internal SevenDaysToDiePlayer(ClientInfo client) : this(client.playerId, client.playerName)
         {
             this.client = client;
         }
@@ -415,7 +414,7 @@ namespace Oxide.Game.SevenDays
         /// Returns a human readable string representation of this IPlayer
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => $"Covalence.SevenDaysPlayer[{Id}, {Name}]";
+        public override string ToString() => $"SevenDaysToDiePlayer[{Id}, {Name}]";
 
         #endregion Operator Overloads
     }

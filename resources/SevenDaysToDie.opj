@@ -6,12 +6,12 @@
       "AssemblyName": "Assembly-CSharp.dll",
       "Hooks": [
         {
-          "Type": "InitOxide",
+          "Type": "InitMod",
           "Hook": {
             "InjectionIndex": 0,
-            "HookTypeName": "Initialize Oxide",
-            "Name": "InitOxide [internal]",
-            "HookName": "InitOxide",
+            "HookTypeName": "Initialize uMod",
+            "Name": "InitMod [internal]",
+            "HookName": "InitMod",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "GameStartupHelper",
             "Flagged": false,
@@ -46,7 +46,7 @@
               "Parameters": []
             },
             "MSILHash": "ktk26JssdE4CyrvGqgw0Hjki4ue+4QjRs/Ec3UFeJig=",
-            "BaseHookName": "InitOxide [internal]",
+            "BaseHookName": "InitMod [internal]",
             "HookCategory": "Server"
           }
         },
@@ -452,6 +452,34 @@
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionIndex": 52,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0",
+            "HookTypeName": "Simple",
+            "Name": "OnPlayerSpawned",
+            "HookName": "OnPlayerSpawned",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 2,
+              "Name": "PlayerSpawnedInWorld",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "ClientInfo",
+                "RespawnType",
+                "Vector3i"
+              ]
+            },
+            "MSILHash": "kr+Gv3HD2Ex5M4bBwornPROFzU2bU552WSj1WiMzMlw=",
+            "BaseHookName": "OnPlayerConnected",
+            "HookCategory": "Player"
+          }
         }
       ],
       "Modifiers": [],
@@ -460,7 +488,7 @@
           "Name": "IPlayer",
           "AssemblyName": "Assembly-CSharp.dll",
           "TypeName": "ClientInfo",
-          "FieldType": "Oxide.Core|Oxide.Core.Libraries.Covalence.IPlayer",
+          "FieldType": "uMod|uMod.Libraries.Universal.IPlayer",
           "Flagged": false
         }
       ]

@@ -2,18 +2,19 @@
 <Project>
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
   <PropertyGroup>
-    <Version>2.0.0</Version>
-    <AssemblyName>Oxide.SevenDaysToDie</AssemblyName>
-    <Authors>Oxide and Contributors</Authors>
-    <Description>7 Days to Die extension for the Oxide modding framework</Description>
-    <RepositoryUrl>https://github.com/OxideMod/Oxide.SevenDaysToDie</RepositoryUrl>
-    <PackageLicenseUrl>https://github.com/OxideMod/Oxide.SevenDaysToDie/blob/develop/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/OxideMod/Oxide.SevenDaysToDie</PackageProjectUrl>
-    <PackageIconUrl>https://avatars1.githubusercontent.com/u/10712027?s=64</PackageIconUrl>
+    <Version>3.0.0</Version>
+    <AssemblyName>uMod.SevenDaysToDie</AssemblyName>
+    <Authors>The uMod Project Team and Contributors</Authors>
+    <Description>7 Days to Die extension for the uMod modding framework</Description>
+    <RepositoryUrl>https://github.com/theumod/uMod.SevenDaysToDie</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/theumod/uMod.SevenDaysToDie/blob/develop/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/theumod/uMod.SevenDaysToDie</PackageProjectUrl>
+    <PackageIconUrl>https://assets.umod.org/images/umod-64.png</PackageIconUrl>
     <Copyright>Copyright (c) 2013-$([System.DateTime]::Now.Year) $(Authors)</Copyright>
     <PackageTags>gaming modding plugins unity unity3d</PackageTags>
-    <TargetFramework>net35</TargetFramework>
+    <ThisAssemblyNamespace>$(AssemblyName)</ThisAssemblyNamespace>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <TargetFramework>net35</TargetFramework>
     <ManagedDir>7DaysToDieServer_Data\Managed</ManagedDir>
     <SteamAppId>294420</SteamAppId>
     <SteamBranch>public</SteamBranch>
@@ -25,16 +26,18 @@
     -->
     <FrameworkPathOverride Condition="'$(TargetFramework)' == 'net35' And '$(OS)' == 'Windows_NT'">C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client</FrameworkPathOverride>
     <FrameworkPathOverride Condition="'$(TargetFramework)' == 'net35' And '$(OS)' == 'OSX'">/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/2.0-api</FrameworkPathOverride>
-    <ThisAssemblyNamespace>Oxide.Game.SevenDaysToDie</ThisAssemblyNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="GitInfo" Version="2.0.*" />
-    <PackageReference Include="Oxide.References" Version="2.0.*" />
-    <PackageReference Include="Oxide.Core" Version="2.0.*" />
-    <PackageReference Include="Oxide.CSharp" Version="2.0.*" />
-    <PackageReference Include="Oxide.MySql" Version="2.0.*" />
-    <PackageReference Include="Oxide.SQLite" Version="2.0.*" />
-    <PackageReference Include="Oxide.Unity" Version="2.0.*" />
+    <PackageReference Include="GitInfo" Version="2.0.*">
+      <PrivateAssets>contentfiles;analyzers;build</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Oxide.References" Version="2.0.*">
+      <PrivateAssets>contentfiles;analyzers;build</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="uMod" Version="3.0.3895-develop" />
+    <!--<PackageReference Include="uMod.MySql" Version="3.0.*" />
+    <PackageReference Include="uMod.SQLite" Version="3.0.*" />-->
+    <PackageReference Include="uMod.Unity" Version="3.0.3764-develop" />
     <Reference Include="Assembly-CSharp">
       <HintPath>Dependencies\Patched\$(ManagedDir)\Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -48,7 +51,6 @@
       <HintPath>Dependencies\Patched\$(ManagedDir)\UnityEngine.dll</HintPath>
     </Reference>
     <None Remove="Bundle\**; Files\**; Patched\**; **\Original\**; *.config; *.opj" />
-    <!-- TODO: LogLibrary.dll patching -->
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <Target Name="Clean">
@@ -67,15 +69,15 @@
   </Target>
   <Target Name="AfterBuild">
     <ItemGroup>
-      <CoreFiles Include="$(TargetDir)\Oxide.*.dll" />
+      <CoreFiles Include="$(TargetDir)\uMod*.dll" />
       <PatchedFiles Include="$(ProjectDir)\Dependencies\Patched\$(ManagedDir)\Assembly-CSharp.dll" />
       <PatchedFiles Include="$(ProjectDir)\Dependencies\Patched\$(ManagedDir)\LogLibrary.dll" />
-      <ContentFiles Include="$(SolutionDir)\packages\oxide.csharp\**\lib\any\*.*" />
-      <ContentFiles Include="$(SolutionDir)\packages\oxide.references\**\lib\any\net35\*.*" />
-      <ContentFiles Include="$(SolutionDir)\packages\oxide.mysql\**\lib\any\*.*; $(SolutionDir)\packages\oxide.mysql\**\lib\$(TargetFramework)\*.*" />
-      <ContentFiles Include="$(SolutionDir)\packages\oxide.sqlite\**\lib\any\*.*; $(SolutionDir)\packages\oxide.sqlite\**\lib\$(TargetFramework)\*.*" />
-      <ContentX64Files Include="$(SolutionDir)\packages\oxide.references\**\lib\any\x64\*.*; $(SolutionDir)\packages\oxide.sqlite\**\lib\any\x64\*.*" />
-      <ContentX86Files Include="$(SolutionDir)\packages\oxide.references\**\lib\any\x86\*.*; $(SolutionDir)\packages\oxide.sqlite\**\lib\any\x86\*.*" />
+      <ContentFiles Include="$(SolutionDir)\packages\oxide.references\**\lib\any\net46\*.*" />
+      <ContentFiles Include="$(SolutionDir)\packages\umod.mysql\**\lib\any\MySql.*.dll; $(SolutionDir)\packages\umod.mysql\**\lib\any\System.*.dll" />
+      <ContentFiles Include="$(SolutionDir)\packages\umod.mysql\**\lib\$(TargetFramework)\*.*" />
+      <ContentFiles Include="$(SolutionDir)\packages\umod.sqlite\**\lib\any\*.*; $(SolutionDir)\packages\umod.sqlite\**\lib\$(TargetFramework)\*.*" />
+      <ContentX64Files Include="$(SolutionDir)\packages\oxide.references\**\lib\any\x64\*.*; $(SolutionDir)\packages\umod.sqlite\**\lib\any\x64\*.*" />
+      <ContentX86Files Include="$(SolutionDir)\packages\oxide.references\**\lib\any\x86\*.*; $(SolutionDir)\packages\umod.sqlite\**\lib\any\x86\*.*" />
     </ItemGroup>
     <Copy SourceFiles="@(CoreFiles)" DestinationFiles="@(CoreFiles->'$(ProjectDir)\bin\Bundle\$(PackageId)\$(ManagedDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(PatchedFiles)" DestinationFiles="@(PatchedFiles->'$(ProjectDir)\bin\Bundle\$(PackageId)\$(ManagedDir)\%(RecursiveDir)%(Filename)%(Extension)')" />

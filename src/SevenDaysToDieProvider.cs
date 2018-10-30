@@ -1,11 +1,11 @@
-﻿using Oxide.Core.Libraries.Covalence;
+﻿using uMod.Libraries.Universal;
 
-namespace Oxide.Game.SevenDays
+namespace uMod.SevenDaysToDie
 {
     /// <summary>
-    /// Provides Covalence functionality for the game "7 Days to Die"
+    /// Provides Universal functionality for the game "7 Days to Die"
     /// </summary>
-    public class SevenDaysCovalenceProvider : ICovalenceProvider
+    public class SevenDaysToDieProvider : IUniversalProvider
     {
         /// <summary>
         /// Gets the name of the game for which this provider provides
@@ -25,9 +25,9 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets the singleton instance of this provider
         /// </summary>
-        internal static SevenDaysCovalenceProvider Instance { get; private set; }
+        internal static SevenDaysToDieProvider Instance { get; private set; }
 
-        public SevenDaysCovalenceProvider()
+        public SevenDaysToDieProvider()
         {
             Instance = this;
         }
@@ -35,7 +35,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets the player manager
         /// </summary>
-        public SevenDaysPlayerManager PlayerManager { get; private set; }
+        public SevenDaysToDiePlayerManager PlayerManager { get; private set; }
 
         /// <summary>
         /// Gets the command system provider
@@ -46,7 +46,7 @@ namespace Oxide.Game.SevenDays
         /// Creates the game-specific server object
         /// </summary>
         /// <returns></returns>
-        public IServer CreateServer() => new SevenDaysServer();
+        public IServer CreateServer() => new SevenDaysToDieServer();
 
         /// <summary>
         /// Creates the game-specific player manager object
@@ -54,7 +54,7 @@ namespace Oxide.Game.SevenDays
         /// <returns></returns>
         public IPlayerManager CreatePlayerManager()
         {
-            PlayerManager = new SevenDaysPlayerManager();
+            PlayerManager = new SevenDaysToDiePlayerManager();
             PlayerManager.Initialize();
             return PlayerManager;
         }
@@ -66,7 +66,7 @@ namespace Oxide.Game.SevenDays
         public ICommandSystem CreateCommandSystemProvider() => CommandSystem = new SevenDaysCommandSystem();
 
         /// <summary>
-        /// Formats the text with markup as specified in Oxide.Core.Libraries.Covalence.Formatter
+        /// Formats the text with markup as specified in uMod.Libraries.Formatter
         /// into the game-specific markup language
         /// </summary>
         /// <param name="text">text to format</param>

@@ -1,18 +1,17 @@
 ﻿extern alias References;
 
-using Oxide.Core;
-using Oxide.Core.Libraries.Covalence;
 using References::ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using uMod.Libraries.Universal;
 
-namespace Oxide.Game.SevenDays
+namespace uMod.SevenDaysToDie
 {
     /// <summary>
     /// Represents a generic player manager
     /// </summary>
-    public class SevenDaysPlayerManager : IPlayerManager
+    public class SevenDaysToDiePlayerManager : IPlayerManager
     {
         [ProtoContract(ImplicitFields = ImplicitFields.AllFields)]
         private struct PlayerRecord
@@ -22,19 +21,20 @@ namespace Oxide.Game.SevenDays
         }
 
         private IDictionary<string, PlayerRecord> playerData;
-        private IDictionary<string, SevenDaysPlayer> allPlayers;
-        private IDictionary<string, SevenDaysPlayer> connectedPlayers;
+        private IDictionary<string, SevenDaysToDiePlayer> allPlayers;
+        private IDictionary<string, SevenDaysToDiePlayer> connectedPlayers;
+        private const string dataFileName = "umod";
 
         internal void Initialize()
         {
-            Utility.DatafileToProto<Dictionary<string, PlayerRecord>>("oxide.covalence");
-            playerData = ProtoStorage.Load<Dictionary<string, PlayerRecord>>("oxide.covalence") ?? new Dictionary<string, PlayerRecord>();
-            allPlayers = new Dictionary<string, SevenDaysPlayer>();
-            connectedPlayers = new Dictionary<string, SevenDaysPlayer>();
+            // TODO: Migrate/move from oxide.universal.data to umod.data if SQLite is not used, else migrate to umod.db with SQLite
+            playerData = ProtoStorage.Load<Dictionary<string, PlayerRecord>>(dataFileName) ?? new Dictionary<string, PlayerRecord>();
+            allPlayers = new Dictionary<string, SevenDaysToDiePlayer>();
+            connectedPlayers = new Dictionary<string, SevenDaysToDiePlayer>();
 
             foreach (KeyValuePair<string, PlayerRecord> pair in playerData)
             {
-                allPlayers.Add(pair.Key, new SevenDaysPlayer(pair.Value.Id.ToString(), pair.Value.Name));
+                allPlayers.Add(pair.Key, new SevenDaysToDiePlayer(pair.Value.Id.ToString(), pair.Value.Name));
             }
         }
 
@@ -48,26 +48,26 @@ namespace Oxide.Game.SevenDays
                 record.Name = name;
                 playerData[id] = record;
                 allPlayers.Remove(id);
-                allPlayers.Add(id, new SevenDaysPlayer(id, name));
+                allPlayers.Add(id, new SevenDaysToDiePlayer(id, name));
             }
             else
             {
                 record = new PlayerRecord { Id = userId, Name = name };
                 playerData.Add(id, record);
-                allPlayers.Add(id, new SevenDaysPlayer(id, name));
+                allPlayers.Add(id, new SevenDaysToDiePlayer(id, name));
             }
         }
 
         internal void PlayerConnected(ClientInfo client)
         {
-            SevenDaysPlayer player = new SevenDaysPlayer(client);
+            SevenDaysToDiePlayer player = new SevenDaysToDiePlayer(client);
             allPlayers[client.playerId] = player;
             connectedPlayers[client.playerId] = player;
         }
 
         internal void PlayerDisconnected(ClientInfo client) => connectedPlayers.Remove(client.playerId);
 
-        internal void SavePlayerData() => ProtoStorage.Save(playerData, "oxide.covalence");
+        internal void SavePlayerData() => ProtoStorage.Save(playerData, dataFileName);
 
         #region Player Finding
 
@@ -96,7 +96,7 @@ namespace Oxide.Game.SevenDays
         /// <returns></returns>
         public IPlayer FindPlayerById(string id)
         {
-            SevenDaysPlayer player;
+            SevenDaysToDiePlayer player;
             return allPlayers.TryGetValue(id, out player) ? player : null;
         }
 
@@ -125,7 +125,7 @@ namespace Oxide.Game.SevenDays
         /// <returns></returns>
         public IEnumerable<IPlayer> FindPlayers(string partialNameOrId)
         {
-            foreach (SevenDaysPlayer player in allPlayers.Values)
+            foreach (SevenDaysToDiePlayer player in allPlayers.Values)
             {
                 if (player.Name != null && player.Name.IndexOf(partialNameOrId, StringComparison.OrdinalIgnoreCase) >= 0 || player.Id == partialNameOrId)
                 {
