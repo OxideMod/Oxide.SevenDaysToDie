@@ -13,18 +13,6 @@ namespace uMod.SevenDaysToDie
         #region Player Hooks
 
         /// <summary>
-        /// Called when the player attempts to use a door
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="entity"></param>
-        [HookMethod("ICanUseDoor")]
-        private object ICanUseDoor(string id, TileEntitySecure entity)
-        {
-            // Let plugins know
-            return Interface.Call("CanUseDoor", ConsoleHelper.ParseParamIdOrName(id), entity);
-        }
-
-        /// <summary>
         /// Called when the player sends a message
         /// </summary>
         /// <param name="client"></param>

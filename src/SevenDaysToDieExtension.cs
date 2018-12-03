@@ -42,7 +42,7 @@ namespace uMod.SevenDaysToDie
         /// <summary>
         /// Gets the branch of this extension
         /// </summary>
-        public override string Branch => "public"; // TODO: Handle this programmatically
+        public override string Branch => "latest_experimental"; // TODO: Handle this programmatically
 
         /// <summary>
         /// Commands that plugins can't override

@@ -182,7 +182,7 @@ namespace uMod.SevenDaysToDie
         /// <param name="id"></param>
         public bool IsConnected(string id)
         {
-            return ConnectionManager.Instance.GetClientInfoForPlayerId(id) != null;
+            return ConnectionManager.Instance.Clients.GetForNameOrId(id) != null;
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace uMod.SevenDaysToDie
         /// <param name="reason"></param>
         public void Kick(string id, string reason)
         {
-            ClientInfo client = ConnectionManager.Instance.GetClientInfoForPlayerId(id);
+            ClientInfo client = ConnectionManager.Instance.Clients.GetForNameOrId(id);
             if (client != null)
             {
                 GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, DateTime.Now, reason);
