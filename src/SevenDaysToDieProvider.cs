@@ -3,7 +3,7 @@
 namespace uMod.SevenDaysToDie
 {
     /// <summary>
-    /// Provides Universal functionality for the game "7 Days to Die"
+    /// Provides universal functionality for the game "7 Days to Die"
     /// </summary>
     public class SevenDaysToDieProvider : IUniversalProvider
     {

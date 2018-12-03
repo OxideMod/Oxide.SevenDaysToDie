@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -77,7 +77,7 @@ namespace uMod.SevenDaysToDie
         };
 
         /// <summary>
-        /// List of filter matches to apply to console output
+        /// List of filter matches to apply to log output
         /// </summary>
         public static string[] Filter =
         {
@@ -171,10 +171,10 @@ namespace uMod.SevenDaysToDie
         /// </summary>
         public override void OnModLoad()
         {
+            Application.logMessageReceivedThreaded += HandleLog;
+
             if (Interface.uMod.EnableConsole())
             {
-                Application.logMessageReceivedThreaded += HandleLog;
-
                 Interface.uMod.ServerConsole.Input += ServerConsoleOnInput;
                 Interface.uMod.ServerConsole.Completion = input =>
                 {
@@ -186,37 +186,35 @@ namespace uMod.SevenDaysToDie
 
         internal static void ServerConsole()
         {
-            if (Interface.uMod.ServerConsole == null)
+            if (Interface.uMod.ServerConsole != null)
             {
-                return;
+                Interface.uMod.ServerConsole.Title = () => $"{GameManager.Instance.World.Players.Count} | {GamePrefs.GetString(EnumGamePrefs.ServerName)}";
+
+                Interface.uMod.ServerConsole.Status1Left = () => GamePrefs.GetString(EnumGamePrefs.ServerName);
+                Interface.uMod.ServerConsole.Status1Right = () =>
+                {
+                    TimeSpan time = TimeSpan.FromSeconds(Time.realtimeSinceStartup);
+                    string uptime = $"{time.TotalHours:00}h{time.Minutes:00}m{time.Seconds:00}s".TrimStart(' ', 'd', 'h', 'm', 's', '0');
+                    return $"{Mathf.RoundToInt(1f / Time.smoothDeltaTime)}fps, {uptime}";
+                };
+
+                Interface.uMod.ServerConsole.Status2Left = () =>
+                {
+                    string players = $"{GameManager.Instance.World.Players.Count}/{GamePrefs.GetInt(EnumGamePrefs.ServerMaxPlayerCount)}";
+                    int entities = GameManager.Instance.World.Entities.Count;
+                    return $"{players}, {entities + (entities.Equals(1) ? " entity" : " entities")}";
+                };
+                Interface.uMod.ServerConsole.Status2Right = () => string.Empty; // TODO: Network in/out
+
+                Interface.uMod.ServerConsole.Status3Left = () =>
+                {
+                    ulong gameTime = GameManager.Instance.World.worldTime;
+                    string dateTime = Convert.ToDateTime($"{GameUtils.WorldTimeToHours(gameTime)}:{GameUtils.WorldTimeToMinutes(gameTime)}").ToString("h:mm tt");
+                    return $"{dateTime.ToLower()}, {GamePrefs.GetString(EnumGamePrefs.GameWorld)} [{GamePrefs.GetString(EnumGamePrefs.GameName)}]";
+                };
+                Interface.uMod.ServerConsole.Status3Right = () => $"uMod.SevenDaysToDie {AssemblyVersion}";
+                Interface.uMod.ServerConsole.Status3RightColor = ConsoleColor.Yellow;
             }
-
-            Interface.uMod.ServerConsole.Title = () => $"{GameManager.Instance.World.Players.Count} | {GamePrefs.GetString(EnumGamePrefs.ServerName)}";
-
-            Interface.uMod.ServerConsole.Status1Left = () => GamePrefs.GetString(EnumGamePrefs.ServerName);
-            Interface.uMod.ServerConsole.Status1Right = () =>
-            {
-                TimeSpan time = TimeSpan.FromSeconds(Time.realtimeSinceStartup);
-                string uptime = $"{time.TotalHours:00}h{time.Minutes:00}m{time.Seconds:00}s".TrimStart(' ', 'd', 'h', 'm', 's', '0');
-                return $"{Mathf.RoundToInt(1f / Time.smoothDeltaTime)}fps, {uptime}";
-            };
-
-            Interface.uMod.ServerConsole.Status2Left = () =>
-            {
-                string players = $"{GameManager.Instance.World.Players.Count}/{GamePrefs.GetInt(EnumGamePrefs.ServerMaxPlayerCount)}";
-                int entities = GameManager.Instance.World.Entities.Count;
-                return $"{players}, {entities + (entities.Equals(1) ? " entity" : " entities")}";
-            };
-            Interface.uMod.ServerConsole.Status2Right = () => string.Empty; // TODO: Network in/out
-
-            Interface.uMod.ServerConsole.Status3Left = () =>
-            {
-                ulong gameTime = GameManager.Instance.World.worldTime;
-                string dateTime = Convert.ToDateTime($"{GameUtils.WorldTimeToHours(gameTime)}:{GameUtils.WorldTimeToMinutes(gameTime)}").ToString("h:mm tt");
-                return $"{dateTime.ToLower()}, {GamePrefs.GetString(EnumGamePrefs.GameWorld)} [{GamePrefs.GetString(EnumGamePrefs.GameName)}]";
-            };
-            Interface.uMod.ServerConsole.Status3Right = () => $"uMod.SevenDaysToDie {AssemblyVersion}";
-            Interface.uMod.ServerConsole.Status3RightColor = ConsoleColor.Yellow;
         }
 
         private static void ServerConsoleOnInput(string input)

@@ -27,7 +27,7 @@ namespace uMod.SevenDaysToDie
 
         internal void Initialize()
         {
-            // TODO: Migrate/move from oxide.universal.data to umod.data if SQLite is not used, else migrate to umod.db with SQLite
+            // TODO: Migrate/move from oxide.covalence.data to umod.data if SQLite is not used, else migrate to umod.db with SQLite
             playerData = ProtoStorage.Load<Dictionary<string, PlayerRecord>>(dataFileName) ?? new Dictionary<string, PlayerRecord>();
             allPlayers = new Dictionary<string, SevenDaysToDiePlayer>();
             connectedPlayers = new Dictionary<string, SevenDaysToDiePlayer>();
