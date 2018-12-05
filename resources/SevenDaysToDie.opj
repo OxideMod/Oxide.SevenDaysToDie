@@ -187,7 +187,7 @@
             "InjectionIndex": 0,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
-            "ArgumentString": "a0, a2",
+            "ArgumentString": "a0, a3",
             "HookTypeName": "Simple",
             "Name": "IOnPlayerChat [internal]",
             "HookName": "IOnPlayerChat",
@@ -196,16 +196,16 @@
             "Flagged": false,
             "Signature": {
               "Exposure": 2,
-              "Name": "GameMessageServer",
+              "Name": "ChatMessageServer",
               "ReturnType": "System.Void",
               "Parameters": [
                 "ClientInfo",
-                "EnumGameMessages",
+                "EChatType",
+                "System.Int32",
                 "System.String",
                 "System.String",
                 "System.Boolean",
-                "System.String",
-                "System.Boolean"
+                "System.Collections.Generic.List`1<System.Int32>"
               ]
             },
             "MSILHash": "1q/dOKuaMVBf+WoHzScAyVADvb70hmYcgHdHrhhhHuw=",
