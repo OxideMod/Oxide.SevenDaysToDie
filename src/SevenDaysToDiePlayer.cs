@@ -310,8 +310,8 @@ namespace uMod.SevenDaysToDie
         {
             message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
             string formatted = prefix != null ? $"{prefix} {message}" : message;
-
-            client.SendPackage(new NetPackageGameMessage(EnumGameMessages.Chat, formatted, null, false, null, false));
+            
+            client.SendPackage(new NetPackageChat(EChatType.Global, client.entityId, formatted, null, false, null));
         }
 
         /// <summary>
