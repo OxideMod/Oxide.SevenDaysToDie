@@ -155,6 +155,7 @@ namespace uMod.SevenDaysToDie
         /// </summary>
         public override void Load()
         {
+            Manager.RegisterLibrary("Command", new Libraries.Command());
             Manager.RegisterPluginLoader(new SevenDaysPluginLoader());
         }
 
