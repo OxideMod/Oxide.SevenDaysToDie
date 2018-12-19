@@ -22,13 +22,39 @@ namespace uMod.SevenDaysToDie
         {
             if (client != null && !string.IsNullOrEmpty(message))
             {
-                // Let plugins know
-                IPlayer player = client.IPlayer;
-                object chatSpecific = Interface.Call("OnPlayerChat", client, message);
-                object chatUniversal = player != null ? Interface.Call("OnPlayerChat", player, message) : null;
-                return chatSpecific ?? chatUniversal;
-            }
+                if (!message.StartsWith("/"))
+                {
+                    // Let plugins know
+                    IPlayer player = client.IPlayer;
+                    object chatSpecific = Interface.Call("OnPlayerChat", client, message);
+                    object chatUniversal = player != null ? Interface.Call("OnPlayerChat", player, message) : null;
+                    return chatSpecific ?? chatUniversal;
+                }
 
+                // Is this a covalence command?
+                if (Universal.CommandSystem.HandleChatMessage(client.IPlayer, message))
+                {
+                    return true;
+                }
+
+                // Get the command string
+                string command = message.Substring(1);
+                // Parse it
+                string cmd;
+                string[] args;
+                ParseCommand(command, out cmd, out args);
+                if (cmd == null)
+                {
+                    return null;
+                }
+                // Handle it
+                if (!cmdlib.HandleChatCommand(client, cmd, args))
+                {
+                    client.IPlayer.Reply(string.Format(lang.GetMessage("UnknownCommand", this, client.playerId), cmd));
+                    return true;
+                }
+                return true;
+            }
             return null;
         }
 

@@ -18,8 +18,8 @@ namespace uMod.SevenDaysToDie
         // The command library
         //private readonly Command cmdlib = Interface.uMod.GetLibrary<Command>();
 
-        // The console player
-        //private readonly SevenDaysConsolePlayer consolePlayer;
+        //The console player
+        internal SevenDaysToDieConsolePlayer consolePlayer;
 
         // Command handler
         private readonly CommandHandler commandHandler;
@@ -34,7 +34,7 @@ namespace uMod.SevenDaysToDie
         {
             registeredCommands = new Dictionary<string, CommandCallback>();
             commandHandler = new CommandHandler(ChatCommandCallback, registeredCommands.ContainsKey);
-            //consolePlayer = new SevenDaysConsolePlayer();
+            consolePlayer = new SevenDaysToDieConsolePlayer();
         }
 
         private bool ChatCommandCallback(IPlayer caller, string command, string[] args)
@@ -95,13 +95,13 @@ namespace uMod.SevenDaysToDie
         /// <returns></returns>
         public bool HandleChatMessage(IPlayer player, string message) => commandHandler.HandleChatMessage(player, message);
 
-        /*/// <summary>
+        /// <summary>
         /// Handles a console message
         /// </summary>
         /// <param name="player"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public bool HandleConsoleMessage(IPlayer player, string message) => commandHandler.HandleConsoleMessage(player ?? consolePlayer, message);*/
+        public bool HandleConsoleMessage(IPlayer player, string message) => commandHandler.HandleConsoleMessage(consolePlayer, message);
 
         #endregion Message Handling
 
