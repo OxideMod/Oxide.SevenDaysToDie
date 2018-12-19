@@ -21,7 +21,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "bD7MY8tnCa+a7XBR/pmyWE2ajVJrIiQOuDRNbjg6vE0=",
+            "MSILHash": "RjB+J+mWXXJMGT1TtquOKc4XSUCqHb4rYWkjvAiVLFQ=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -45,7 +45,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "bD7MY8tnCa+a7XBR/pmyWE2ajVJrIiQOuDRNbjg6vE0=",
+            "MSILHash": "RjB+J+mWXXJMGT1TtquOKc4XSUCqHb4rYWkjvAiVLFQ=",
             "BaseHookName": "InitMod [internal]",
             "HookCategory": "Server"
           }
@@ -208,36 +208,9 @@
                 "System.Collections.Generic.List`1<System.Int32>"
               ]
             },
-            "MSILHash": "1q/dOKuaMVBf+WoHzScAyVADvb70hmYcgHdHrhhhHuw=",
+            "MSILHash": "yVulz2JQPodFe1GfuuDsPJwbmnO6iqGqA2SWnCKHjVY=",
             "BaseHookName": null,
             "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 0,
-            "ReturnBehavior": 1,
-            "ArgumentBehavior": 2,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "OnServerCommand",
-            "HookName": "OnServerCommand",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "ConnectionManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "ServerConsoleCommand",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "System.String"
-              ]
-            },
-            "MSILHash": "xb7jTfCfDeVJivbLVRS58seNC9VXu+M62XFMQ8Saj9o=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
           }
         },
         {
@@ -263,7 +236,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "W47NNQFxVe0MBRGGvVR1YLhkoT/lTgKWGODg53NvPoQ=",
+            "MSILHash": "ZlwvqnM60Rw3lZij2+JblRtJq0eU7hg5nfSif7Z9cZ0=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -290,7 +263,7 @@
                 "KickPlayerDelegate"
               ]
             },
-            "MSILHash": "PVw1ncZHhkf6lKDqd+ubDRmT4LX7h2wZhpn/lnOT/Ds=",
+            "MSILHash": "pzqi5GouH9HXv3qmBP+FTIX+2dYq9LbLudKkQ9FxllI=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -320,7 +293,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "Rh+taVaCt9kA163DpzGyb1pon8D9zWJJig9TumQNqHA=",
+            "MSILHash": "z2ngf0L7yGaxfCV9rUP87al0XxvydCK7xQZgIuupha8=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -429,32 +402,6 @@
               ]
             },
             "MSILHash": "KRQ1NDca8XsQONBkUwGbT0XbDjdYzqQBDFYIHs8xxXM=",
-            "BaseHookName": null,
-            "HookCategory": "Entity"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 6,
-            "ReturnBehavior": 1,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "this, a0",
-            "HookTypeName": "Simple",
-            "Name": "OnEntityDeath",
-            "HookName": "OnEntityDeath",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "EntityAlive",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 1,
-              "Name": "ClientKill",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "DamageResponse"
-              ]
-            },
-            "MSILHash": "XA+tRLMLk+GkUecE02/WMf37/ipiHYiv/WVGtldAfXA=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -585,6 +532,59 @@
             "MSILHash": "PObwtBAL1TQdLZdaIP/Owv3JVduIrY3VY0nrq2wtEdI=",
             "BaseHookName": "CanUseDoor",
             "HookCategory": "Structure"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionIndex": 6,
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "this, a0",
+            "HookTypeName": "Simple",
+            "Name": "OnEntityDeath",
+            "HookName": "OnEntityDeath",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "EntityAlive",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 1,
+              "Name": "ClientKill",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "DamageResponse"
+              ]
+            },
+            "MSILHash": "XA+tRLMLk+GkUecE02/WMf37/ipiHYiv/WVGtldAfXA=",
+            "BaseHookName": null,
+            "HookCategory": "Entity"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionIndex": 5,
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a1, a0",
+            "HookTypeName": "Simple",
+            "Name": "IOnServerCommand [internal]",
+            "HookName": "IOnServerCommand",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "SdtdConsole",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 0,
+              "Name": "executeCommand",
+              "ReturnType": "System.Collections.Generic.List`1<System.String>",
+              "Parameters": [
+                "System.String",
+                "CommandSenderInfo"
+              ]
+            },
+            "MSILHash": "rImk7Gc/bCGkwSa/9VrBXiT/Zgu899zsAM7Tp5YuTnQ=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
           }
         }
       ],
