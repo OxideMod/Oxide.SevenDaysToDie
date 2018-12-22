@@ -60,7 +60,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets the player's IP address
         /// </summary>
-        public string Address => client.networkPlayer.ipAddress;
+        public string Address => client.ip;
 
         /// <summary>
         /// Gets the player's average network ping
@@ -85,7 +85,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets if the player is connected
         /// </summary>
-        public bool IsConnected => ConnectionManager.Instance.GetClientInfoForPlayerId(Id) != null;
+        public bool IsConnected => ConnectionManager.Instance.Clients.GetForNameOrId(Id) != null;
 
         /// <summary>
         /// Returns if the player is sleeping
@@ -178,7 +178,7 @@ namespace Oxide.Game.SevenDays
         public void Hurt(float amount)
         {
             EntityPlayer entity = Object as EntityPlayer;
-            entity?.DamageEntity(new DamageSource(EnumDamageSourceType.Undef), (int)amount, false);
+            entity?.DamageEntity(new DamageSource(EnumDamageSource.External, EnumDamageTypes.None), (int)amount, false);
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace Oxide.Game.SevenDays
         public void Kill()
         {
             EntityPlayer entity = Object as EntityPlayer;
-            entity?.Kill(DamageResponse.New(new DamageSource(EnumDamageSourceType.Undef), true));
+            entity?.Kill(DamageResponse.New(new DamageSource(EnumDamageSource.External, EnumDamageTypes.None), true));
         }
 
         /// <summary>

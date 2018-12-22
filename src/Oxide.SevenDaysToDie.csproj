@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project>
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
   <PropertyGroup>
@@ -46,6 +46,12 @@
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>Dependencies\Patched\$(ManagedDir)\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>Dependencies\Patched\$(ManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>Dependencies\Patched\$(ManagedDir)\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <None Remove="Bundle\**; Files\**; Patched\**; **\Original\**; *.config; *.opj" />
     <!-- TODO: LogLibrary.dll patching -->

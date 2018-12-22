@@ -182,7 +182,7 @@ namespace Oxide.Game.SevenDays
         /// <param name="id"></param>
         public bool IsConnected(string id)
         {
-            return ConnectionManager.Instance.GetClientInfoForPlayerId(id) != null;
+            return ConnectionManager.Instance.Clients.GetForNameOrId(id) != null;
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Oxide.Game.SevenDays
         /// <param name="reason"></param>
         public void Kick(string id, string reason)
         {
-            ClientInfo client = ConnectionManager.Instance.GetClientInfoForPlayerId(id);
+            ClientInfo client = ConnectionManager.Instance.Clients.GetForNameOrId(id);
             if (client != null)
             {
                 GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, DateTime.Now, reason);
@@ -237,8 +237,7 @@ namespace Oxide.Game.SevenDays
         {
             message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
             string formatted = prefix != null ? $"{prefix} {message}" : message;
-
-            GameManager.Instance.GameMessageServer(null, EnumGameMessages.Chat, formatted, null, false, null, false);
+            GameManager.Instance.ChatMessageServer(null, EChatType.Global, -1, formatted, null, false, null);
         }
 
         /// <summary>

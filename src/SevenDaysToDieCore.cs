@@ -4,6 +4,7 @@ using Oxide.Core.Libraries.Covalence;
 using Oxide.Core.Plugins;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Oxide.Game.SevenDays
 {
@@ -160,6 +161,108 @@ namespace Oxide.Game.SevenDays
         }
 
         #endregion Core Hooks
+
+        #region Command Handling
+
+        /// <summary>
+        /// Parses the specified command
+        /// </summary>
+        /// <param name="argstr"></param>
+        /// <param name="cmd"></param>
+        /// <param name="args"></param>
+        private void ParseCommand(string argstr, out string cmd, out string[] args)
+        {
+            List<string> arglist = new List<string>();
+            StringBuilder sb = new StringBuilder();
+            bool inlongarg = false;
+            foreach (char c in argstr)
+            {
+                if (c == '"')
+                {
+                    if (inlongarg)
+                    {
+                        string arg = sb.ToString().Trim();
+                        if (!string.IsNullOrEmpty(arg))
+                        {
+                            arglist.Add(arg);
+                        }
+
+                        sb = new StringBuilder();
+                        inlongarg = false;
+                    }
+                    else
+                    {
+                        inlongarg = true;
+                    }
+                }
+                else if (char.IsWhiteSpace(c) && !inlongarg)
+                {
+                    string arg = sb.ToString().Trim();
+                    if (!string.IsNullOrEmpty(arg))
+                    {
+                        arglist.Add(arg);
+                    }
+
+                    sb = new StringBuilder();
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+            if (sb.Length > 0)
+            {
+                string arg = sb.ToString().Trim();
+                if (!string.IsNullOrEmpty(arg))
+                {
+                    arglist.Add(arg);
+                }
+            }
+            if (arglist.Count == 0)
+            {
+                cmd = null;
+                args = null;
+                return;
+            }
+
+            cmd = arglist[0];
+            arglist.RemoveAt(0);
+            args = arglist.ToArray();
+        }
+
+        /// <summary>
+        /// Called when a console command was run
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="arg"></param>
+        /// <returns></returns>
+        [HookMethod("IOnServerCommand")]
+        private object IOnServerCommand(CommandSenderInfo sender, string arg)
+        {
+            if (arg == null || arg.Trim().Length == 0)
+            {
+                return null;
+            }
+
+            string command;
+            string[] args;
+            ParseCommand(arg, out command, out args);
+            if (command == null)
+            {
+                return null;
+            }
+
+            // Handle it
+            if (Interface.Call("OnServerCommand", command, args) != null)
+            {
+                return true;
+            }
+
+            // TODO: Custom command handling
+            return null;
+        }
+
+        #endregion Command Handling
 
         #region Helpers
 
