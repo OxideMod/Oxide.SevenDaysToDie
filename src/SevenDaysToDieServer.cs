@@ -237,7 +237,7 @@ namespace uMod.SevenDaysToDie
         {
             message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
             string formatted = prefix != null ? $"{prefix} {message}" : message;
-            GameManager.Instance.GameMessageServer(null, EnumGameMessages.Chat, formatted, null, false, null, false);
+            GameManager.Instance.ChatMessageServer(null, EChatType.Global, -1, formatted, null, false, null);
         }
 
         /// <summary>
