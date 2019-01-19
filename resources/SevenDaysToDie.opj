@@ -21,7 +21,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "psXUrbCKx4EahL/BpoEjpZghrCYoPNgTbseehfMXKvU=",
+            "MSILHash": "+hMXO9HrFGCn5fqZcX4RiCc+23qoD51dmcjvbuJjxd8=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -45,7 +45,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "psXUrbCKx4EahL/BpoEjpZghrCYoPNgTbseehfMXKvU=",
+            "MSILHash": "+hMXO9HrFGCn5fqZcX4RiCc+23qoD51dmcjvbuJjxd8=",
             "BaseHookName": "InitOxide [internal]",
             "HookCategory": "Server"
           }
@@ -216,7 +216,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 7,
+            "InjectionIndex": 29,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 2,
             "ArgumentString": null,
@@ -225,7 +225,7 @@
             "HookName": "OnPlayerCommand",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "ConnectionManager",
-            "Flagged": true,
+            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "ServerConsoleCommand",
@@ -402,7 +402,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "N3OA1YQ/ES+q1di3PjaWo3a1vKSYPrsWAKN8LFnhSks=",
+            "MSILHash": "CiSstCvj8G3DWrFrfYgypfnE0tSBOa6ac+iFESuxfzo=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
