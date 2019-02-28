@@ -127,9 +127,6 @@ namespace Oxide.Game.SevenDays
             {
                 Analytics.Collect();
 
-                // Show the server console, if enabled
-                SevenDaysExtension.ServerConsole();
-
                 serverInitialized = true;
             }
         }
