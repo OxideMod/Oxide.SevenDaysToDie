@@ -615,6 +615,57 @@
             "BaseHookName": null,
             "HookCategory": "Server"
           }
+        },
+        {
+          "Type": "Modify",
+          "Hook": {
+            "InjectionIndex": 0,
+            "RemoveCount": 0,
+            "Instructions": [
+              {
+                "OpCode": "call",
+                "OpType": "Method",
+                "Operand": "mscorlib|System.Environment|get_OSVersion"
+              },
+              {
+                "OpCode": "callvirt",
+                "OpType": "Method",
+                "Operand": "mscorlib|System.OperatingSystem|get_Platform"
+              },
+              {
+                "OpCode": "ldc_i4_2",
+                "OpType": "None",
+                "Operand": null
+              },
+              {
+                "OpCode": "ceq",
+                "OpType": "None",
+                "Operand": null
+              },
+              {
+                "OpCode": "brfalse",
+                "OpType": "Instruction",
+                "Operand": 40
+              }
+            ],
+            "HookTypeName": "Modify",
+            "Name": ".ctor",
+            "HookName": "On.ctor",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "WinFormConnection",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 2,
+              "Name": ".ctor",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "WinFormInstance"
+              ]
+            },
+            "MSILHash": "ZF6xlHfNQGSkP1l6iRn2ZHsrNGFHRY4URK0sP6I0PAo=",
+            "BaseHookName": null,
+            "HookCategory": null
+          }
         }
       ],
       "Modifiers": [],
