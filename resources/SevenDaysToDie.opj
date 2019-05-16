@@ -21,7 +21,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "koVu1a0KcUKA0bdOHMcJI4V4qsmJUXqtGFnYGIqTFuI=",
+            "MSILHash": "kdlwQnkhaxMIfVQZ63VqZUILn6xRy0dI2uCiqWFlAlQ=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -45,7 +45,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "koVu1a0KcUKA0bdOHMcJI4V4qsmJUXqtGFnYGIqTFuI=",
+            "MSILHash": "kdlwQnkhaxMIfVQZ63VqZUILn6xRy0dI2uCiqWFlAlQ=",
             "BaseHookName": "InitOxide [internal]",
             "HookCategory": "Server"
           }
@@ -454,7 +454,7 @@
                 "DamageResponse"
               ]
             },
-            "MSILHash": "XA+tRLMLk+GkUecE02/WMf37/ipiHYiv/WVGtldAfXA=",
+            "MSILHash": "i7qI5yyqwSO4dS5xDjrKMDsKXaxpRAqh7b/vSANwTGc=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -462,7 +462,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 134,
+            "InjectionIndex": 123,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 4,
             "ArgumentString": "this.parent, a0",
@@ -481,7 +481,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "AA235cVnOlVvvZWe+JEAeAwaY4v2eJ+aoKW7twsS8eQ=",
+            "MSILHash": "QOo1UZEap1oPRslxAfbYGFKo/+QEpWyPy/nss/GCIaU=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -489,7 +489,7 @@
         {
           "Type": "Modify",
           "Hook": {
-            "InjectionIndex": 135,
+            "InjectionIndex": 124,
             "RemoveCount": 2,
             "Instructions": [
               {
@@ -533,7 +533,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "AA235cVnOlVvvZWe+JEAeAwaY4v2eJ+aoKW7twsS8eQ=",
+            "MSILHash": "QOo1UZEap1oPRslxAfbYGFKo/+QEpWyPy/nss/GCIaU=",
             "BaseHookName": "OnExperienceGained",
             "HookCategory": "Player"
           }
@@ -649,8 +649,8 @@
               }
             ],
             "HookTypeName": "Modify",
-            "Name": ".ctor",
-            "HookName": "On.ctor",
+            "Name": "ConsoleEnableWinOnly [patch]",
+            "HookName": "ConsoleEnableWinOnly [patch]",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "WinFormConnection",
             "Flagged": false,
@@ -664,7 +664,7 @@
             },
             "MSILHash": "ZF6xlHfNQGSkP1l6iRn2ZHsrNGFHRY4URK0sP6I0PAo=",
             "BaseHookName": null,
-            "HookCategory": null
+            "HookCategory": "_Patches"
           }
         }
       ],
@@ -690,7 +690,7 @@
             "Instructions": [],
             "HookTypeName": "Modify",
             "Name": "RemoveConsoleWriteLine [patch]",
-            "HookName": "RemoveConsoleWriteLine",
+            "HookName": "RemoveConsoleWriteLine [patch]",
             "AssemblyName": "LogLibrary.dll",
             "TypeName": "Logger",
             "Flagged": false,
