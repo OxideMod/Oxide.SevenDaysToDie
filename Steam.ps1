@@ -210,15 +210,15 @@ function Get-Deobfuscators {
             # Download and extract de4dot
             Write-Host "Downloading latest version of de4dot" # TODO: Get and show version
             try {
-                Invoke-WebRequest "https://ci.appveyor.com/api/projects/0xd4d/de4dot/artifacts/Release%2Fde4dot-net35.zip" -Out "$de4dot_dir\de4dot.zip"
+                Invoke-WebRequest "https://github.com/0xd4d/de4dot/suites/266206734/artifacts/128547" -Out "$de4dot_dir\de4dot.zip"
             } catch {
-                Write-Host "Could not download de4dot from AppVeyor"
+                Write-Host "Could not download de4dot from GitHub"
                 Write-Host $_.Exception.Message
                 if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
                 exit 1
             }
 
-            # TODO: Compare size and hash of .zip vs. what AppVeyor has via API
+            # TODO: Compare size and hash of .zip vs. what GitHub has via API
             Write-Host "Extracting de4dot release files"
             Expand-Archive "$de4dot_dir\de4dot.zip" -DestinationPath "$de4dot_dir" -Force
 
