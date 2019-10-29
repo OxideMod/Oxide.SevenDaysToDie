@@ -44,6 +44,9 @@
     <Reference Include="LogLibrary">
       <HintPath>Dependencies\Patched\$(ManagedDir)\LogLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>Dependencies\Patched\$(ManagedDir)\mscorlib.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>Dependencies\Patched\$(ManagedDir)\UnityEngine.dll</HintPath>
     </Reference>
