@@ -280,7 +280,7 @@ namespace Oxide.Game.SevenDays
         /// <param name="z"></param>
         public void Teleport(float x, float y, float z)
         {
-            NetPackageTeleportPlayer netPackageTeleportPlayer = new NetPackageTeleportPlayer(new Vector3(x, y, z));
+            NetPackageTeleportPlayer netPackageTeleportPlayer = NetPackageManager.GetPackage<NetPackageTeleportPlayer>().Setup(new Vector3(x, y, z));
             if (client != null)
             {
                 client.SendPackage(netPackageTeleportPlayer);
@@ -312,7 +312,7 @@ namespace Oxide.Game.SevenDays
             message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
             string formatted = prefix != null ? $"{prefix} {message}" : message;
 
-            client.SendPackage(new NetPackageChat(EChatType.Global, client.entityId, formatted, null, false, null));
+            client.SendPackage(NetPackageManager.GetPackage<NetPackageChat>().Setup(EChatType.Global, client.entityId, formatted, null, false, null));
         }
 
         /// <summary>

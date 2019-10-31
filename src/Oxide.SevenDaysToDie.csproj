@@ -12,20 +12,13 @@
     <PackageIconUrl>https://avatars1.githubusercontent.com/u/10712027?s=64</PackageIconUrl>
     <Copyright>Copyright (c) 2013-$([System.DateTime]::Now.Year) $(Authors)</Copyright>
     <PackageTags>gaming modding plugins unity unity3d</PackageTags>
-    <TargetFramework>net35</TargetFramework>
+    <TargetFramework>net46</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <ManagedDir>7DaysToDieServer_Data\Managed</ManagedDir>
     <SteamAppId>294420</SteamAppId>
     <SteamBranch>public</SteamBranch>
     <SteamLogin>anonymous</SteamLogin>
     <DeobfuscatorTool>de4dot</DeobfuscatorTool>
-    <!--
-      Workaround for targeting net35 with dotnet CLI
-      https://github.com/Microsoft/msbuild/issues/1333#issuecomment-296346352
-    -->
-    <FrameworkPathOverride Condition="'$(TargetFramework)' == 'net35' And '$(OS)' == 'Windows_NT'">C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client</FrameworkPathOverride>
-    <FrameworkPathOverride Condition="'$(TargetFramework)' == 'net35' And '$(OS)' == 'OSX'">/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/2.0-api</FrameworkPathOverride>
-    <ThisAssemblyNamespace>Oxide.Game.SevenDaysToDie</ThisAssemblyNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="GitInfo" Version="2.0.*" />
@@ -57,14 +50,12 @@
       <HintPath>Dependencies\Patched\$(ManagedDir)\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <None Remove="Bundle\**; Files\**; Patched\**; **\Original\**; *.config; *.opj" />
-    <!-- TODO: LogLibrary.dll patching -->
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <Target Name="Clean">
     <RemoveDir Directories="$(ProjectDir)\bin\Bundle\$(PackageId)" Condition="Exists('$(ProjectDir)\bin\Bundle\$(PackageId)')" />
   </Target>
   <Target Name="BeforeBuild">
-    <!-- Currently only works on Windows due to Windows-only tools used -->
     <Exec Command="powershell -ExecutionPolicy Bypass &quot;$(SolutionDir)\Steam.ps1&quot; -project $(AssemblyName) -dotnet $(TargetFramework) -appid $(SteamAppId) -branch '$(SteamBranch)' -managed '$(ManagedDir)' -access $(SteamLogin) -deobf $(DeobfuscatorTool)" />
   </Target>
   <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">

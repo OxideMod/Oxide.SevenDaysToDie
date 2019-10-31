@@ -221,6 +221,8 @@ function Get-Deobfuscators {
             # TODO: Compare size and hash of .zip vs. what GitHub has via API
             Write-Host "Extracting de4dot release files"
             Expand-Archive "$de4dot_dir\de4dot.zip" -DestinationPath "$de4dot_dir" -Force
+            Move-Item "$de4dot_dir\de4dot-net35\*" $de4dot_dir
+            Remove-Item "$de4dot_dir\de4dot-net35"
 
             if (!(Test-Path "$de4dot_exe")) {
                 Get-Deobfuscators # TODO: Add infinite loop prevention
