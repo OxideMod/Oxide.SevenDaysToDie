@@ -6,51 +6,6 @@
       "AssemblyName": "Assembly-CSharp.dll",
       "Hooks": [
         {
-          "Type": "InitOxide",
-          "Hook": {
-            "InjectionIndex": 0,
-            "HookTypeName": "Initialize Oxide",
-            "Name": "InitOxide [internal]",
-            "HookName": "InitOxide",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameStartupHelper",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Init",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MSILHash": "wu6zOzqBglMDO1PjleWXKVpTZmRCI9M7ovM+kH62EzQ=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 1,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "InitLogging [internal]",
-            "HookName": "InitLogging",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameStartupHelper",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Init",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MSILHash": "wu6zOzqBglMDO1PjleWXKVpTZmRCI9M7ovM+kH62EzQ=",
-            "BaseHookName": "InitOxide [internal]",
-            "HookCategory": "Server"
-          }
-        },
-        {
           "Type": "Simple",
           "Hook": {
             "InjectionIndex": 0,
@@ -386,30 +341,6 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 0,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "OnServerShutdown",
-            "HookName": "OnServerShutdown",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Cleanup",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MSILHash": "KgXOExjKxrA6iqA7BrV7mO3zM69kIcCQHBc1Iy+q4H4=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
             "InjectionIndex": 144,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 4,
@@ -666,6 +597,51 @@
             "BaseHookName": null,
             "HookCategory": "_Patches"
           }
+        },
+        {
+          "Type": "InitOxide",
+          "Hook": {
+            "InjectionIndex": 315,
+            "HookTypeName": "Initialize Oxide",
+            "Name": "InitOxide [internal]",
+            "HookName": "InitOxide",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 1,
+              "Name": "Awake",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MSILHash": "r+YM8Ni5WwKkiKSH0/hAcgecmGSN+wv8+z0g1U+FeXM=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionIndex": 316,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Simple",
+            "Name": "InitLogging [internal]",
+            "HookName": "InitLogging",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 1,
+              "Name": "Awake",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MSILHash": "r+YM8Ni5WwKkiKSH0/hAcgecmGSN+wv8+z0g1U+FeXM=",
+            "BaseHookName": "InitOxide [internal]",
+            "HookCategory": "Server"
+          }
         }
       ],
       "Modifiers": [],
@@ -681,35 +657,7 @@
     },
     {
       "AssemblyName": "LogLibrary.dll",
-      "Hooks": [
-        {
-          "Type": "Modify",
-          "Hook": {
-            "InjectionIndex": 10,
-            "RemoveCount": 2,
-            "Instructions": [],
-            "HookTypeName": "Modify",
-            "Name": "RemoveConsoleWriteLine [patch]",
-            "HookName": "RemoveConsoleWriteLine [patch]",
-            "AssemblyName": "LogLibrary.dll",
-            "TypeName": "Logger",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 0,
-              "Name": "masterLogStandalone",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "System.String",
-                "System.String",
-                "UnityEngine.LogType"
-              ]
-            },
-            "MSILHash": "C3JloDm6xZaq/3eCcXpj9kVnY3+k+NasSxQj6tA3IQY=",
-            "BaseHookName": null,
-            "HookCategory": "_Patches"
-          }
-        }
-      ],
+      "Hooks": [],
       "Modifiers": [],
       "Fields": []
     }

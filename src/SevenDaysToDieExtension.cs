@@ -1,11 +1,8 @@
 ﻿using Oxide.Core;
 using Oxide.Core.Extensions;
-using Oxide.Core.RemoteConsole;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using UnityEngine;
 
 namespace Oxide.Game.SevenDays
 {
@@ -174,33 +171,6 @@ namespace Oxide.Game.SevenDays
         /// </summary>
         public override void OnModLoad()
         {
-            Application.logMessageReceived += HandleLog;
-        }
-
-        private static void HandleLog(string message, string stackTrace, LogType type)
-        {
-            if (string.IsNullOrEmpty(message) || Filter.Any(message.Contains))
-            {
-                return;
-            }
-
-            string remoteType = "generic";
-            if (type == LogType.Warning)
-            {
-                remoteType = "warning";
-            }
-            else if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert)
-            {
-                remoteType = "error";
-            }
-
-            Interface.Oxide.RemoteConsole.SendMessage(new RemoteMessage
-            {
-                Message = message,
-                Identifier = 0,
-                Type = remoteType,
-                Stacktrace = stackTrace
-            });
         }
     }
 }
