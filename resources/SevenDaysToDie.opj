@@ -341,6 +341,30 @@
         {
           "Type": "Simple",
           "Hook": {
+            "InjectionIndex": 0,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Simple",
+            "Name": "OnServerShutdown",
+            "HookName": "OnServerShutdown",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Cleanup",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MSILHash": "KgXOExjKxrA6iqA7BrV7mO3zM69kIcCQHBc1Iy+q4H4=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
             "InjectionIndex": 144,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 4,
