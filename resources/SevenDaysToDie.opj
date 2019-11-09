@@ -105,7 +105,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "GjPihHb5Ic6MCQRzOUpu8bHikU+x6YHNUd5uTa0i0Y0=",
+            "MSILHash": "8htEO+AM0zrdwCEHl24biQYtrFhtRwawwYMI6h+aQ68=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -131,7 +131,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "3tFIuRFzQ6lKtXqChC8HHOSltlsib/OePv9dae6Sa6U=",
+            "MSILHash": "QCXWR33Qq/1iJXKt8vuxQZB3ReyVVApZUXlL7ft1OEg=",
             "BaseHookName": null,
             "HookCategory": "Structure"
           }
@@ -163,7 +163,7 @@
                 "System.Collections.Generic.List`1<System.Int32>"
               ]
             },
-            "MSILHash": "V1x2q3mDwP2mWFHhAmbicK8aFjtuWND8mKgh0UEQ934=",
+            "MSILHash": "HfzsE8AjfBl9kzgF8gnRYqDBRj9ZYGopyyypu2FsqVE=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -218,7 +218,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "E3vbtuQ1gSvhqjXd1DpX+K+U1snHlJc9Txpw3LUm0v4=",
+            "MSILHash": "br5PtbAmjiwPBHXl70HrALZ0DdgcF6ydFMWPDK8l+m0=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -253,7 +253,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 380,
+            "InjectionIndex": 438,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
             "ArgumentString": "a0, a1, a2",
@@ -275,7 +275,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "3MDYgfssFzYo2GaKial4iVef+JUNuaTf7rQdA06Rk1I=",
+            "MSILHash": "H1m5yUJvMGs40CyaH1RsJDttpAR+AGmx+3GmsdJ1LX0=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -383,7 +383,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "v5cbkFCbcOLmGDM80eff+PHpQzb84vfE1FTqb7jgcRU=",
+            "MSILHash": "yPvrctIFMXS3YAO+sjNU7KCdDTwx8YE4SXagmdg1vyc=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -539,7 +539,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "3tFIuRFzQ6lKtXqChC8HHOSltlsib/OePv9dae6Sa6U=",
+            "MSILHash": "QCXWR33Qq/1iJXKt8vuxQZB3ReyVVApZUXlL7ft1OEg=",
             "BaseHookName": "CanUseDoor",
             "HookCategory": "Structure"
           }
@@ -625,7 +625,7 @@
         {
           "Type": "InitOxide",
           "Hook": {
-            "InjectionIndex": 315,
+            "InjectionIndex": 308,
             "HookTypeName": "Initialize Oxide",
             "Name": "InitOxide [internal]",
             "HookName": "InitOxide",
@@ -638,7 +638,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "r+YM8Ni5WwKkiKSH0/hAcgecmGSN+wv8+z0g1U+FeXM=",
+            "MSILHash": "rpvxxYqBuo62dbSDYgY4AHTLuXW72q6zyAgvLHqfLp8=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -646,7 +646,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 316,
+            "InjectionIndex": 309,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
             "ArgumentString": null,
@@ -662,7 +662,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "r+YM8Ni5WwKkiKSH0/hAcgecmGSN+wv8+z0g1U+FeXM=",
+            "MSILHash": "rpvxxYqBuo62dbSDYgY4AHTLuXW72q6zyAgvLHqfLp8=",
             "BaseHookName": "InitOxide [internal]",
             "HookCategory": "Server"
           }
@@ -678,12 +678,6 @@
           "Flagged": false
         }
       ]
-    },
-    {
-      "AssemblyName": "LogLibrary.dll",
-      "Hooks": [],
-      "Modifiers": [],
-      "Fields": []
     }
   ]
 }

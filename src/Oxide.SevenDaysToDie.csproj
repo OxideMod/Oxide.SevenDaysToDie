@@ -18,7 +18,6 @@
     <SteamAppId>294420</SteamAppId>
     <SteamBranch>public</SteamBranch>
     <SteamLogin>anonymous</SteamLogin>
-    <DeobfuscatorTool>de4dot</DeobfuscatorTool>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="GitInfo" Version="2.0.*" />
@@ -33,9 +32,6 @@
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>Dependencies\Patched\$(ManagedDir)\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
-    <Reference Include="LogLibrary">
-      <HintPath>Dependencies\Patched\$(ManagedDir)\LogLibrary.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>Dependencies\Patched\$(ManagedDir)\mscorlib.dll</HintPath>
@@ -68,8 +64,8 @@
   <Target Name="AfterBuild">
     <ItemGroup>
       <CoreFiles Include="$(TargetDir)\Oxide.*.dll" />
+      <PatchedFiles Include="$(ProjectDir)\Dependencies\Base\*.dll" />
       <PatchedFiles Include="$(ProjectDir)\Dependencies\Patched\$(ManagedDir)\Assembly-CSharp.dll" />
-      <PatchedFiles Include="$(ProjectDir)\Dependencies\Patched\$(ManagedDir)\LogLibrary.dll" />
       <ContentFiles Include="$(SolutionDir)\packages\oxide.mysql\**\lib\any\*.*; $(SolutionDir)\packages\oxide.mysql\**\lib\$(TargetFramework)\*.*" />
       <ContentFiles Include="$(SolutionDir)\packages\oxide.sqlite\**\lib\any\*.*; $(SolutionDir)\packages\oxide.sqlite\**\lib\$(TargetFramework)\*.*" />
       <ContentX64Files Include="$(SolutionDir)\packages\oxide.references\**\lib\any\x64\*.*; $(SolutionDir)\packages\oxide.sqlite\**\lib\any\x64\*.*" />
