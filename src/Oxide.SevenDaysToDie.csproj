@@ -52,7 +52,7 @@
     <RemoveDir Directories="$(ProjectDir)\bin\Bundle\$(PackageId)" Condition="Exists('$(ProjectDir)\bin\Bundle\$(PackageId)')" />
   </Target>
   <Target Name="BeforeBuild">
-    <Exec Command="powershell -ExecutionPolicy Bypass &quot;$(SolutionDir)\Steam.ps1&quot; -project $(AssemblyName) -dotnet $(TargetFramework) -appid $(SteamAppId) -branch '$(SteamBranch)' -managed '$(ManagedDir)' -access $(SteamLogin) -deobf $(DeobfuscatorTool)" />
+    <Exec Command="powershell -ExecutionPolicy Bypass &quot;$(SolutionDir)\Steam.ps1&quot; -project $(AssemblyName) -dotnet $(TargetFramework) -appid $(SteamAppId) -branch '$(SteamBranch)' -managed '$(ManagedDir)' -access $(SteamLogin)" />
   </Target>
   <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
     <ItemGroup>
