@@ -218,7 +218,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "br5PtbAmjiwPBHXl70HrALZ0DdgcF6ydFMWPDK8l+m0=",
+            "MSILHash": "wrvLuAPPEesPcAbiN9AvGzYFlLSFyqkvM65T2v6bf0o=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -245,7 +245,7 @@
                 "KickPlayerDelegate"
               ]
             },
-            "MSILHash": "2xbq9wqt/RrnoKMf1oDGKN+RjWR9yz+xh4Y2a2UWhV4=",
+            "MSILHash": "b4YCQyDsGFVDffAbkutnDNZFDsTieQTrJZ+nUqs33yI=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -275,7 +275,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "H1m5yUJvMGs40CyaH1RsJDttpAR+AGmx+3GmsdJ1LX0=",
+            "MSILHash": "IDzgS0iAZFRGa5iLe+i7L4SzzRZ656wiSU6oV7Orsjs=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -625,7 +625,7 @@
         {
           "Type": "InitOxide",
           "Hook": {
-            "InjectionIndex": 308,
+            "InjectionIndex": 318,
             "HookTypeName": "Initialize Oxide",
             "Name": "InitOxide [internal]",
             "HookName": "InitOxide",
@@ -638,7 +638,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "rpvxxYqBuo62dbSDYgY4AHTLuXW72q6zyAgvLHqfLp8=",
+            "MSILHash": "SsrWfu2Ktkb+igD8NqWwIfgb+Feru0GqlAA9TrZftZs=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -646,7 +646,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 309,
+            "InjectionIndex": 319,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
             "ArgumentString": null,
@@ -662,7 +662,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "rpvxxYqBuo62dbSDYgY4AHTLuXW72q6zyAgvLHqfLp8=",
+            "MSILHash": "SsrWfu2Ktkb+igD8NqWwIfgb+Feru0GqlAA9TrZftZs=",
             "BaseHookName": "InitOxide [internal]",
             "HookCategory": "Server"
           }
