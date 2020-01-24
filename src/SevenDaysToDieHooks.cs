@@ -45,7 +45,6 @@ namespace Oxide.Game.SevenDays
 
             // Call out and see if we should reject
             object canLogin = Interface.Call("CanClientLogin", client) ?? Interface.Call("CanUserLogin", client.playerName, client.playerId, client.ip); // TODO: Localization
-
             if (canLogin is string || canLogin is bool && !(bool)canLogin)
             {
                 string reason = canLogin is string ? canLogin.ToString() : "Connection was rejected"; // TODO: Localization
@@ -70,12 +69,10 @@ namespace Oxide.Game.SevenDays
                 permission.UpdateNickname(client.playerId, client.playerName);
 
                 OxideConfig.DefaultGroups defaultGroups = Interface.Oxide.Config.Options.DefaultGroups;
-
                 if (!permission.UserHasGroup(client.playerId, defaultGroups.Players))
                 {
                     permission.AddUserGroup(client.playerId, defaultGroups.Players);
                 }
-
                 if (GameManager.Instance.adminTools.IsAdmin(client.playerId) && !permission.UserHasGroup(client.playerId, defaultGroups.Administrators))
                 {
                     permission.AddUserGroup(client.playerId, defaultGroups.Administrators);
