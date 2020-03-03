@@ -572,57 +572,6 @@
           }
         },
         {
-          "Type": "Modify",
-          "Hook": {
-            "InjectionIndex": 0,
-            "RemoveCount": 0,
-            "Instructions": [
-              {
-                "OpCode": "call",
-                "OpType": "Method",
-                "Operand": "mscorlib|System.Environment|get_OSVersion"
-              },
-              {
-                "OpCode": "callvirt",
-                "OpType": "Method",
-                "Operand": "mscorlib|System.OperatingSystem|get_Platform"
-              },
-              {
-                "OpCode": "ldc_i4_2",
-                "OpType": "None",
-                "Operand": null
-              },
-              {
-                "OpCode": "ceq",
-                "OpType": "None",
-                "Operand": null
-              },
-              {
-                "OpCode": "brfalse",
-                "OpType": "Instruction",
-                "Operand": 38
-              }
-            ],
-            "HookTypeName": "Modify",
-            "Name": "ConsoleEnableWinOnly [patch]",
-            "HookName": "ConsoleEnableWinOnly [patch]",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "WinFormConnection",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": ".ctor",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "WinFormInstance"
-              ]
-            },
-            "MSILHash": "Nw2Zbs8GmZUO6dukePaHVsxGVaHO3p8l7yqD32yRzcw=",
-            "BaseHookName": null,
-            "HookCategory": "_Patches"
-          }
-        },
-        {
           "Type": "InitOxide",
           "Hook": {
             "InjectionIndex": 318,
