@@ -11,6 +11,40 @@ namespace Oxide.Game.SevenDays
     /// </summary>
     public partial class SevenDaysCore
     {
+        #region Server Hooks
+
+        /// <summary>
+        /// Called when a console command was run
+        /// </summary>
+        /// <param name="arg"></param>
+        /// <returns></returns>
+        [HookMethod("IOnServerCommand")]
+        private object IOnServerCommand(string arg)
+        {
+            if (arg == null || arg.Trim().Length == 0)
+            {
+                return null;
+            }
+
+            string command;
+            string[] args;
+            Covalence.CommandSystem.ParseCommand(arg, out command, out args);
+            if (string.IsNullOrEmpty(command))
+            {
+                return null;
+            }
+
+            // Handle it
+            if (Interface.Call("OnServerCommand", command, args) != null)
+            {
+                return true;
+            }
+
+            return null;
+        }
+
+        #endregion Server Hooks
+
         #region Player Hooks
 
         /// <summary>

@@ -550,7 +550,7 @@
             "InjectionIndex": 5,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
-            "ArgumentString": "a1,a0",
+            "ArgumentString": "a0",
             "HookTypeName": "Simple",
             "Name": "IOnServerCommand [internal]",
             "HookName": "IOnServerCommand",
@@ -617,7 +617,84 @@
           }
         }
       ],
-      "Modifiers": [],
+      "Modifiers": [
+        {
+          "Name": "SdtdConsole::m_Commands",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "SdtdConsole",
+          "Type": 0,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "m_Commands",
+            "FullTypeName": "System.Collections.Generic.List`1<IConsoleCommand> SdtdConsole::m_Commands",
+            "Parameters": []
+          },
+          "MSILHash": ""
+        },
+        {
+          "Name": "SdtdConsole::m_CommandsAllVariants",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "SdtdConsole",
+          "Type": 0,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "m_CommandsAllVariants",
+            "FullTypeName": "System.Collections.Generic.List`1<SdtdConsole/CommandDescriptor> SdtdConsole::m_CommandsAllVariants",
+            "Parameters": []
+          },
+          "MSILHash": ""
+        },
+        {
+          "Name": "SdtdConsole/CommandDescriptor",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "SdtdConsole/CommandDescriptor",
+          "Type": 3,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "CommandDescriptor",
+            "FullTypeName": "SdtdConsole/CommandDescriptor",
+            "Parameters": []
+          },
+          "MSILHash": ""
+        },
+        {
+          "Name": "SdtdConsole/CommandInstance",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "SdtdConsole/CommandInstance",
+          "Type": 3,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "CommandInstance",
+            "FullTypeName": "SdtdConsole/CommandInstance",
+            "Parameters": []
+          },
+          "MSILHash": ""
+        }
+      ],
       "Fields": [
         {
           "Name": "IPlayer",
