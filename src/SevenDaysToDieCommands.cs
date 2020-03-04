@@ -702,14 +702,12 @@ namespace Oxide.Game.SevenDays
         {
             if (player.IsServer)
             {
-                /*player.Reply($"Protocol: {Server.Protocol}\nBuild Date: {BuildInfo.Current.BuildDate}\n" +
-                $"Unity Version: {UnityEngine.Application.unityVersion}\nChangeset: {BuildInfo.Current.Scm.ChangeId}\n" +
-                $"Branch: {BuildInfo.Current.Scm.Branch}\nOxide Version: {OxideMod.Version}");*/ // TODO: Implement server version
+                player.Reply("Oxide.SevenDaysToDie Version: " + SevenDaysExtension.AssemblyVersion);
             }
             else
             {
                 string format = Covalence.FormatText(lang.GetMessage("Version", this, player.Id));
-                player.Reply(string.Format(format, OxideMod.Version, Covalence.GameName, Server.Version, Server.Protocol));
+                player.Reply(string.Format(format, SevenDaysExtension.AssemblyVersion, Covalence.GameName.Humanize(), Server.Version, Server.Protocol));
             }
         }
 

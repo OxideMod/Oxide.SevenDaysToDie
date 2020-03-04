@@ -235,11 +235,11 @@ namespace Oxide.Game.SevenDays
             }
 
             // Register the command permission
-            /*string[] variantCommands = newCommand.SevenDaysToDieCommand.GetCommands();
+            string[] variantCommands = newCommand.SevenDaysToDieCommand.GetCommands();
             if (!GameManager.Instance.adminTools.IsPermissionDefinedForCommand(variantCommands) && newCommand.SevenDaysToDieCommand.DefaultPermissionLevel != 0)
             {
                 GameManager.Instance.adminTools.AddCommandPermission(command, newCommand.SevenDaysToDieCommand.DefaultPermissionLevel, false);
-            }*/
+            }
         }
 
         #endregion Command Registration

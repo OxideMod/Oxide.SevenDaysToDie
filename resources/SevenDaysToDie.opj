@@ -704,6 +704,59 @@
           "Flagged": false
         }
       ]
+    },
+    {
+      "AssemblyName": "LogLibrary.dll",
+      "Hooks": [],
+      "Modifiers": [
+        {
+          "Name": "Logger::UnityLogCallback",
+          "AssemblyName": "LogLibrary.dll",
+          "TypeName": "Logger",
+          "Type": 1,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "UnityLogCallback",
+            "FullTypeName": "System.Void",
+            "Parameters": [
+              "System.String",
+              "System.String",
+              "UnityEngine.LogType"
+            ]
+          },
+          "MSILHash": "n55HmeVZ6lN0jMbrSqeqlSS04/KD6mFxTWIZgvjPHsU="
+        },
+        {
+          "Name": "Logger::SendToLogListeners",
+          "AssemblyName": "LogLibrary.dll",
+          "TypeName": "Logger",
+          "Type": 1,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "SendToLogListeners",
+            "FullTypeName": "System.Void",
+            "Parameters": [
+              "System.String",
+              "System.String",
+              "UnityEngine.LogType"
+            ]
+          },
+          "MSILHash": "gL/FvmqtYitqDEwJD/oNESxO4KUifAc6GeeNz6QBNko="
+        }
+      ],
+      "Fields": []
     }
   ]
 }

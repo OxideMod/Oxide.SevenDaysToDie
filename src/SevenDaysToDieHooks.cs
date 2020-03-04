@@ -16,26 +16,26 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Called when a console command was run
         /// </summary>
-        /// <param name="arg"></param>
+        /// <param name="command"></param>
         /// <returns></returns>
         [HookMethod("IOnServerCommand")]
-        private object IOnServerCommand(string arg)
+        private object IOnServerCommand(string command)
         {
-            if (arg == null || arg.Trim().Length == 0)
+            command = command.TrimStart('/').Trim();
+
+            if (string.IsNullOrEmpty(command) || command.Length == 0)
             {
                 return null;
             }
 
-            string command;
-            string[] args;
-            Covalence.CommandSystem.ParseCommand(arg, out command, out args);
-            if (string.IsNullOrEmpty(command))
+            Covalence.CommandSystem.ParseCommand(command, out string cmd, out string[] args);
+            if (string.IsNullOrEmpty(cmd))
             {
                 return null;
             }
 
             // Handle it
-            if (Interface.Call("OnServerCommand", command, args) != null)
+            if (Interface.Call("OnServerCommand", cmd, args) != null)
             {
                 return true;
             }
@@ -57,9 +57,33 @@ namespace Oxide.Game.SevenDays
         {
             if (client != null && !string.IsNullOrEmpty(message))
             {
-                IPlayer iplayer = client.IPlayer;
+                // Check if it is a chat command
+                if (message[0] == '/')
+                {
+                    Covalence.CommandSystem.ParseCommand(message.TrimStart('/'), out string cmd, out string[] args);
+                    if (!string.IsNullOrEmpty(cmd))
+                    {
+                        // Is the command blocked?
+                        object commandSpecific = Interface.CallHook("OnPlayerCommand", client, cmd, args);
+                        object commandCovalence = Interface.CallHook("OnUserCommand", client.IPlayer, cmd, args);
+                        if (commandSpecific != null || commandCovalence != null)
+                        {
+                            return true;
+                        }
+
+                        // Is it a valid chat command?
+                        if (!Covalence.CommandSystem.HandleChatMessage(client.IPlayer, message))
+                        {
+                            client.IPlayer.Reply(string.Format(lang.GetMessage("UnknownCommand", this, client.IPlayer.Id), cmd));
+                        }
+                    }
+
+                    return true;
+                }
+
+                // Call game and covalence hooks
                 object chatSpecific = Interface.Call("OnPlayerChat", client, message);
-                object chatCovalence = iplayer != null ? Interface.Call("OnUserChat", iplayer, message) : null;
+                object chatCovalence = Interface.Call("OnUserChat", client.IPlayer, message);
                 return chatSpecific ?? chatCovalence;
             }
 
