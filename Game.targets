@@ -15,7 +15,7 @@
       <DepotArg Condition="'$(SteamDepot)' != ''">-steam_depot $(SteamDepot)</DepotArg>
       <LoginArg Condition="'$(SteamLogin)' != ''">-steam_access $(SteamLogin)</LoginArg>
     </PropertyGroup>
-    <Message Text="Building and bundling $(AssemblyName) for $(TargetPlatform)" Importance="High" />
+    <Message Text="Setting up environment for $(TargetPlatform)..." Importance="High" />
     <Exec Command="$(SteamCommand) -game_name $(GameName) -dotnet $(TargetFramework) -target_dir $(TargetDir) -managed_dir $(ManagedDir) $(PlatformArg) $(DeobfArg) $(AppIdArg) $(BranchArg) $(DepotArg) $(LoginArg)" />
   </Target>
   <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
@@ -28,13 +28,13 @@
   <Target Name="AfterBuild">
     <ItemGroup>
       <CoreFiles Include="$(TargetDir)\Oxide*.dll" />
-      <ContentFiles Include="$(ProjectDir)\Dependencies\Base\*.dll" />
+      <ContentFiles Include="$(NuGetPackageRoot)\oxide.references\**\lib\any\$(TargetFramework)\*.*" />
       <ContentFiles Include="$(NuGetPackageRoot)\oxide.core\**\lib\$(TargetFramework)\*.*" />
       <ContentFiles Include="$(NuGetPackageRoot)\oxide.csharp\**\lib\any\*.*; $(NuGetPackageRoot)\oxide.csharp\**\lib\$(TargetFramework)\*.*" />
       <ContentFiles Include="$(NuGetPackageRoot)\oxide.mysql\**\lib\any\MySql.*.dll; $(NuGetPackageRoot)\oxide.mysql\**\lib\any\System.*.dll" />
       <ContentFiles Include="$(NuGetPackageRoot)\oxide.mysql\**\lib\$(TargetFramework)\*.*" />
       <ContentFiles Include="$(NuGetPackageRoot)\oxide.sqlite\**\lib\any\*.*; $(NuGetPackageRoot)\oxide.sqlite\**\lib\$(TargetFramework)\*.*" />
-      <ContentFiles Include="$(NuGetPackageRoot)\oxide.references\**\lib\any\$(TargetFramework)\*.*" />
+      <ContentFiles Include="$(ProjectDir)\Dependencies\Base\*.dll" />
       <ContentX64Files Include="$(NuGetPackageRoot)\oxide.references\**\lib\any\x64\*.*; $(NuGetPackageRoot)\oxide.sqlite\**\lib\any\x64\*.*" />
       <ContentX86Files Include="$(NuGetPackageRoot)\oxide.references\**\lib\any\x86\*.*; $(NuGetPackageRoot)\oxide.sqlite\**\lib\any\x86\*.*" />
     </ItemGroup>
@@ -51,7 +51,11 @@
     <!--<Exec Command="pdb2mdb %(PatchedFiles.Identity)" IgnoreExitCode="true" Condition="'$(Configuration)' == 'Debug' AND '$(OS)' == 'Windows_NT'" />-->
   </Target>
   <Target Name="LocalDeploy" AfterTargets="AfterBuild" Condition="Exists('..\.deploy') AND $(GamePlatform.Contains('windows'))">
-    <Exec Command="start /b /wait taskkill /f /im $(GameExe) /fi &quot;memusage gt 2&quot;" Condition="'$(OS)' == 'Windows_NT'" />
+    <ItemGroup>
+      <GameExes Include="$(GameExe)" />
+    </ItemGroup>
+    <Message Text="Checking for and ending %(GameExes.Identity) process..." Importance="High" />
+    <Exec Command="start /b /wait taskkill /f /im %(GameExes.Identity) /fi &quot;memusage gt 2&quot;" Condition="'$(OS)' == 'Windows_NT'" />
     <ReadLinesFromFile File="..\.deploy">
       <Output PropertyName="DeployPath" TaskParameter="Lines" />
     </ReadLinesFromFile>
@@ -61,7 +65,7 @@
     <ItemGroup>
       <DeployFiles Include="$(ProjectDir)\bin\Bundle\$(PackageId)\**\*.*" />
     </ItemGroup>
-    <Message Text="Deploying to $(DeployPath): @(DeployFiles ->'%(Filename)%(Extension)', ', ')" Importance="High" Condition="'@(DeployFiles)' != ''" />
+    <Message Text="Deploying to $(DeployPath): @(DeployFiles ->'%(Filename)%(Extension)', ', ')..." Importance="High" Condition="'@(DeployFiles)' != ''" />
     <Copy SourceFiles="@(DeployFiles)" DestinationFiles="@(DeployFiles->'$(DeployPath)\%(RecursiveDir)%(Filename)%(Extension)')" Condition="'$(DeployPath)' != ''" />
   </Target>
   <Target Name="BuildPlatform" AfterTargets="AfterBuild" Condition="$(GamePlatform.Contains(';'))">
