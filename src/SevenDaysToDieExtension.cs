@@ -24,7 +24,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets the name of this extension
         /// </summary>
-        public override string Name => "SevenDays";
+        public override string Name => "SevenDaysToDie";
 
         /// <summary>
         /// Gets the author of this extension
