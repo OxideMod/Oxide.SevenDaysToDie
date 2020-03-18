@@ -2,7 +2,6 @@
 using Oxide.Core.Configuration;
 using Oxide.Core.Libraries.Covalence;
 using Oxide.Core.Plugins;
-using System;
 
 namespace Oxide.Game.SevenDays
 {
@@ -106,7 +105,7 @@ namespace Oxide.Game.SevenDays
             if (canLogin is string || canLogin is bool && !(bool)canLogin)
             {
                 string reason = canLogin is string ? canLogin.ToString() : "Connection was rejected"; // TODO: Localization
-                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.PlayerLimitExceeded, 0, default(DateTime), reason);
+                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.PlayerLimitExceeded, 0, default, reason);
                 GameUtils.KickPlayerForClientInfo(client, kickData);
                 return true;
             }

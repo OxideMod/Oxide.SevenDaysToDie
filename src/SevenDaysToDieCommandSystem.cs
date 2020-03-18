@@ -139,8 +139,7 @@ namespace Oxide.Game.SevenDays
 
         private bool CommandCallback(IPlayer caller, string cmd, string[] args)
         {
-            RegisteredCommand command;
-            return registeredCommands.TryGetValue(cmd, out command) && command.Callback(caller, cmd, args);
+            return registeredCommands.TryGetValue(cmd, out RegisteredCommand command) && command.Callback(caller, cmd, args);
         }
 
         #endregion Initialization

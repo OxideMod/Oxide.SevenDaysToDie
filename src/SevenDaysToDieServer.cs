@@ -141,7 +141,7 @@ namespace Oxide.Game.SevenDays
         /// <param name="id"></param>
         /// <param name="reason"></param>
         /// <param name="duration"></param>
-        public void Ban(string id, string reason, TimeSpan duration = default(TimeSpan))
+        public void Ban(string id, string reason, TimeSpan duration = default)
         {
             // Check if already banned
             if (!IsBanned(id))

@@ -42,8 +42,7 @@ namespace Oxide.Game.SevenDays
         {
             ulong userId = ulong.Parse(id);
 
-            PlayerRecord record;
-            if (playerData.TryGetValue(id, out record))
+            if (playerData.TryGetValue(id, out PlayerRecord record))
             {
                 record.Name = name;
                 playerData[id] = record;
@@ -96,8 +95,7 @@ namespace Oxide.Game.SevenDays
         /// <returns></returns>
         public IPlayer FindPlayerById(string id)
         {
-            SevenDaysPlayer player;
-            return allPlayers.TryGetValue(id, out player) ? player : null;
+            return allPlayers.TryGetValue(id, out SevenDaysPlayer player) ? player : null;
         }
 
         /// <summary>

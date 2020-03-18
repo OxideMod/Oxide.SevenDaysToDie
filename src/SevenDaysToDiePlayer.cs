@@ -113,7 +113,7 @@ namespace Oxide.Game.SevenDays
         /// </summary>
         /// <param name="reason"></param>
         /// <param name="duration"></param>
-        public void Ban(string reason, TimeSpan duration = default(TimeSpan))
+        public void Ban(string reason, TimeSpan duration = default)
         {
             // Check if already banned
             if (!IsBanned)
