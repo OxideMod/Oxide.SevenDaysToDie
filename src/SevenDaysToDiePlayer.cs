@@ -36,7 +36,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets the object that backs the player
         /// </summary>
-        public object Object => GameManager.Instance.World.Players.dict[client.entityId];
+        public object Object => client != null ? GameManager.Instance.World.Players.dict[client.entityId] : null;
 
         /// <summary>
         /// Gets the player's last command type
@@ -75,7 +75,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Returns if the player is admin
         /// </summary>
-        public bool IsAdmin => GameManager.Instance.adminTools.IsAdmin(client.playerId);
+        public bool IsAdmin => GameManager.Instance.adminTools.IsAdmin(Id);
 
         /// <summary>
         /// Gets if the player is banned
