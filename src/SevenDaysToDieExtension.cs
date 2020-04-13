@@ -1,5 +1,6 @@
 ﻿using Oxide.Core;
 using Oxide.Core.Extensions;
+using Oxide.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -171,6 +172,7 @@ namespace Oxide.Game.SevenDays
         /// </summary>
         public override void OnModLoad()
         {
+            CSharpPluginLoader.PluginReferences.UnionWith(DefaultReferences);
         }
     }
 }
