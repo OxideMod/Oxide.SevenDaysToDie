@@ -1,6 +1,6 @@
 {
   "Name": "7 Days to Die",
-  "TargetDirectory": "D:\\Servers\\SevenDaysToDie\\7DaysToDieServer_Data\\Managed",
+  "TargetDirectory": "D:\\Servers\\7DaysToDie\\7DaysToDieServer_Data\\Managed",
   "Manifests": [
     {
       "AssemblyName": "Assembly-CSharp.dll",
@@ -614,6 +614,52 @@
             "MSILHash": "SsrWfu2Ktkb+igD8NqWwIfgb+Feru0GqlAA9TrZftZs=",
             "BaseHookName": "InitOxide [internal]",
             "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Modify",
+          "Hook": {
+            "InjectionIndex": 239,
+            "RemoveCount": 4,
+            "Instructions": [],
+            "HookTypeName": "Modify",
+            "Name": "RemoveGetStatsLogOut",
+            "HookName": "RemoveGetStatsLogOut",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 0,
+              "Name": "gmUpdate",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MSILHash": "RTrLqQqdhnee5ihPLJQax7HxJcJrGG52r/NTgyN+GyA=",
+            "BaseHookName": null,
+            "HookCategory": "_Patches"
+          }
+        },
+        {
+          "Type": "Modify",
+          "Hook": {
+            "InjectionIndex": 7,
+            "RemoveCount": 29,
+            "Instructions": [],
+            "HookTypeName": "Modify",
+            "Name": "RemoveVehicleSaveLogOut",
+            "HookName": "RemoveVehicleSaveLogOut",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "VehicleManager",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 0,
+              "Name": "Save",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MSILHash": "g3aSYAaJBIpdLrJDXRgXdtL8wsVuq2qhpr7fp44YQek=",
+            "BaseHookName": null,
+            "HookCategory": "_Patches"
           }
         }
       ],
