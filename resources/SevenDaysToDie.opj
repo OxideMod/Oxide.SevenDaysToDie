@@ -739,6 +739,25 @@
             "Parameters": []
           },
           "MSILHash": ""
+        },
+        {
+          "Name": "EntityAlive::entityThatKilledMe",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "EntityAlive",
+          "Type": 0,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              1
+            ],
+            "Name": "entityThatKilledMe",
+            "FullTypeName": "EntityAlive EntityAlive::entityThatKilledMe",
+            "Parameters": []
+          },
+          "MSILHash": ""
         }
       ],
       "Fields": [
