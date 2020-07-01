@@ -27,6 +27,7 @@ namespace Oxide.Game.SevenDays
                 return null;
             }
 
+            // Parse the command
             Covalence.CommandSystem.ParseCommand(command, out string cmd, out string[] args);
             if (string.IsNullOrEmpty(cmd))
             {
@@ -65,7 +66,8 @@ namespace Oxide.Game.SevenDays
                         // Is the command blocked?
                         object commandSpecific = Interface.CallHook("OnPlayerCommand", client, cmd, args);
                         object commandCovalence = Interface.CallHook("OnUserCommand", client.IPlayer, cmd, args);
-                        if (commandSpecific != null || commandCovalence != null)
+                        object canBlock = commandSpecific is null ? commandCovalence : commandSpecific;
+                        if (canBlock is bool commandBlocked && !commandBlocked)
                         {
                             return true;
                         }
@@ -80,10 +82,10 @@ namespace Oxide.Game.SevenDays
                     return true;
                 }
 
-                // Call game and covalence hooks
+                // Call hooks for plugins
                 object chatSpecific = Interface.Call("OnPlayerChat", client, message);
                 object chatCovalence = Interface.Call("OnUserChat", client.IPlayer, message);
-                return chatSpecific ?? chatCovalence;
+                return chatSpecific is null ? chatCovalence : chatSpecific;
             }
 
             return null;
@@ -100,9 +102,11 @@ namespace Oxide.Game.SevenDays
             // Let covalence know
             Covalence.PlayerManager.PlayerJoin(client.playerId, client.playerName);
 
-            // Call out and see if we should reject
-            object canLogin = Interface.Call("CanClientLogin", client) ?? Interface.Call("CanUserLogin", client.playerName, client.playerId, client.ip); // TODO: Localization
-            if (canLogin is string || canLogin is bool && !(bool)canLogin)
+            // Call hooks for plugins
+            object loginSpecific = Interface.Call("CanClientLogin", client);
+            object loginCovalence = Interface.Call("CanUserLogin", client.playerName, client.playerId, client.ip);
+            object canLogin = loginSpecific is null ? loginCovalence : loginSpecific;
+            if (canLogin is string || canLogin is bool loginBlocked && !loginBlocked)
             {
                 string reason = canLogin is string ? canLogin.ToString() : "Connection was rejected"; // TODO: Localization
                 GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.PlayerLimitExceeded, 0, default, reason);
@@ -110,8 +114,10 @@ namespace Oxide.Game.SevenDays
                 return true;
             }
 
-            // Call game and covalence hooks
-            return Interface.Call("OnUserApprove", client) ?? Interface.Call("OnUserApproved", client.playerName, client.playerId, client.ip); // TODO: Localization
+            // Call hooks for plugins
+            object approvedSpecific = Interface.Call("OnUserApprove", client);
+            object approvedCovalence = Interface.Call("OnUserApproved", client.playerName, client.playerId, client.ip);
+            return approvedSpecific is null ? approvedCovalence : approvedSpecific;
         }
 
         /// <summary>
@@ -121,10 +127,10 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnPlayerConnected")]
         private void OnPlayerConnected(ClientInfo client)
         {
+            // Update name and groups with permissions
             if (permission.IsLoaded)
             {
                 permission.UpdateNickname(client.playerId, client.playerName);
-
                 OxideConfig.DefaultGroups defaultGroups = Interface.Oxide.Config.Options.DefaultGroups;
                 if (!permission.UserHasGroup(client.playerId, defaultGroups.Players))
                 {
@@ -138,11 +144,14 @@ namespace Oxide.Game.SevenDays
 
             // Let covalence know
             Covalence.PlayerManager.PlayerConnected(client);
-            IPlayer iplayer = Covalence.PlayerManager.FindPlayerById(client.playerId);
-            if (iplayer != null)
+
+            IPlayer player = Covalence.PlayerManager.FindPlayerById(client.playerId);
+            if (player != null)
             {
-                client.IPlayer = iplayer;
-                Interface.Call("OnUserConnected", iplayer);
+                client.IPlayer = player;
+
+                // Call hooks for plugins
+                Interface.Call("OnUserConnected", player);
             }
         }
 
@@ -153,11 +162,11 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnPlayerDisconnected")]
         private void OnPlayerDisconnected(ClientInfo client)
         {
-            IPlayer iplayer = client.IPlayer;
-            if (iplayer != null)
+            IPlayer player = client.IPlayer;
+            if (player != null)
             {
-                // Call covalence hook
-                Interface.Call("OnUserDisconnected", iplayer, "Unknown");
+                // Call hooks for plugins
+                Interface.Call("OnUserDisconnected", player, "Unknown"); // TODO: Localization
             }
 
             // Let covalence know
@@ -171,11 +180,11 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnPlayerSpawn")]
         private void OnPlayerSpawn(ClientInfo client)
         {
-            IPlayer iplayer = client.IPlayer;
-            if (iplayer != null)
+            IPlayer player = client.IPlayer;
+            if (player != null)
             {
-                // Call covalence hook
-                Interface.Call("OnUserSpawn", iplayer);
+                // Call hooks for plugins
+                Interface.Call("OnUserSpawn", player);
             }
         }
 
