@@ -34,7 +34,7 @@ namespace Oxide.Game.SevenDays
                 return null;
             }
 
-            // Handle it
+            // Is the command blocked?
             if (Interface.Call("OnServerCommand", cmd, args) != null)
             {
                 return true;
@@ -67,7 +67,7 @@ namespace Oxide.Game.SevenDays
                         object commandSpecific = Interface.CallHook("OnPlayerCommand", client, cmd, args);
                         object commandCovalence = Interface.CallHook("OnUserCommand", client.IPlayer, cmd, args);
                         object canBlock = commandSpecific is null ? commandCovalence : commandSpecific;
-                        if (canBlock is bool commandBlocked && !commandBlocked)
+                        if (canBlock != null)
                         {
                             return true;
                         }
