@@ -91,11 +91,11 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Finds a single player given unique ID
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="playerId"></param>
         /// <returns></returns>
-        public IPlayer FindPlayerById(string id)
+        public IPlayer FindPlayerById(string playerId)
         {
-            return allPlayers.TryGetValue(id, out SevenDaysPlayer player) ? player : null;
+            return allPlayers.TryGetValue(playerId, out SevenDaysPlayer player) ? player : null;
         }
 
         /// <summary>

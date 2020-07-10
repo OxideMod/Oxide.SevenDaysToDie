@@ -15,15 +15,15 @@ namespace Oxide.Game.SevenDays
         private static Permission libPerms;
         private readonly ClientInfo client;
 
-        internal SevenDaysPlayer(string id, string name)
+        internal SevenDaysPlayer(string playerId, string playerName)
         {
             if (libPerms == null)
             {
                 libPerms = Interface.Oxide.GetLibrary<Permission>();
             }
 
-            Name = name.Sanitize();
-            Id = id;
+            Name = playerName.Sanitize();
+            Id = playerId;
         }
 
         internal SevenDaysPlayer(ClientInfo client) : this(client.playerId, client.playerName)
@@ -75,7 +75,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Returns if the player is admin
         /// </summary>
-        public bool IsAdmin => GameManager.Instance.adminTools.IsAdmin(Id);
+        public bool IsAdmin => GameManager.Instance.adminTools.IsAdmin(client);
 
         /// <summary>
         /// Gets if the player is banned
@@ -119,7 +119,7 @@ namespace Oxide.Game.SevenDays
             if (!IsBanned)
             {
                 // Ban player with reason
-                GameManager.Instance.adminTools.AddBan(Id, null, new DateTime(duration.Ticks), reason);
+                GameManager.Instance.adminTools.AddBan(Id, null, null, new DateTime(duration.Ticks), reason);
 
                 // Kick player if connected
                 if (IsConnected)
@@ -136,8 +136,13 @@ namespace Oxide.Game.SevenDays
         {
             get
             {
-                AdminToolsClientInfo adminClient = GameManager.Instance.adminTools.GetAdminToolsClientInfo(Id);
-                return adminClient.BannedUntil.TimeOfDay;
+                if (GameManager.Instance.adminTools.bannedUsers.ContainsKey(Id))
+                {
+                    AdminToolsClientInfo clientInfo = GameManager.Instance.adminTools.bannedUsers[Id];
+                    return clientInfo.BannedUntil.TimeOfDay;
+                }
+
+                return TimeSpan.Zero;
             }
         }
 

@@ -138,21 +138,21 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Bans the player for the specified reason and duration
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="playerId"></param>
         /// <param name="reason"></param>
         /// <param name="duration"></param>
-        public void Ban(string id, string reason, TimeSpan duration = default)
+        public void Ban(string playerId, string reason, TimeSpan duration = default)
         {
             // Check if already banned
-            if (!IsBanned(id))
+            if (!IsBanned(playerId))
             {
                 // Ban player with reason
-                GameManager.Instance.adminTools.AddBan(id, null, new DateTime(duration.Ticks), reason);
+                GameManager.Instance.adminTools.AddBan(playerId, null, null, new DateTime(duration.Ticks), reason);
 
                 // Kick player if connected
-                if (IsConnected(id))
+                if (IsConnected(playerId))
                 {
-                    Kick(id, reason);
+                    Kick(playerId, reason);
                 }
             }
         }
@@ -160,39 +160,44 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets the amount of time remaining on the player's ban
         /// </summary>
-        /// <param name="id"></param>
-        public TimeSpan BanTimeRemaining(string id)
+        /// <param name="playerId"></param>
+        public TimeSpan BanTimeRemaining(string playerId)
         {
-            AdminToolsClientInfo adminClient = GameManager.Instance.adminTools.GetAdminToolsClientInfo(id);
-            return adminClient.BannedUntil.TimeOfDay;
+            if (GameManager.Instance.adminTools.bannedUsers.ContainsKey(playerId))
+            {
+                AdminToolsClientInfo clientInfo = GameManager.Instance.adminTools.bannedUsers[playerId];
+                return clientInfo.BannedUntil.TimeOfDay;
+            }
+
+            return TimeSpan.Zero;
         }
 
         /// <summary>
         /// Gets if the player is banned
         /// </summary>
-        /// <param name="id"></param>
-        public bool IsBanned(string id)
+        /// <param name="playerId"></param>
+        public bool IsBanned(string playerId)
         {
-            return GameManager.Instance.adminTools.IsBanned(id);
+            return GameManager.Instance.adminTools.IsBanned(playerId);
         }
 
         /// <summary>
         /// Gets if the player is connected
         /// </summary>
-        /// <param name="id"></param>
-        public bool IsConnected(string id)
+        /// <param name="playerId"></param>
+        public bool IsConnected(string playerId)
         {
-            return ConnectionManager.Instance.Clients.GetForNameOrId(id) != null;
+            return ConnectionManager.Instance.Clients.GetForNameOrId(playerId) != null;
         }
 
         /// <summary>
         /// Kicks the player for the specified reason
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="playerId"></param>
         /// <param name="reason"></param>
-        public void Kick(string id, string reason)
+        public void Kick(string playerId, string reason)
         {
-            ClientInfo client = ConnectionManager.Instance.Clients.GetForNameOrId(id);
+            ClientInfo client = ConnectionManager.Instance.Clients.GetForNameOrId(playerId);
             if (client != null)
             {
                 GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, DateTime.Now, reason);
@@ -212,14 +217,14 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Unbans the player
         /// </summary>
-        /// <param name="id"></param>
-        public void Unban(string id)
+        /// <param name="playerId"></param>
+        public void Unban(string playerId)
         {
             // Check if unbanned already
-            if (IsBanned(id))
+            if (IsBanned(playerId))
             {
                 // Set to unbanned
-                GameManager.Instance.adminTools.RemoveBan(id);
+                GameManager.Instance.adminTools.RemoveBan(playerId);
             }
         }
 
