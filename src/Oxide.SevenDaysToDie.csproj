@@ -15,7 +15,7 @@
     <TargetFramework>net46</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <SteamAppId>294420</SteamAppId>
-    <SteamBranch>latest_experimental</SteamBranch>
+    <SteamBranch>public</SteamBranch>
     <SteamLogin>anonymous</SteamLogin>
     <GamePlatform>windows;linux</GamePlatform>
     <GameExe>7DaysToDieServer.exe;7DaysToDieServer</GameExe>
