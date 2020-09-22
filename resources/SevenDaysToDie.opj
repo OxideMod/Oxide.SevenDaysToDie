@@ -105,7 +105,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "pDifoAXN5RS4st4CuUxTkWWApvauQrHAAwnTKbag93U=",
+            "MSILHash": "IB1N8YIq2OaK6dMEOwGHVnEXGzwYi2NaQbmH6o43wT4=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -406,7 +406,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "zh6+r49j2LOhQDeQslXTKYA9jGMcw+af4HsIgaUKrpg=",
+            "MSILHash": "6Ar9/KLbReBsqt7cz7LExhURGBlTH3elijyV2YxVrVs=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -458,7 +458,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "zh6+r49j2LOhQDeQslXTKYA9jGMcw+af4HsIgaUKrpg=",
+            "MSILHash": "6Ar9/KLbReBsqt7cz7LExhURGBlTH3elijyV2YxVrVs=",
             "BaseHookName": "OnExperienceGained",
             "HookCategory": "_Patches"
           }
@@ -544,7 +544,7 @@
         {
           "Type": "InitOxide",
           "Hook": {
-            "InjectionIndex": 339,
+            "InjectionIndex": 352,
             "HookTypeName": "Initialize Oxide",
             "Name": "InitOxide",
             "HookName": "InitOxide",
@@ -557,7 +557,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "hrEiuu/3armZxRdtXke5I1gc8Vj2JzjWZrfwxYvELKU=",
+            "MSILHash": "6aq7gM7UYa8YnkuVkLcrr9TUelcVLh0qHOj+QF5DI6Q=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -565,7 +565,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 340,
+            "InjectionIndex": 353,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
             "ArgumentString": null,
@@ -581,7 +581,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "hrEiuu/3armZxRdtXke5I1gc8Vj2JzjWZrfwxYvELKU=",
+            "MSILHash": "6aq7gM7UYa8YnkuVkLcrr9TUelcVLh0qHOj+QF5DI6Q=",
             "BaseHookName": "InitOxide",
             "HookCategory": "Server"
           }
@@ -701,7 +701,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "pDifoAXN5RS4st4CuUxTkWWApvauQrHAAwnTKbag93U=",
+            "MSILHash": "IB1N8YIq2OaK6dMEOwGHVnEXGzwYi2NaQbmH6o43wT4=",
             "BaseHookName": "OnEntityTakeDamage",
             "HookCategory": "_Patches"
           }
