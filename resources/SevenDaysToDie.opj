@@ -544,7 +544,7 @@
         {
           "Type": "InitOxide",
           "Hook": {
-            "InjectionIndex": 352,
+            "InjectionIndex": 374,
             "HookTypeName": "Initialize Oxide",
             "Name": "InitOxide",
             "HookName": "InitOxide",
@@ -557,7 +557,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "6aq7gM7UYa8YnkuVkLcrr9TUelcVLh0qHOj+QF5DI6Q=",
+            "MSILHash": "S+qaCD6vQWdA/FyWsu3jGdkMdLIJbM4X8b17F4l/rtM=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -565,7 +565,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 353,
+            "InjectionIndex": 375,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
             "ArgumentString": null,
@@ -581,7 +581,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "6aq7gM7UYa8YnkuVkLcrr9TUelcVLh0qHOj+QF5DI6Q=",
+            "MSILHash": "S+qaCD6vQWdA/FyWsu3jGdkMdLIJbM4X8b17F4l/rtM=",
             "BaseHookName": "InitOxide",
             "HookCategory": "Server"
           }
@@ -604,7 +604,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "6cQbX2sl1dxxXMh2NFSSMlZAS1tFtZfXpij16v00BnI=",
+            "MSILHash": "QKnzRnM7SvKVhQcVo0cdlsQzy204/xlpH0lVvqaIUAQ=",
             "BaseHookName": null,
             "HookCategory": "_Patches"
           }
