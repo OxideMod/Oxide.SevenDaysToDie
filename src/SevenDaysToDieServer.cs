@@ -200,7 +200,7 @@ namespace Oxide.Game.SevenDays
             ClientInfo client = ConnectionManager.Instance.Clients.GetForNameOrId(playerId);
             if (client != null)
             {
-                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, DateTime.Now, reason);
+                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, default, reason);
                 GameUtils.KickPlayerForClientInfo(client, kickData);
             }
         }

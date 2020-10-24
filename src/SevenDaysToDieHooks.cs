@@ -109,7 +109,7 @@ namespace Oxide.Game.SevenDays
             if (canLogin is string || canLogin is bool loginBlocked && !loginBlocked)
             {
                 string reason = canLogin is string ? canLogin.ToString() : "Connection was rejected"; // TODO: Localization
-                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.PlayerLimitExceeded, 0, default, reason);
+                GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, default, reason);
                 GameUtils.KickPlayerForClientInfo(client, kickData);
                 return true;
             }
