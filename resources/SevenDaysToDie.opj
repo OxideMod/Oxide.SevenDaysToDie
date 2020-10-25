@@ -589,29 +589,6 @@
         {
           "Type": "Modify",
           "Hook": {
-            "InjectionIndex": 227,
-            "RemoveCount": 18,
-            "Instructions": [],
-            "HookTypeName": "Modify",
-            "Name": "RemoveGetStatsLogOut [patch]",
-            "HookName": "RemoveGetStatsLogOut",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 0,
-              "Name": "gmUpdate",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MSILHash": "QKnzRnM7SvKVhQcVo0cdlsQzy204/xlpH0lVvqaIUAQ=",
-            "BaseHookName": null,
-            "HookCategory": "_Patches"
-          }
-        },
-        {
-          "Type": "Modify",
-          "Hook": {
             "InjectionIndex": 7,
             "RemoveCount": 29,
             "Instructions": [],
@@ -638,7 +615,7 @@
             "InjectionIndex": 27,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
-            "ArgumentString": "a0, a1, a2",
+            "ArgumentString": "a0",
             "HookTypeName": "Simple",
             "Name": "IOnUserApprove",
             "HookName": "IOnUserApprove",
