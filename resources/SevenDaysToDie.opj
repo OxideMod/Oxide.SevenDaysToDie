@@ -226,7 +226,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 43,
+            "InjectionIndex": 48,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
             "ArgumentString": null,
@@ -245,7 +245,7 @@
                 "KickPlayerDelegate"
               ]
             },
-            "MSILHash": "b4YCQyDsGFVDffAbkutnDNZFDsTieQTrJZ+nUqs33yI=",
+            "MSILHash": "G8HXTxHfaLF4XWU2GrMExwgfVBLPnD4HVrz4cMp5i0g=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }

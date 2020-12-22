@@ -211,7 +211,7 @@ namespace Oxide.Game.SevenDays
                     SdtdConsole.Instance.m_Commands.Remove(nativeCommand);
                     foreach (string nCommand in newCommand.SevenDaysToDieCommand.GetCommands())
                     {
-                        SdtdConsole.Instance.m_CommandsAllVariants.Remove(new CommandDescriptor(nCommand, nativeCommand));
+                        SdtdConsole.Instance.m_CommandsAllVariants.Remove(nCommand);
                     }
                 }
 
@@ -229,7 +229,7 @@ namespace Oxide.Game.SevenDays
             {
                 if (!string.IsNullOrEmpty(nCommand))
                 {
-                    SdtdConsole.Instance.m_CommandsAllVariants.Add(new CommandDescriptor(nCommand, newCommand.SevenDaysToDieCommand));
+                    SdtdConsole.Instance.m_CommandsAllVariants.Add(nCommand, newCommand.SevenDaysToDieCommand);
                 }
             }
 
@@ -258,7 +258,7 @@ namespace Oxide.Game.SevenDays
                 SdtdConsole.Instance.m_Commands.Remove(cmd);
                 foreach (string nCommand in cmd.GetCommands())
                 {
-                    SdtdConsole.Instance.m_CommandsAllVariants.Remove(new CommandDescriptor(nCommand, cmd));
+                    SdtdConsole.Instance.m_CommandsAllVariants.Remove(nCommand);
                 }
             }
 
