@@ -31,7 +31,6 @@
     <PackageReference Include="Oxide.Unity" Version="2.0.*" />
     <Reference Include="Assembly-CSharp" />
     <Reference Include="Assembly-CSharp-firstpass" />
-    <Reference Include="LogLibrary" />
     <Reference Include="mscorlib" />
     <Reference Include="UnityEngine" />
     <Reference Include="UnityEngine.CoreModule" />
@@ -40,7 +39,7 @@
     <None Remove="Bundle\**; dependencies\**; *.config; *.opj" />
   </ItemGroup>
   <ItemGroup>
-    <PatchedFiles Include="$(TargetDir)\Assembly-CSharp.dll; $(TargetDir)\LogLibrary.dll" />
+    <PatchedFiles Include="$(TargetDir)\Assembly-CSharp.dll" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <Import Project="..\Game.targets" />

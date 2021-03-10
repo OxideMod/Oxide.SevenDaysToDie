@@ -1,6 +1,6 @@
 {
   "Name": "7 Days to Die",
-  "TargetDirectory": "D:\\Servers\\7DaysToDie\\7DaysToDieServer_Data\\Managed",
+  "TargetDirectory": "E:\\Servers\\7DaysToDie\\7DaysToDieServer_Data\\Managed",
   "Manifests": [
     {
       "AssemblyName": "Assembly-CSharp.dll",
@@ -32,7 +32,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 130,
+            "InjectionIndex": 145,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 2,
             "ArgumentString": null,
@@ -50,7 +50,7 @@
                 "Entity"
               ]
             },
-            "MSILHash": "fB2BJYe8HR68oN7pTlkDPFcMzbAfKtnu/2mPDhPji90=",
+            "MSILHash": "0R+F33Nt4R5wDorAT10AwNDILMbPkpSUVd1S5n02qPE=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -557,7 +557,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "S+qaCD6vQWdA/FyWsu3jGdkMdLIJbM4X8b17F4l/rtM=",
+            "MSILHash": "ai3eWmnKq7X2NlmXf88gmJg9K7HffYlzjmLAE/0BYog=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -581,7 +581,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "S+qaCD6vQWdA/FyWsu3jGdkMdLIJbM4X8b17F4l/rtM=",
+            "MSILHash": "ai3eWmnKq7X2NlmXf88gmJg9K7HffYlzjmLAE/0BYog=",
             "BaseHookName": "InitOxide",
             "HookCategory": "Server"
           }
@@ -984,59 +984,6 @@
           "Flagged": false
         }
       ]
-    },
-    {
-      "AssemblyName": "LogLibrary.dll",
-      "Hooks": [],
-      "Modifiers": [
-        {
-          "Name": "Logger::UnityLogCallback",
-          "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Logger",
-          "Type": 1,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "UnityLogCallback",
-            "FullTypeName": "System.Void",
-            "Parameters": [
-              "System.String",
-              "System.String",
-              "UnityEngine.LogType"
-            ]
-          },
-          "MSILHash": "n55HmeVZ6lN0jMbrSqeqlSS04/KD6mFxTWIZgvjPHsU="
-        },
-        {
-          "Name": "Logger::SendToLogListeners",
-          "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Logger",
-          "Type": 1,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "SendToLogListeners",
-            "FullTypeName": "System.Void",
-            "Parameters": [
-              "System.String",
-              "System.String",
-              "UnityEngine.LogType"
-            ]
-          },
-          "MSILHash": "gL/FvmqtYitqDEwJD/oNESxO4KUifAc6GeeNz6QBNko="
-        }
-      ],
-      "Fields": []
     }
   ]
 }
