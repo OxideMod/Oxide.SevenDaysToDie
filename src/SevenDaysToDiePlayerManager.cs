@@ -60,11 +60,11 @@ namespace Oxide.Game.SevenDays
         internal void PlayerConnected(ClientInfo client)
         {
             SevenDaysPlayer player = new SevenDaysPlayer(client);
-            allPlayers[client.playerId] = player;
-            connectedPlayers[client.playerId] = player;
+            allPlayers[client.InternalId.ReadablePlatformUserIdentifier] = player;
+            connectedPlayers[client.InternalId.ReadablePlatformUserIdentifier] = player;
         }
 
-        internal void PlayerDisconnected(ClientInfo client) => connectedPlayers.Remove(client.playerId);
+        internal void PlayerDisconnected(ClientInfo client) => connectedPlayers.Remove(client.InternalId.ReadablePlatformUserIdentifier);
 
         internal void SavePlayerData() => ProtoStorage.Save(playerData, "oxide.covalence");
 

@@ -100,11 +100,11 @@ namespace Oxide.Game.SevenDays
         private object IOnUserApprove(ClientInfo client)
         {
             // Let covalence know
-            Covalence.PlayerManager.PlayerJoin(client.playerId, client.playerName);
+            Covalence.PlayerManager.PlayerJoin(client.InternalId.ReadablePlatformUserIdentifier, client.playerName);
 
             // Call hooks for plugins
             object loginSpecific = Interface.Call("CanClientLogin", client);
-            object loginCovalence = Interface.Call("CanUserLogin", client.playerName, client.playerId, client.ip);
+            object loginCovalence = Interface.Call("CanUserLogin", client.playerName, client.InternalId.ReadablePlatformUserIdentifier, client.ip);
             object canLogin = loginSpecific is null ? loginCovalence : loginSpecific;
             if (canLogin is string || canLogin is bool loginBlocked && !loginBlocked)
             {
@@ -116,7 +116,7 @@ namespace Oxide.Game.SevenDays
 
             // Call hooks for plugins
             object approvedSpecific = Interface.Call("OnUserApprove", client);
-            object approvedCovalence = Interface.Call("OnUserApproved", client.playerName, client.playerId, client.ip);
+            object approvedCovalence = Interface.Call("OnUserApproved", client.playerName, client.InternalId.ReadablePlatformUserIdentifier, client.ip);
             return approvedSpecific is null ? approvedCovalence : approvedSpecific;
         }
 
@@ -130,22 +130,22 @@ namespace Oxide.Game.SevenDays
             // Update name and groups with permissions
             if (permission.IsLoaded)
             {
-                permission.UpdateNickname(client.playerId, client.playerName);
+                permission.UpdateNickname(client.InternalId.ReadablePlatformUserIdentifier, client.playerName);
                 OxideConfig.DefaultGroups defaultGroups = Interface.Oxide.Config.Options.DefaultGroups;
-                if (!permission.UserHasGroup(client.playerId, defaultGroups.Players))
+                if (!permission.UserHasGroup(client.InternalId.ReadablePlatformUserIdentifier, defaultGroups.Players))
                 {
-                    permission.AddUserGroup(client.playerId, defaultGroups.Players);
+                    permission.AddUserGroup(client.InternalId.ReadablePlatformUserIdentifier, defaultGroups.Players);
                 }
-                if (GameManager.Instance.adminTools.IsAdmin(client) && !permission.UserHasGroup(client.playerId, defaultGroups.Administrators))
+                if (GameManager.Instance.adminTools.IsAdmin(client) && !permission.UserHasGroup(client.InternalId.ReadablePlatformUserIdentifier, defaultGroups.Administrators))
                 {
-                    permission.AddUserGroup(client.playerId, defaultGroups.Administrators);
+                    permission.AddUserGroup(client.InternalId.ReadablePlatformUserIdentifier, defaultGroups.Administrators);
                 }
             }
 
             // Let covalence know
             Covalence.PlayerManager.PlayerConnected(client);
 
-            IPlayer player = Covalence.PlayerManager.FindPlayerById(client.playerId);
+            IPlayer player = Covalence.PlayerManager.FindPlayerById(client.InternalId.ReadablePlatformUserIdentifier);
             if (player != null)
             {
                 client.IPlayer = player;

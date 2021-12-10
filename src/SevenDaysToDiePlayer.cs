@@ -14,6 +14,7 @@ namespace Oxide.Game.SevenDays
     {
         private static Permission libPerms;
         private readonly ClientInfo client;
+        private readonly PlatformUserIdentifierAbs identifier;
 
         internal SevenDaysPlayer(string playerId, string playerName)
         {
@@ -26,9 +27,10 @@ namespace Oxide.Game.SevenDays
             Id = playerId;
         }
 
-        internal SevenDaysPlayer(ClientInfo client) : this(client.playerId, client.playerName)
+        internal SevenDaysPlayer(ClientInfo client) : this(client.InternalId.ReadablePlatformUserIdentifier, client.playerName)
         {
             this.client = client;
+            this.identifier = client.InternalId;
         }
 
         #region Objects
@@ -80,7 +82,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets if the player is banned
         /// </summary>
-        public bool IsBanned => GameManager.Instance.adminTools.IsBanned(Id);
+        public bool IsBanned => GameManager.Instance.adminTools.IsBanned(identifier, out _, out _);
 
         /// <summary>
         /// Gets if the player is connected
@@ -119,7 +121,7 @@ namespace Oxide.Game.SevenDays
             if (!IsBanned)
             {
                 // Ban player with reason
-                GameManager.Instance.adminTools.AddBan(Id, null, null, new DateTime(duration.Ticks), reason);
+                GameManager.Instance.adminTools.AddBan(client.playerName, identifier, new DateTime(duration.Ticks), reason);
 
                 // Kick player if connected
                 if (IsConnected)
@@ -136,9 +138,9 @@ namespace Oxide.Game.SevenDays
         {
             get
             {
-                if (GameManager.Instance.adminTools.bannedUsers.ContainsKey(Id))
+                if (GameManager.Instance.adminTools.bannedUsers.ContainsKey(identifier))
                 {
-                    AdminToolsClientInfo clientInfo = GameManager.Instance.adminTools.bannedUsers[Id];
+                    AdminToolsClientInfo clientInfo = GameManager.Instance.adminTools.bannedUsers[identifier];
                     return clientInfo.BannedUntil.TimeOfDay;
                 }
 
@@ -243,7 +245,7 @@ namespace Oxide.Game.SevenDays
             if (IsBanned)
             {
                 // Set to unbanned
-                GameManager.Instance.adminTools.RemoveBan(Id);
+                GameManager.Instance.adminTools.RemoveBan(identifier);
             }
         }
 

@@ -147,7 +147,8 @@ namespace Oxide.Game.SevenDays
             if (!IsBanned(playerId))
             {
                 // Ban player with reason
-                GameManager.Instance.adminTools.AddBan(playerId, null, null, new DateTime(duration.Ticks), reason);
+                PlatformUserIdentifierAbs identifier = PlatformUserIdentifierAbs.FromCombinedString(playerId);
+                GameManager.Instance.adminTools.AddBan(identifier.PlatformIdentifierString, identifier, new DateTime(duration.Ticks), reason);
 
                 // Kick player if connected
                 if (IsConnected(playerId))
@@ -163,9 +164,10 @@ namespace Oxide.Game.SevenDays
         /// <param name="playerId"></param>
         public TimeSpan BanTimeRemaining(string playerId)
         {
-            if (GameManager.Instance.adminTools.bannedUsers.ContainsKey(playerId))
+            PlatformUserIdentifierAbs identifier = PlatformUserIdentifierAbs.FromPlatformAndId("Steam", playerId);
+            if (GameManager.Instance.adminTools.bannedUsers.ContainsKey(identifier))
             {
-                AdminToolsClientInfo clientInfo = GameManager.Instance.adminTools.bannedUsers[playerId];
+                AdminToolsClientInfo clientInfo = GameManager.Instance.adminTools.bannedUsers[identifier];
                 return clientInfo.BannedUntil.TimeOfDay;
             }
 
@@ -178,7 +180,7 @@ namespace Oxide.Game.SevenDays
         /// <param name="playerId"></param>
         public bool IsBanned(string playerId)
         {
-            return GameManager.Instance.adminTools.IsBanned(playerId);
+            return GameManager.Instance.adminTools.IsBanned(PlatformUserIdentifierAbs.FromPlatformAndId("Steam", playerId), out _, out _);
         }
 
         /// <summary>
@@ -224,7 +226,7 @@ namespace Oxide.Game.SevenDays
             if (IsBanned(playerId))
             {
                 // Set to unbanned
-                GameManager.Instance.adminTools.RemoveBan(playerId);
+                GameManager.Instance.adminTools.RemoveBan(PlatformUserIdentifierAbs.FromPlatformAndId("Steam", playerId));
             }
         }
 
