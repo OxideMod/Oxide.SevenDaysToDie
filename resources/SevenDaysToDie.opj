@@ -465,51 +465,6 @@
           }
         },
         {
-          "Type": "InitOxide",
-          "Hook": {
-            "InjectionIndex": 395,
-            "HookTypeName": "Initialize Oxide",
-            "Name": "InitOxide",
-            "HookName": "InitOxide",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 1,
-              "Name": "Awake",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MSILHash": "FcuHHxKNcXsHktInk7dyzRvkXiaVpz6svnXCDhiCumg=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 396,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "InitLogging",
-            "HookName": "InitLogging",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 1,
-              "Name": "Awake",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MSILHash": "FcuHHxKNcXsHktInk7dyzRvkXiaVpz6svnXCDhiCumg=",
-            "BaseHookName": "InitOxide",
-            "HookCategory": "Server"
-          }
-        },
-        {
           "Type": "Modify",
           "Hook": {
             "InjectionIndex": 4,
@@ -694,6 +649,51 @@
             },
             "MSILHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
             "BaseHookName": "IOnServerCommand",
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "InitOxide",
+          "Hook": {
+            "InjectionIndex": 0,
+            "HookTypeName": "Initialize Oxide",
+            "Name": "InitOxide",
+            "HookName": "InitOxide",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "ModEvent",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Invoke",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MSILHash": "nLtlLEZrzq98SPWC4PDboe/4OgvS2ajn9uCh9UHVRTg=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionIndex": 1,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Simple",
+            "Name": "InitLogging",
+            "HookName": "InitLogging",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "ModEvent",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Invoke",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MSILHash": "nLtlLEZrzq98SPWC4PDboe/4OgvS2ajn9uCh9UHVRTg=",
+            "BaseHookName": "InitOxide",
             "HookCategory": "Server"
           }
         }
