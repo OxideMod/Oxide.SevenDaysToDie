@@ -755,14 +755,14 @@
             "Name": "Initialize",
             "HookName": "Initialize",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "ModManager",
+            "TypeName": "GameManager",
             "Signature": {
-              "Exposure": 2,
-              "Name": "LoadMods",
-              "ReturnType": "System.Void",
+              "Exposure": 0,
+              "Name": "StartAsServer",
+              "ReturnType": "System.Collections.IEnumerator",
               "Parameters": []
             },
-            "MsilHash": "QbESfB97cWlqtOlTqP8yiapWtFPsiC30uHAtWQsfe0E=",
+            "MsilHash": "gj5skO2TZuQVa5aROiK1JoqOpz4JLUyOBfkhBg0QO2k=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -778,14 +778,14 @@
             "Name": "InitLogging",
             "HookName": "InitLogging",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "ModManager",
+            "TypeName": "GameManager",
             "Signature": {
-              "Exposure": 2,
-              "Name": "LoadMods",
-              "ReturnType": "System.Void",
+              "Exposure": 0,
+              "Name": "StartAsServer",
+              "ReturnType": "System.Collections.IEnumerator",
               "Parameters": []
             },
-            "MsilHash": "QbESfB97cWlqtOlTqP8yiapWtFPsiC30uHAtWQsfe0E=",
+            "MsilHash": "gj5skO2TZuQVa5aROiK1JoqOpz4JLUyOBfkhBg0QO2k=",
             "BaseHookName": "Initialize",
             "HookCategory": "Server"
           }
