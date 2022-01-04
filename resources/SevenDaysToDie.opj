@@ -8,7 +8,8 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 0,
+            "InjectionType": 1,
+            "InjectionIndex": -1,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
             "ArgumentString": null,
@@ -17,14 +18,13 @@
             "HookName": "OnServerSave",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "World",
-            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "Save",
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "vU0d0vvxj1L5Ax33MywdSrpzm2Tv7/M9Wg3q8RNyWpo=",
+            "MsilHash": "vU0d0vvxj1L5Ax33MywdSrpzm2Tv7/M9Wg3q8RNyWpo=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -41,7 +41,6 @@
             "HookName": "OnEntitySpawned",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "World",
-            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "SpawnEntityInWorld",
@@ -50,7 +49,7 @@
                 "Entity"
               ]
             },
-            "MSILHash": "P7D7cBBwtYjSb6F5dQK00761kns2v6YSJe42Qj22pYY=",
+            "MsilHash": "P7D7cBBwtYjSb6F5dQK00761kns2v6YSJe42Qj22pYY=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -58,33 +57,8 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 4,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 2,
-            "ArgumentString": "",
-            "HookTypeName": "Simple",
-            "Name": "OnPlayerDisconnected",
-            "HookName": "OnPlayerDisconnected",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "PlayerDisconnected",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo"
-              ]
-            },
-            "MSILHash": "4JieS2YvdD/E1Fn+zLnw1MfNYMrbEMr0GIAWtYkJgfo=",
-            "BaseHookName": null,
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 0,
+            "InjectionType": 1,
+            "InjectionIndex": -1,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
             "ArgumentString": "this, a0",
@@ -93,7 +67,6 @@
             "HookName": "OnEntityTakeDamage",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "EntityAlive",
-            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "DamageEntity",
@@ -105,7 +78,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
+            "MsilHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -113,66 +86,8 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 90,
-            "ReturnBehavior": 1,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "a0, a3",
-            "HookTypeName": "Simple",
-            "Name": "IOnPlayerChat",
-            "HookName": "IOnPlayerChat",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "ChatMessageServer",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "EChatType",
-                "System.Int32",
-                "System.String",
-                "System.String",
-                "System.Boolean",
-                "System.Collections.Generic.List`1<System.Int32>"
-              ]
-            },
-            "MSILHash": "AFwZ0WjBTlLeLDZ29O2fObtQ8zTEGtLRzmnfPbmwdDU=",
-            "BaseHookName": null,
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 27,
-            "ReturnBehavior": 1,
-            "ArgumentBehavior": 2,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "OnPlayerCommand",
-            "HookName": "OnPlayerCommand",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "ConnectionManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "ServerConsoleCommand",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "System.String"
-              ]
-            },
-            "MSILHash": "Mx9BS37wL5JEqYbl8D1dU7CTXuzh1lRuYIoJa2XxxGo=",
-            "BaseHookName": null,
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 0,
+            "InjectionType": 1,
+            "InjectionIndex": -1,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
             "ArgumentString": "a0",
@@ -181,7 +96,6 @@
             "HookName": "OnPlayerSpawn",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "GameManager",
-            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "RequestToSpawnPlayer",
@@ -192,7 +106,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "PAtOI7kGWPI57dVX1Gl5DspzZhPlOqIhdGQC29nFSvQ=",
+            "MsilHash": "PAtOI7kGWPI57dVX1Gl5DspzZhPlOqIhdGQC29nFSvQ=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -200,7 +114,8 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 48,
+            "InjectionType": 2,
+            "InjectionIndex": -1,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
             "ArgumentString": null,
@@ -209,7 +124,6 @@
             "HookName": "OnServerInitialized",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "EACServer",
-            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "OnStartAsServer",
@@ -219,7 +133,7 @@
                 "KickPlayerDelegate"
               ]
             },
-            "MSILHash": "G8HXTxHfaLF4XWU2GrMExwgfVBLPnD4HVrz4cMp5i0g=",
+            "MsilHash": "G8HXTxHfaLF4XWU2GrMExwgfVBLPnD4HVrz4cMp5i0g=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -227,65 +141,8 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 20,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "a0",
-            "HookTypeName": "Simple",
-            "Name": "OnPlayerConnected",
-            "HookName": "OnPlayerConnected",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "PlayerSpawnedInWorld",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "RespawnType",
-                "Vector3i",
-                "System.Int32"
-              ]
-            },
-            "MSILHash": "sPWIUIRF4DcezsyjNTPMD9ED3k39pPsWp4ATShIGhF0=",
-            "BaseHookName": null,
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 74,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "a0",
-            "HookTypeName": "Simple",
-            "Name": "OnPlayerSpawned",
-            "HookName": "OnPlayerSpawned",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "PlayerSpawnedInWorld",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "RespawnType",
-                "Vector3i",
-                "System.Int32"
-              ]
-            },
-            "MSILHash": "sPWIUIRF4DcezsyjNTPMD9ED3k39pPsWp4ATShIGhF0=",
-            "BaseHookName": "OnPlayerConnected",
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 0,
+            "InjectionType": 1,
+            "InjectionIndex": -1,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
             "ArgumentString": null,
@@ -294,14 +151,13 @@
             "HookName": "OnServerShutdown",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "GameManager",
-            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "Cleanup",
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "l+N+JXEV25KfdcIBynqwCIMbvUjO4M7Ic5aaXpVUBwk=",
+            "MsilHash": "l+N+JXEV25KfdcIBynqwCIMbvUjO4M7Ic5aaXpVUBwk=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -309,59 +165,8 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 146,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "this, l9.SpawnPos",
-            "HookTypeName": "Simple",
-            "Name": "OnAirdrop",
-            "HookName": "OnAirdrop",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "AIAirDrop",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Tick",
-              "ReturnType": "System.Boolean",
-              "Parameters": [
-                "System.Single"
-              ]
-            },
-            "MSILHash": "PiHTf+eCl0N4mzYNYZeBd7HB6o/jm/AjQsbWvIujye4=",
-            "BaseHookName": null,
-            "HookCategory": "Entity"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 6,
-            "ReturnBehavior": 1,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "this, a0",
-            "HookTypeName": "Simple",
-            "Name": "OnEntityDeath",
-            "HookName": "OnEntityDeath",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "EntityAlive",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 1,
-              "Name": "ClientKill",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "DamageResponse"
-              ]
-            },
-            "MSILHash": "6P965DtDddHk2WQwWQgPuNQZTOuCPfcQf/3BHgrmvHs=",
-            "BaseHookName": null,
-            "HookCategory": "Entity"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 174,
+            "InjectionType": 2,
+            "InjectionIndex": -1,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 4,
             "ArgumentString": "this.parent, a0",
@@ -370,7 +175,6 @@
             "HookName": "OnExperienceGained",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "Progression",
-            "Flagged": false,
             "Signature": {
               "Exposure": 0,
               "Name": "AddLevelExpRecursive",
@@ -380,7 +184,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "qVDX4etNsVa5wLtdWfLf11D+k2FkBALR8FNc6t8RBxo=",
+            "MsilHash": "tNLXvzmIaf6QUwjktH9u/GjEQqcuF3MxhrcW4dpiTvQ=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -422,7 +226,6 @@
             "HookName": "OnExperienceGained [2]",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "Progression",
-            "Flagged": false,
             "Signature": {
               "Exposure": 0,
               "Name": "AddLevelExpRecursive",
@@ -432,36 +235,9 @@
                 "System.String"
               ]
             },
-            "MSILHash": "qVDX4etNsVa5wLtdWfLf11D+k2FkBALR8FNc6t8RBxo=",
+            "MsilHash": "tNLXvzmIaf6QUwjktH9u/GjEQqcuF3MxhrcW4dpiTvQ=",
             "BaseHookName": "OnExperienceGained",
             "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 5,
-            "ReturnBehavior": 1,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "a0",
-            "HookTypeName": "Simple",
-            "Name": "IOnServerCommand",
-            "HookName": "IOnServerCommand",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "SdtdConsole",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 0,
-              "Name": "executeCommand",
-              "ReturnType": "System.Collections.Generic.List`1<System.String>",
-              "Parameters": [
-                "System.String",
-                "CommandSenderInfo"
-              ]
-            },
-            "MSILHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
           }
         },
         {
@@ -491,7 +267,6 @@
             "HookName": "OnEntityTakeDamage [2]",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "EntityAlive",
-            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "DamageEntity",
@@ -503,7 +278,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
+            "MsilHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
             "BaseHookName": "OnEntityTakeDamage",
             "HookCategory": "Entity"
           }
@@ -511,7 +286,8 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 0,
+            "InjectionType": 1,
+            "InjectionIndex": -1,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
             "ArgumentString": "a0, this",
@@ -520,7 +296,6 @@
             "HookName": "CanUseDoor",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "TileEntitySecure",
-            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "IsUserAllowed",
@@ -529,39 +304,9 @@
                 "PlatformUserIdentifierAbs"
               ]
             },
-            "MSILHash": "RxLhu9XFq11eHWpRq+Uh7/fPR9IQd84cq2C/6RgRuh0=",
+            "MsilHash": "RxLhu9XFq11eHWpRq+Uh7/fPR9IQd84cq2C/6RgRuh0=",
             "BaseHookName": null,
             "HookCategory": "Structure"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionIndex": 34,
-            "ReturnBehavior": 1,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "a0",
-            "HookTypeName": "Simple",
-            "Name": "IOnUserApprove",
-            "HookName": "IOnUserApprove",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "AuthorizationManager",
-            "Flagged": false,
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Authorize",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "System.String",
-                "System.ValueTuple`2<PlatformUserIdentifierAbs,System.String>",
-                "System.ValueTuple`2<PlatformUserIdentifierAbs,System.String>",
-                "System.String"
-              ]
-            },
-            "MSILHash": "icil6EFsLfrL9l3lsGmILfvkuQtglroM10BUkEs5hUY=",
-            "BaseHookName": null,
-            "HookCategory": "Player"
           }
         },
         {
@@ -601,7 +346,6 @@
             "HookName": "CanUseDoor [2]",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "TileEntitySecure",
-            "Flagged": false,
             "Signature": {
               "Exposure": 2,
               "Name": "IsUserAllowed",
@@ -610,9 +354,139 @@
                 "PlatformUserIdentifierAbs"
               ]
             },
-            "MSILHash": "RxLhu9XFq11eHWpRq+Uh7/fPR9IQd84cq2C/6RgRuh0=",
+            "MsilHash": "RxLhu9XFq11eHWpRq+Uh7/fPR9IQd84cq2C/6RgRuh0=",
             "BaseHookName": "CanUseDoor",
             "HookCategory": "Structure"
+          }
+        },
+        {
+          "Type": "Initialize",
+          "Hook": {
+            "InjectionIndex": 0,
+            "HookTypeName": "Initialize",
+            "Name": "Initialize",
+            "HookName": "Initialize",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "ModEvent",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Invoke",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MsilHash": "nLtlLEZrzq98SPWC4PDboe/4OgvS2ajn9uCh9UHVRTg=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 0,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldarg.0",
+                  "ldc.i4.0",
+                  "ldarg.1",
+                  "call System.Void AuthorizationManager::tryAuthorizer(System.Int32,ClientInfo)"
+                ]
+              }
+            ],
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0",
+            "HookTypeName": "Pattern",
+            "Name": "IOnUserApprove",
+            "HookName": "IOnUserApprove",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "AuthorizationManager",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Authorize",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "ClientInfo",
+                "System.String",
+                "System.ValueTuple`2<PlatformUserIdentifierAbs,System.String>",
+                "System.ValueTuple`2<PlatformUserIdentifierAbs,System.String>",
+                "System.String"
+              ]
+            },
+            "MsilHash": "icil6EFsLfrL9l3lsGmILfvkuQtglroM10BUkEs5hUY=",
+            "BaseHookName": null,
+            "HookCategory": "Player"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 0,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldc.i4.0"
+                ]
+              }
+            ],
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Pattern",
+            "Name": "InitLogging",
+            "HookName": "InitLogging",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "ModEvent",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Invoke",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MsilHash": "nLtlLEZrzq98SPWC4PDboe/4OgvS2ajn9uCh9UHVRTg=",
+            "BaseHookName": "Initialize",
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 0,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldarg.0",
+                  "ldfld System.Collections.Generic.List`1<System.String> SdtdConsole::m_currentCommandOutputList",
+                  "callvirt System.Void System.Collections.Generic.List`1<System.String>::Clear()"
+                ]
+              }
+            ],
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0",
+            "HookTypeName": "Pattern",
+            "Name": "IOnServerCommand",
+            "HookName": "IOnServerCommand",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "SdtdConsole",
+            "Signature": {
+              "Exposure": 0,
+              "Name": "executeCommand",
+              "ReturnType": "System.Collections.Generic.List`1<System.String>",
+              "Parameters": [
+                "System.String",
+                "CommandSenderInfo"
+              ]
+            },
+            "MsilHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
           }
         },
         {
@@ -637,7 +511,6 @@
             "HookName": "IOnServerCommand [2]",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "SdtdConsole",
-            "Flagged": false,
             "Signature": {
               "Exposure": 0,
               "Name": "executeCommand",
@@ -647,54 +520,283 @@
                 "CommandSenderInfo"
               ]
             },
-            "MSILHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
+            "MsilHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
             "BaseHookName": "IOnServerCommand",
             "HookCategory": "Server"
           }
         },
         {
-          "Type": "InitOxide",
+          "Type": "Pattern",
           "Hook": {
-            "InjectionIndex": 0,
-            "HookTypeName": "Initialize Oxide",
-            "Name": "InitOxide",
-            "HookName": "InitOxide",
+            "CaptureGroupPosition": 0,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldarg.0",
+                  "callvirt System.Void Entity::SetDead()",
+                  "ldarg.0",
+                  "ldfld EntityBuffs EntityAlive::Buffs"
+                ]
+              }
+            ],
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "this, a0",
+            "HookTypeName": "Pattern",
+            "Name": "OnEntityDeath",
+            "HookName": "OnEntityDeath",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "ModEvent",
-            "Flagged": false,
+            "TypeName": "EntityAlive",
             "Signature": {
-              "Exposure": 2,
-              "Name": "Invoke",
+              "Exposure": 1,
+              "Name": "ClientKill",
               "ReturnType": "System.Void",
-              "Parameters": []
+              "Parameters": [
+                "DamageResponse"
+              ]
             },
-            "MSILHash": "nLtlLEZrzq98SPWC4PDboe/4OgvS2ajn9uCh9UHVRTg=",
+            "MsilHash": "6P965DtDddHk2WQwWQgPuNQZTOuCPfcQf/3BHgrmvHs=",
             "BaseHookName": null,
-            "HookCategory": "Server"
+            "HookCategory": "Entity"
           }
         },
         {
-          "Type": "Simple",
+          "Type": "Pattern",
           "Hook": {
-            "InjectionIndex": 1,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
+            "CaptureGroupPosition": 0,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldsfld T SingletonMonoBehaviour`1<SdtdConsole>::Instance",
+                  "ldarg.2",
+                  "ldc.i4.0",
+                  "callvirt IConsoleCommand SdtdConsole::GetCommand(System.String,System.Boolean)"
+                ]
+              }
+            ],
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 2,
             "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "InitLogging",
-            "HookName": "InitLogging",
+            "HookTypeName": "Pattern",
+            "Name": "OnPlayerCommand",
+            "HookName": "OnPlayerCommand",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "ModEvent",
-            "Flagged": false,
+            "TypeName": "ConnectionManager",
             "Signature": {
               "Exposure": 2,
-              "Name": "Invoke",
+              "Name": "ServerConsoleCommand",
               "ReturnType": "System.Void",
-              "Parameters": []
+              "Parameters": [
+                "ClientInfo",
+                "System.String"
+              ]
             },
-            "MSILHash": "nLtlLEZrzq98SPWC4PDboe/4OgvS2ajn9uCh9UHVRTg=",
-            "BaseHookName": "InitOxide",
-            "HookCategory": "Server"
+            "MsilHash": "Mx9BS37wL5JEqYbl8D1dU7CTXuzh1lRuYIoJa2XxxGo=",
+            "BaseHookName": null,
+            "HookCategory": "Player"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 0,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldstr \"AIAirDrop: Spawned supply crate at \"",
+                  "ldloc.s V_9",
+                  "ldfld UnityEngine.Vector3 AIAirDrop/SupplyCrateSpawn::SpawnPos"
+                ]
+              }
+            ],
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "this, l9.SpawnPos",
+            "HookTypeName": "Pattern",
+            "Name": "OnAirdrop",
+            "HookName": "OnAirdrop",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "AIAirDrop",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Tick",
+              "ReturnType": "System.Boolean",
+              "Parameters": [
+                "System.Single"
+              ]
+            },
+            "MsilHash": "PiHTf+eCl0N4mzYNYZeBd7HB6o/jm/AjQsbWvIujye4=",
+            "BaseHookName": null,
+            "HookCategory": "Entity"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 0,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldarg.s _recipientEntityIds",
+                  "brfalse.s",
+                  "ldarg.s _recipientEntityIds",
+                  "callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<System.Int32>::GetEnumerator()"
+                ]
+              }
+            ],
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0, a3",
+            "HookTypeName": "Pattern",
+            "Name": "IOnPlayerChat",
+            "HookName": "IOnPlayerChat",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "ChatMessageServer",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "ClientInfo",
+                "EChatType",
+                "System.Int32",
+                "System.String",
+                "System.String",
+                "System.Boolean",
+                "System.Collections.Generic.List`1<System.Int32>"
+              ]
+            },
+            "MsilHash": "AFwZ0WjBTlLeLDZ29O2fObtQ8zTEGtLRzmnfPbmwdDU=",
+            "BaseHookName": null,
+            "HookCategory": "Player"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 1,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldloc.0",
+                  "isinst EntityPlayer",
+                  "stloc.1",
+                  "ldloc.1",
+                  "ldnull",
+                  "call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)",
+                  "brfalse.s",
+                  "ret"
+                ]
+              }
+            ],
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0",
+            "HookTypeName": "Pattern",
+            "Name": "OnPlayerConnected",
+            "HookName": "OnPlayerConnected",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "PlayerSpawnedInWorld",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "ClientInfo",
+                "RespawnType",
+                "Vector3i",
+                "System.Int32"
+              ]
+            },
+            "MsilHash": "sPWIUIRF4DcezsyjNTPMD9ED3k39pPsWp4ATShIGhF0=",
+            "BaseHookName": null,
+            "HookCategory": "Player"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 0,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldarg.0",
+                  "ldfld World GameManager::m_World",
+                  "ldarg.1",
+                  "ldfld System.Int32 ClientInfo::entityId"
+                ]
+              }
+            ],
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 1,
+            "ArgumentString": null,
+            "HookTypeName": "Pattern",
+            "Name": "OnPlayerDisconnected",
+            "HookName": "OnPlayerDisconnected",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "PlayerDisconnected",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "ClientInfo"
+              ]
+            },
+            "MsilHash": "4JieS2YvdD/E1Fn+zLnw1MfNYMrbEMr0GIAWtYkJgfo=",
+            "BaseHookName": null,
+            "HookCategory": "Player"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 0,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "callvirt System.Void ModEvent`3<ClientInfo,RespawnType,Vector3i>::Invoke(T1,T2,T3)",
+                  "ldstr \"PlayerSpawnedInWorld (reason: {0}, position: {2}): {1}\"",
+                  "ldc.i4.3"
+                ]
+              }
+            ],
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0",
+            "HookTypeName": "Pattern",
+            "Name": "OnPlayerSpawned",
+            "HookName": "OnPlayerSpawned",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "PlayerSpawnedInWorld",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "ClientInfo",
+                "RespawnType",
+                "Vector3i",
+                "System.Int32"
+              ]
+            },
+            "MsilHash": "sPWIUIRF4DcezsyjNTPMD9ED3k39pPsWp4ATShIGhF0=",
+            "BaseHookName": "OnPlayerConnected",
+            "HookCategory": "Player"
           }
         }
       ],
@@ -716,7 +818,7 @@
             "FullTypeName": "System.Collections.Generic.List`1<IConsoleCommand> SdtdConsole::m_Commands",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "SdtdConsole::m_CommandsAllVariants",
@@ -735,7 +837,7 @@
             "FullTypeName": "System.Collections.Generic.List`1<SdtdConsole/CommandDescriptor> SdtdConsole::m_CommandsAllVariants",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "SdtdConsole/CommandInstance",
@@ -754,7 +856,7 @@
             "FullTypeName": "SdtdConsole/CommandInstance",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "EntityAlive::entityThatKilledMe",
@@ -773,7 +875,7 @@
             "FullTypeName": "EntityAlive EntityAlive::entityThatKilledMe",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "AdminTools::bannedUsers",
@@ -792,7 +894,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsClientInfo> AdminTools::bannedUsers",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "AdminTools::commands",
@@ -811,7 +913,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsCommandPermissions> AdminTools::commands",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "AdminTools::defaultClientPermission",
@@ -830,7 +932,7 @@
             "FullTypeName": "AdminToolsClientInfo AdminTools::defaultClientPermission",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "AdminTools::defaultCommandPermission",
@@ -849,7 +951,7 @@
             "FullTypeName": "AdminToolsCommandPermissions AdminTools::defaultCommandPermission",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "AdminTools::groupPermissions",
@@ -868,7 +970,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsGroupPermissions> AdminTools::groupPermissions",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "AdminTools::userPermissions",
@@ -887,7 +989,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsClientInfo> AdminTools::userPermissions",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "AdminTools::whitelistedGroups",
@@ -906,7 +1008,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsClientInfo> AdminTools::whitelistedGroups",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "AdminTools::whitelistedUsers",
@@ -925,7 +1027,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsClientInfo> AdminTools::whitelistedUsers",
             "Parameters": []
           },
-          "MSILHash": ""
+          "MsilHash": ""
         },
         {
           "Name": "AdminTools::GetAdminToolsCommandPermission",
@@ -946,7 +1048,7 @@
               "System.String[]"
             ]
           },
-          "MSILHash": "Vs/NsMMscYTM0uxiK/1wHrUV65kXZtqluwBuuJxOCrA="
+          "MsilHash": "Vs/NsMMscYTM0uxiK/1wHrUV65kXZtqluwBuuJxOCrA="
         }
       ],
       "Fields": [
