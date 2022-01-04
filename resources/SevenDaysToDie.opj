@@ -360,26 +360,6 @@
           }
         },
         {
-          "Type": "Initialize",
-          "Hook": {
-            "InjectionIndex": 0,
-            "HookTypeName": "Initialize",
-            "Name": "Initialize",
-            "HookName": "Initialize",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "ModEvent",
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Invoke",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MsilHash": "nLtlLEZrzq98SPWC4PDboe/4OgvS2ajn9uCh9UHVRTg=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
-          }
-        },
-        {
           "Type": "Pattern",
           "Hook": {
             "CaptureGroupPosition": 0,
@@ -418,38 +398,6 @@
             "MsilHash": "icil6EFsLfrL9l3lsGmILfvkuQtglroM10BUkEs5hUY=",
             "BaseHookName": null,
             "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Pattern",
-          "Hook": {
-            "CaptureGroupPosition": 0,
-            "CaptureGroupName": "Group1",
-            "CaptureGroups": [
-              {
-                "Name": "Group1",
-                "Patterns": [
-                  "ldc.i4.0"
-                ]
-              }
-            ],
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
-            "ArgumentString": null,
-            "HookTypeName": "Pattern",
-            "Name": "InitLogging",
-            "HookName": "InitLogging",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "ModEvent",
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Invoke",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MsilHash": "nLtlLEZrzq98SPWC4PDboe/4OgvS2ajn9uCh9UHVRTg=",
-            "BaseHookName": "Initialize",
-            "HookCategory": "Server"
           }
         },
         {
@@ -797,6 +745,49 @@
             "MsilHash": "sPWIUIRF4DcezsyjNTPMD9ED3k39pPsWp4ATShIGhF0=",
             "BaseHookName": "OnPlayerConnected",
             "HookCategory": "Player"
+          }
+        },
+        {
+          "Type": "Initialize",
+          "Hook": {
+            "InjectionIndex": 0,
+            "HookTypeName": "Initialize",
+            "Name": "Initialize",
+            "HookName": "Initialize",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "ModManager",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "LoadMods",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MsilHash": "QbESfB97cWlqtOlTqP8yiapWtFPsiC30uHAtWQsfe0E=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionIndex": 1,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Simple",
+            "Name": "InitLogging",
+            "HookName": "InitLogging",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "ModManager",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "LoadMods",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MsilHash": "QbESfB97cWlqtOlTqP8yiapWtFPsiC30uHAtWQsfe0E=",
+            "BaseHookName": "Initialize",
+            "HookCategory": "Server"
           }
         }
       ],
