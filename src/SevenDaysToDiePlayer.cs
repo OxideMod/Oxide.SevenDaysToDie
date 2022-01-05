@@ -1,4 +1,4 @@
-﻿using Oxide.Core;
+using Oxide.Core;
 using Oxide.Core.Libraries;
 using Oxide.Core.Libraries.Covalence;
 using System;
@@ -87,7 +87,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets if the player is connected
         /// </summary>
-        public bool IsConnected => ConnectionManager.Instance.Clients.GetForNameOrId(Id) != null;
+        public bool IsConnected => client.litenetPeerConnectId >= 0L;
 
         /// <summary>
         /// Returns if the player is sleeping
