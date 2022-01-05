@@ -768,13 +768,22 @@
           }
         },
         {
-          "Type": "Simple",
+          "Type": "Pattern",
           "Hook": {
-            "InjectionIndex": 1,
+            "CaptureGroupPosition": 1,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "call System.Void Oxide.Core.Interface::Initialize()"
+                ]
+              }
+            ],
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
             "ArgumentString": null,
-            "HookTypeName": "Simple",
+            "HookTypeName": "Pattern",
             "Name": "InitLogging",
             "HookName": "InitLogging",
             "AssemblyName": "Assembly-CSharp.dll",
