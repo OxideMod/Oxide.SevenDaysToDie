@@ -1,6 +1,7 @@
-using Oxide.Core;
+﻿using Oxide.Core;
 using Oxide.Core.Libraries;
 using Oxide.Core.Libraries.Covalence;
+using Platform.Steam;
 using System;
 using System.Globalization;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace Oxide.Game.SevenDays
             Id = playerId;
         }
 
-        internal SevenDaysPlayer(ClientInfo client) : this(client.InternalId.ReadablePlatformUserIdentifier, client.playerName)
+        internal SevenDaysPlayer(ClientInfo client) : this(((UserIdentifierSteam)client.PlatformId).ReadablePlatformUserIdentifier, client.playerName)
         {
             this.client = client;
             this.identifier = client.InternalId;

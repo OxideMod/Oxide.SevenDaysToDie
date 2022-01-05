@@ -1,7 +1,7 @@
 ﻿extern alias References;
-
 using Oxide.Core;
 using Oxide.Core.Libraries.Covalence;
+using Platform.Steam;
 using References::ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -59,12 +59,13 @@ namespace Oxide.Game.SevenDays
 
         internal void PlayerConnected(ClientInfo client)
         {
+            string playerId = ((UserIdentifierSteam)client.PlatformId).ReadablePlatformUserIdentifier;
             SevenDaysPlayer player = new SevenDaysPlayer(client);
-            allPlayers[client.InternalId.ReadablePlatformUserIdentifier] = player;
-            connectedPlayers[client.InternalId.ReadablePlatformUserIdentifier] = player;
+            allPlayers[playerId] = player;
+            connectedPlayers[playerId] = player;
         }
 
-        internal void PlayerDisconnected(ClientInfo client) => connectedPlayers.Remove(client.InternalId.ReadablePlatformUserIdentifier);
+        internal void PlayerDisconnected(ClientInfo client) => connectedPlayers.Remove(((UserIdentifierSteam)client.PlatformId).ReadablePlatformUserIdentifier);
 
         internal void SavePlayerData() => ProtoStorage.Save(playerData, "oxide.covalence");
 
