@@ -8,7 +8,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionType": 1,
+            "InjectionType": 2,
             "InjectionIndex": -1,
             "ReturnBehavior": 0,
             "ArgumentBehavior": 0,
@@ -796,6 +796,106 @@
             },
             "MsilHash": "gj5skO2TZuQVa5aROiK1JoqOpz4JLUyOBfkhBg0QO2k=",
             "BaseHookName": "Initialize",
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionType": 2,
+            "InjectionIndex": -1,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Simple",
+            "Name": "OnServerSave [2]",
+            "HookName": "OnServerSave",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "AdminTools",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Save",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MsilHash": "X+aQdQBebEOI5Ah+HBDiDbhWXmIpC/sjPGENSkj8lLY=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionType": 2,
+            "InjectionIndex": -1,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Simple",
+            "Name": "OnServerSave [3]",
+            "HookName": "OnServerSave",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "BiomeIntensityMap",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Save",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "System.String"
+              ]
+            },
+            "MsilHash": "S3R7Rtut1QcXWi7LSNW0JWNKcEDXNwjPpIYJgQZaLyE=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionType": 2,
+            "InjectionIndex": -1,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Simple",
+            "Name": "OnServerSave [4]",
+            "HookName": "OnServerSave",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "ChunkCluster",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Save",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MsilHash": "RzgBFETYSBttnT+LJtESouFEER3lwuR2qS3isZ1BW7w=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionType": 2,
+            "InjectionIndex": -1,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Simple",
+            "Name": "OnServerSave [5]",
+            "HookName": "OnServerSave",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "Chunk",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "save",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "PooledBinaryWriter"
+              ]
+            },
+            "MsilHash": "Mb50pKDb3iY6M/ZoKwOwujfqOo5ZHdU5Lq7TFuDoTgY=",
+            "BaseHookName": null,
             "HookCategory": "Server"
           }
         }
