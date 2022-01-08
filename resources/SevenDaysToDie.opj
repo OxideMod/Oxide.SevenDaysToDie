@@ -86,34 +86,6 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionType": 1,
-            "InjectionIndex": -1,
-            "ReturnBehavior": 1,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "a0",
-            "HookTypeName": "Simple",
-            "Name": "OnPlayerSpawn",
-            "HookName": "OnPlayerSpawn",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Signature": {
-              "Exposure": 2,
-              "Name": "RequestToSpawnPlayer",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "System.Int32",
-                "PlayerProfile"
-              ]
-            },
-            "MsilHash": "PAtOI7kGWPI57dVX1Gl5DspzZhPlOqIhdGQC29nFSvQ=",
-            "BaseHookName": null,
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
             "InjectionType": 2,
             "InjectionIndex": -1,
             "ReturnBehavior": 0,
@@ -630,50 +602,6 @@
         {
           "Type": "Pattern",
           "Hook": {
-            "CaptureGroupPosition": 1,
-            "CaptureGroupName": "Group1",
-            "CaptureGroups": [
-              {
-                "Name": "Group1",
-                "Patterns": [
-                  "ldloc.0",
-                  "isinst EntityPlayer",
-                  "stloc.1",
-                  "ldloc.1",
-                  "ldnull",
-                  "call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)",
-                  "brfalse.s",
-                  "ret"
-                ]
-              }
-            ],
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "a0",
-            "HookTypeName": "Pattern",
-            "Name": "OnPlayerConnected",
-            "HookName": "OnPlayerConnected",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Signature": {
-              "Exposure": 2,
-              "Name": "PlayerSpawnedInWorld",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "RespawnType",
-                "Vector3i",
-                "System.Int32"
-              ]
-            },
-            "MsilHash": "sPWIUIRF4DcezsyjNTPMD9ED3k39pPsWp4ATShIGhF0=",
-            "BaseHookName": null,
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Pattern",
-          "Hook": {
             "CaptureGroupPosition": 0,
             "CaptureGroupName": "Group1",
             "CaptureGroups": [
@@ -705,45 +633,6 @@
             },
             "MsilHash": "4JieS2YvdD/E1Fn+zLnw1MfNYMrbEMr0GIAWtYkJgfo=",
             "BaseHookName": null,
-            "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Pattern",
-          "Hook": {
-            "CaptureGroupPosition": 0,
-            "CaptureGroupName": "Group1",
-            "CaptureGroups": [
-              {
-                "Name": "Group1",
-                "Patterns": [
-                  "callvirt System.Void ModEvent`3<ClientInfo,RespawnType,Vector3i>::Invoke(T1,T2,T3)",
-                  "ldstr \"PlayerSpawnedInWorld (reason: {0}, position: {2}): {1}\"",
-                  "ldc.i4.3"
-                ]
-              }
-            ],
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 4,
-            "ArgumentString": "a0",
-            "HookTypeName": "Pattern",
-            "Name": "OnPlayerSpawned",
-            "HookName": "OnPlayerSpawned",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Signature": {
-              "Exposure": 2,
-              "Name": "PlayerSpawnedInWorld",
-              "ReturnType": "System.Void",
-              "Parameters": [
-                "ClientInfo",
-                "RespawnType",
-                "Vector3i",
-                "System.Int32"
-              ]
-            },
-            "MsilHash": "sPWIUIRF4DcezsyjNTPMD9ED3k39pPsWp4ATShIGhF0=",
-            "BaseHookName": "OnPlayerConnected",
             "HookCategory": "Player"
           }
         },
@@ -824,29 +713,80 @@
           }
         },
         {
-          "Type": "Simple",
+          "Type": "Pattern",
           "Hook": {
-            "InjectionType": 2,
-            "InjectionIndex": -1,
+            "CaptureGroupPosition": 1,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldarg.1",
+                  "ldfld System.String ClientInfo::playerName",
+                  "callvirt System.Void EntityAlive::set_EntityName(System.String)"
+                ]
+              }
+            ],
             "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "OnServerSave [3]",
-            "HookName": "OnServerSave",
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0",
+            "HookTypeName": "Pattern",
+            "Name": "OnPlayerConnected",
+            "HookName": "OnPlayerConnected",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "BiomeIntensityMap",
+            "TypeName": "GameManager",
             "Signature": {
               "Exposure": 2,
-              "Name": "Save",
+              "Name": "RequestToSpawnPlayer",
               "ReturnType": "System.Void",
               "Parameters": [
-                "System.String"
+                "ClientInfo",
+                "System.Int32",
+                "PlayerProfile"
               ]
             },
-            "MsilHash": "S3R7Rtut1QcXWi7LSNW0JWNKcEDXNwjPpIYJgQZaLyE=",
+            "MsilHash": "PAtOI7kGWPI57dVX1Gl5DspzZhPlOqIhdGQC29nFSvQ=",
             "BaseHookName": null,
-            "HookCategory": "Server"
+            "HookCategory": "Player"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 1,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldstr \"OnPlayerConnected\"",
+                  "ldarg.1",
+                  "call System.Object Oxide.Core.Interface::CallHook(System.String,System.Object)",
+                  "pop"
+                ]
+              }
+            ],
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0",
+            "HookTypeName": "Pattern",
+            "Name": "OnPlayerSpawn",
+            "HookName": "OnPlayerSpawn",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "RequestToSpawnPlayer",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "ClientInfo",
+                "System.Int32",
+                "PlayerProfile"
+              ]
+            },
+            "MsilHash": "PAtOI7kGWPI57dVX1Gl5DspzZhPlOqIhdGQC29nFSvQ=",
+            "BaseHookName": "OnPlayerConnected",
+            "HookCategory": "Player"
           }
         },
         {
@@ -855,48 +795,26 @@
             "InjectionType": 2,
             "InjectionIndex": -1,
             "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
-            "ArgumentString": null,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "a0",
             "HookTypeName": "Simple",
-            "Name": "OnServerSave [4]",
-            "HookName": "OnServerSave",
+            "Name": "OnPlayerSpawned",
+            "HookName": "OnPlayerSpawned",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "ChunkCluster",
+            "TypeName": "GameManager",
             "Signature": {
               "Exposure": 2,
-              "Name": "Save",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MsilHash": "RzgBFETYSBttnT+LJtESouFEER3lwuR2qS3isZ1BW7w=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionType": 2,
-            "InjectionIndex": -1,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "OnServerSave [5]",
-            "HookName": "OnServerSave",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "Chunk",
-            "Signature": {
-              "Exposure": 2,
-              "Name": "save",
+              "Name": "RequestToSpawnPlayer",
               "ReturnType": "System.Void",
               "Parameters": [
-                "PooledBinaryWriter"
+                "ClientInfo",
+                "System.Int32",
+                "PlayerProfile"
               ]
             },
-            "MsilHash": "Mb50pKDb3iY6M/ZoKwOwujfqOo5ZHdU5Lq7TFuDoTgY=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
+            "MsilHash": "PAtOI7kGWPI57dVX1Gl5DspzZhPlOqIhdGQC29nFSvQ=",
+            "BaseHookName": "OnPlayerSpawn",
+            "HookCategory": "Player"
           }
         }
       ],
