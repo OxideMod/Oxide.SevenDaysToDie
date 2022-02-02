@@ -651,7 +651,7 @@
               "ReturnType": "System.Collections.IEnumerator",
               "Parameters": []
             },
-            "MsilHash": "gj5skO2TZuQVa5aROiK1JoqOpz4JLUyOBfkhBg0QO2k=",
+            "MsilHash": "dmPXkv9+vkAUJfxi0DpIAZVxUfXcoQdZIA1dZVqVgxQ=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -683,7 +683,7 @@
               "ReturnType": "System.Collections.IEnumerator",
               "Parameters": []
             },
-            "MsilHash": "gj5skO2TZuQVa5aROiK1JoqOpz4JLUyOBfkhBg0QO2k=",
+            "MsilHash": "dmPXkv9+vkAUJfxi0DpIAZVxUfXcoQdZIA1dZVqVgxQ=",
             "BaseHookName": "Initialize",
             "HookCategory": "Server"
           }
