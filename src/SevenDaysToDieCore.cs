@@ -1,4 +1,4 @@
-using Oxide.Core;
+﻿using Oxide.Core;
 using Oxide.Core.Libraries;
 using Oxide.Core.Libraries.Covalence;
 using Oxide.Core.Plugins;
@@ -133,21 +133,24 @@ namespace Oxide.Game.SevenDays
             if (serverInitialized)
             {
                 // Call OnServerInitialized for hotloaded plugins
-                plugin.CallHook("OnServerInitialized");
+                plugin.CallHook("OnServerInitialized", false);
             }
         }
 
         /// <summary>
         /// Called when the server is first initialized
         /// </summary>
-        [HookMethod("OnServerInitialized")]
-        private void OnServerInitialized()
+        [HookMethod("IOnServerInitialized")]
+        private void IOnServerInitialized()
         {
             if (!serverInitialized)
             {
                 Analytics.Collect();
 
                 serverInitialized = true;
+
+                // Let plugins know server startup is complete
+                Interface.CallHook("OnServerInitialized", serverInitialized);
             }
         }
 
