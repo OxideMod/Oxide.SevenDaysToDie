@@ -367,7 +367,7 @@ namespace Oxide.Game.SevenDays
                 string[] split = command.Split('.');
                 string parent = split.Length >= 2 ? split[0].Trim() : "global";
                 string name = split.Length >= 2 ? string.Join(".", split.Skip(1).ToArray()) : split[0].Trim();
-                return !SevenDaysExtension.RestrictedCommands.Contains(command) && !SevenDaysExtension.RestrictedCommands.Contains($"{parent}.{name}");
+                return !SevenDaysCore.RestrictedCommands.Contains(command) && !SevenDaysCore.RestrictedCommands.Contains($"{parent}.{name}");
             }
 
             return true;

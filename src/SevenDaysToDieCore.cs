@@ -1,4 +1,4 @@
-﻿using Oxide.Core;
+using Oxide.Core;
 using Oxide.Core.Libraries;
 using Oxide.Core.Libraries.Covalence;
 using Oxide.Core.Plugins;
@@ -19,7 +19,7 @@ namespace Oxide.Game.SevenDays
         /// </summary>
         public SevenDaysCore()
         {
-            // Set attributes
+            // Set plugin info attributes
             Title = "7 Days to Die";
             Author = SevenDaysExtension.AssemblyAuthors;
             Version = SevenDaysExtension.AssemblyVersion;
@@ -34,8 +34,31 @@ namespace Oxide.Game.SevenDays
         internal readonly PluginManager pluginManager = Interface.Oxide.RootPluginManager;
         internal readonly IServer Server = Covalence.CreateServer();
 
-        private bool serverInitialized;
+        /// <summary>
+        /// Commands that plugins can't override
+        /// </summary>
+        internal static IEnumerable<string> RestrictedCommands => new[]
+        {
+            ""
+        };
 
+        internal bool serverInitialized;
+
+        /// <summary>
+        /// Checks if the permission system has loaded, shows an error if it failed to load
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        private bool PermissionsLoaded(IPlayer player)
+        {
+            if (!permission.IsLoaded)
+            {
+                player.Reply(string.Format(lang.GetMessage("PermissionsNotLoaded", this, player.Id), permission.LastException.Message));
+                return false;
+            }
+
+            return true;
+        }
         #endregion Initialization
 
         #region Core Hooks
@@ -134,10 +157,7 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnServerSave")]
         private void OnServerSave()
         {
-            // Trigger save process
             Interface.Oxide.OnSave();
-
-            // Save Oxide groups, users, and other data
             Covalence.PlayerManager.SavePlayerData();
         }
 
@@ -147,33 +167,10 @@ namespace Oxide.Game.SevenDays
         [HookMethod("OnServerShutdown")]
         private void OnServerShutdown()
         {
-            // Trigger shutdown process
             Interface.Oxide.OnShutdown();
-
-            // Save Oxide groups, users, and other data
             Covalence.PlayerManager.SavePlayerData();
         }
 
         #endregion Core Hooks
-
-        #region Helpers
-
-        /// <summary>
-        /// Checks if the permission system has loaded, shows an error if it failed to load
-        /// </summary>
-        /// <param name="player"></param>
-        /// <returns></returns>
-        private bool PermissionsLoaded(IPlayer player)
-        {
-            if (!permission.IsLoaded)
-            {
-                player.Reply(string.Format(lang.GetMessage("PermissionsNotLoaded", this, player.Id), permission.LastException.Message));
-                return false;
-            }
-
-            return true;
-        }
-
-        #endregion Helpers
     }
 }

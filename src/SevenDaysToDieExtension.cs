@@ -1,8 +1,7 @@
-﻿using Oxide.Core;
+using Oxide.Core;
 using Oxide.Core.Extensions;
 using Oxide.Plugins;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 
 namespace Oxide.Game.SevenDays
@@ -43,14 +42,6 @@ namespace Oxide.Game.SevenDays
         public override string Branch => "public"; // TODO: Handle this programmatically
 
         /// <summary>
-        /// Commands that plugins can't override
-        /// </summary>
-        internal static IEnumerable<string> RestrictedCommands => new[]
-        {
-            ""
-        };
-
-        /// <summary>
         /// List of default game-specific references for use in plugins
         /// </summary>
         public override string[] DefaultReferences => new[]
@@ -75,72 +66,6 @@ namespace Oxide.Game.SevenDays
         public override string[] WhitelistNamespaces => new[]
         {
             "Steamworks", "System.Collections", "System.Security.Cryptography", "System.Text", "UnityEngine"
-        };
-
-        /// <summary>
-        /// List of filter matches to apply to console output
-        /// </summary>
-        public static string[] Filter =
-        {
-            "* SKY INITIALIZED",
-            "Awake done",
-            "Biomes image size",
-            "Command line arguments:",
-            "Dedicated server only build",
-            "Exited thread thread_",
-            "GamePref.",
-            "GameStat.",
-            "HDR Render",
-            "HDR and MultisampleAntiAliasing",
-            "INF AIDirector:",
-            "INF Adding observed entity:",
-            "INF BiomeSpawnManager spawned",
-            "INF Cleanup",
-            "INF Clearing all pools",
-            "INF Created player with",
-            "INF Disconnect",
-            "INF GMA.",
-            "INF GOM.",
-            "INF Kicking player:",
-            "INF OnApplicationQuit",
-            "INF PPS RequestToEnterGame sending player list",
-            "INF Removing observed entity",
-            "INF RequestToEnterGame:",
-            "INF RequestToSpawnPlayer:",
-            "INF Spawned",
-            "INF Start a new wave",
-            "INF Time:",
-            "INF Token length:",
-            "INF WSD.",
-            "Load key config",
-            "Loading permissions file at",
-            "NET: Starting server protocols",
-            "NET: Stopping server protocols",
-            "NET: Unity NW server",
-            "POI image size",
-            "Parsing server configfile:",
-            "Persistent GamePrefs saved",
-            "SaveAndCleanupWorld",
-            "SelectionBoxManager.Instance:",
-            "Setting breakpad minidump AppID",
-            "StartAsServer",
-            "StartGame",
-            "Started thread",
-            "WRN ApplyAllowControllerOption",
-            "Weather Packages Created",
-            "World.Cleanup",
-            "World.Load:",
-            "World.Unload",
-            "WorldStaticData.Init()",
-            "[EAC] FreeUser",
-            "[EAC] Log:",
-            "[EAC] UserStatusHandler callback",
-            "[NET] PlayerConnected",
-            "[NET] PlayerDisconnected",
-            "[NET] ServerShutdown",
-            "[Steamworks.NET]",
-            "createWorld() done",
-            "createWorld:"
         };
 
         /// <summary>
