@@ -1,4 +1,4 @@
-﻿using Oxide.Core;
+using Oxide.Core;
 using Oxide.Core.Libraries;
 using Oxide.Core.Libraries.Covalence;
 using Oxide.Core.Plugins;
@@ -167,9 +167,10 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Called when the server is shutting down
         /// </summary>
-        [HookMethod("OnServerShutdown")]
-        private void OnServerShutdown()
+        [HookMethod("IOnServerShutdown")]
+        private void IOnServerShutdown()
         {
+            Interface.Oxide.CallHook("OnServerShutdown");
             Interface.Oxide.OnShutdown();
             Covalence.PlayerManager.SavePlayerData();
         }
