@@ -589,7 +589,7 @@
               }
             ],
             "ReturnBehavior": 0,
-            "ArgumentBehavior": 1,
+            "ArgumentBehavior": 2,
             "ArgumentString": null,
             "HookTypeName": "Pattern",
             "Name": "OnPlayerDisconnected",
