@@ -184,16 +184,18 @@ namespace Oxide.Game.SevenDays
             };
 
             // Check if the command already exists in another plugin
-            if (registeredCommands.TryGetValue(command, out RegisteredCommand cmd))
+            if (registeredCommands.TryGetValue(command, out RegisteredCommand existingCommand))
             {
-                if (newCommand.SevenDaysToDieCommand == cmd.SevenDaysToDieCommand)
+                if (newCommand.SevenDaysToDieCommand == existingCommand.SevenDaysToDieCommand)
                 {
-                    newCommand.OriginalSevenDaysToDieCommand = cmd.SevenDaysToDieCommand;
+                    newCommand.OriginalSevenDaysToDieCommand = existingCommand.SevenDaysToDieCommand;
                 }
 
                 string newPluginName = plugin?.Name ?? "An unknown plugin"; // TODO: Localization
-                string previousPluginName = cmd.Source?.Name ?? "an unknown plugin"; // TODO: Localization
+                string previousPluginName = existingCommand.Source?.Name ?? "an unknown plugin"; // TODO: Localization
                 Interface.Oxide.LogWarning($"{newPluginName} has replaced the '{command}' command previously registered by {previousPluginName}"); // TODO: Localization
+
+                registeredCommands.Remove(command);
             }
 
             // Check if the command already exists as a native command
@@ -208,33 +210,27 @@ namespace Oxide.Game.SevenDays
                 if (SdtdConsole.Instance.m_Commands.Contains(nativeCommand))
                 {
                     SdtdConsole.Instance.m_Commands.Remove(nativeCommand);
-                    foreach (string nCommand in newCommand.SevenDaysToDieCommand.GetCommands())
-                    {
-                        SdtdConsole.Instance.m_CommandsAllVariants.Remove(nCommand);
-                    }
+                }
+                if (SdtdConsole.Instance.m_CommandsAllVariants.ContainsKey(command))
+                {
+                    SdtdConsole.Instance.m_CommandsAllVariants.Remove(command);
                 }
 
-                string newPluginName = plugin?.Name ?? "An unknown plugin"; // TODO: Localization
-                Interface.Oxide.LogWarning($"{newPluginName} has replaced the '{command}' command previously registered by {provider.GameName}"); // TODO: Localization
+                if (existingCommand == null)
+                {
+                    string newPluginName = plugin?.Name ?? "An unknown plugin"; // TODO: Localization
+                    Interface.Oxide.LogWarning($"{newPluginName} has replaced the '{command}' command previously registered by {provider.GameName}"); // TODO: Localization
+                }
             }
 
             // Register the command
             registeredCommands.Add(command, newCommand);
-            if (!SdtdConsole.Instance.m_Commands.Contains(newCommand.SevenDaysToDieCommand))
-            {
-                SdtdConsole.Instance.m_Commands.Add(newCommand.SevenDaysToDieCommand);
-            }
-            foreach (string nCommand in newCommand.SevenDaysToDieCommand.GetCommands())
-            {
-                if (!string.IsNullOrEmpty(nCommand))
-                {
-                    SdtdConsole.Instance.m_CommandsAllVariants.Add(nCommand, newCommand.SevenDaysToDieCommand);
-                }
-            }
+            SdtdConsole.Instance.m_Commands.Add(newCommand.SevenDaysToDieCommand);
+            SdtdConsole.Instance.m_CommandsAllVariants.Add(command, newCommand.SevenDaysToDieCommand);
 
             // Register the command permission
-            string[] variantCommands = newCommand.SevenDaysToDieCommand.GetCommands();
-            if (!GameManager.Instance.adminTools.IsPermissionDefinedForCommand(variantCommands) && newCommand.SevenDaysToDieCommand.DefaultPermissionLevel != 0)
+            string[] commands = newCommand.SevenDaysToDieCommand.GetCommands();
+            if (!GameManager.Instance.adminTools.IsPermissionDefinedForCommand(commands) && newCommand.SevenDaysToDieCommand.DefaultPermissionLevel != 0)
             {
                 GameManager.Instance.adminTools.AddCommandPermission(command, newCommand.SevenDaysToDieCommand.DefaultPermissionLevel, false);
             }
@@ -251,11 +247,11 @@ namespace Oxide.Game.SevenDays
         /// <param name="plugin"></param>
         public void UnregisterCommand(string command, Plugin plugin)
         {
-            IConsoleCommand cmd = SdtdConsole.Instance.GetCommand(command);
-            if (SdtdConsole.Instance.m_Commands.Contains(cmd))
+            IConsoleCommand nativeCommand = SdtdConsole.Instance.GetCommand(command);
+            if (SdtdConsole.Instance.m_Commands.Contains(nativeCommand))
             {
-                SdtdConsole.Instance.m_Commands.Remove(cmd);
-                foreach (string nCommand in cmd.GetCommands())
+                SdtdConsole.Instance.m_Commands.Remove(nativeCommand);
+                foreach (string nCommand in nativeCommand.GetCommands())
                 {
                     SdtdConsole.Instance.m_CommandsAllVariants.Remove(nCommand);
                 }
