@@ -75,13 +75,13 @@ namespace Oxide.Game.SevenDays
         /// Gets all players
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IPlayer> All => allPlayers.Values.Cast<IPlayer>();
+        public IEnumerable<IPlayer> All => allPlayers.Values;
 
         /// <summary>
         /// Gets all connected players
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IPlayer> Connected => connectedPlayers.Values.Cast<IPlayer>();
+        public IEnumerable<IPlayer> Connected => connectedPlayers.Values;
 
         /// <summary>
         /// Gets all sleeping players
@@ -140,7 +140,7 @@ namespace Oxide.Game.SevenDays
                 }
             }
 
-            if (foundPlayers.Count() > 0)
+            if (foundPlayers.Count > 0)
             {
                 return foundPlayers;
             }

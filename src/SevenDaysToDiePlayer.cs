@@ -88,7 +88,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets if the player is connected
         /// </summary>
-        public bool IsConnected => client.litenetPeerConnectId >= 0L;
+        public bool IsConnected => client?.litenetPeerConnectId >= 0L;
 
         /// <summary>
         /// Returns if the player is sleeping
@@ -411,7 +411,7 @@ namespace Oxide.Game.SevenDays
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override bool Equals(object obj) => obj is IPlayer && Id == ((IPlayer)obj).Id;
+        public override bool Equals(object obj) => obj is IPlayer player && Id == player.Id;
 
         /// <summary>
         /// Gets the hash code of the player's unique ID
