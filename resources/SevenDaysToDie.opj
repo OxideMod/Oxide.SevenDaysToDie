@@ -24,7 +24,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MsilHash": "vU0d0vvxj1L5Ax33MywdSrpzm2Tv7/M9Wg3q8RNyWpo=",
+            "MSILHash": "vU0d0vvxj1L5Ax33MywdSrpzm2Tv7/M9Wg3q8RNyWpo=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -49,7 +49,7 @@
                 "Entity"
               ]
             },
-            "MsilHash": "P7D7cBBwtYjSb6F5dQK00761kns2v6YSJe42Qj22pYY=",
+            "MSILHash": "P7D7cBBwtYjSb6F5dQK00761kns2v6YSJe42Qj22pYY=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -78,7 +78,7 @@
                 "System.Single"
               ]
             },
-            "MsilHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
+            "MSILHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -102,7 +102,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MsilHash": "l+N+JXEV25KfdcIBynqwCIMbvUjO4M7Ic5aaXpVUBwk=",
+            "MSILHash": "l+N+JXEV25KfdcIBynqwCIMbvUjO4M7Ic5aaXpVUBwk=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -129,7 +129,7 @@
                 "System.String"
               ]
             },
-            "MsilHash": "tNLXvzmIaf6QUwjktH9u/GjEQqcuF3MxhrcW4dpiTvQ=",
+            "MSILHash": "tNLXvzmIaf6QUwjktH9u/GjEQqcuF3MxhrcW4dpiTvQ=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -180,7 +180,7 @@
                 "System.String"
               ]
             },
-            "MsilHash": "tNLXvzmIaf6QUwjktH9u/GjEQqcuF3MxhrcW4dpiTvQ=",
+            "MSILHash": "tNLXvzmIaf6QUwjktH9u/GjEQqcuF3MxhrcW4dpiTvQ=",
             "BaseHookName": "OnExperienceGained",
             "HookCategory": "Player"
           }
@@ -223,7 +223,7 @@
                 "System.Single"
               ]
             },
-            "MsilHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
+            "MSILHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
             "BaseHookName": "OnEntityTakeDamage",
             "HookCategory": "Entity"
           }
@@ -249,7 +249,7 @@
                 "PlatformUserIdentifierAbs"
               ]
             },
-            "MsilHash": "RxLhu9XFq11eHWpRq+Uh7/fPR9IQd84cq2C/6RgRuh0=",
+            "MSILHash": "RxLhu9XFq11eHWpRq+Uh7/fPR9IQd84cq2C/6RgRuh0=",
             "BaseHookName": null,
             "HookCategory": "Structure"
           }
@@ -299,7 +299,7 @@
                 "PlatformUserIdentifierAbs"
               ]
             },
-            "MsilHash": "RxLhu9XFq11eHWpRq+Uh7/fPR9IQd84cq2C/6RgRuh0=",
+            "MSILHash": "RxLhu9XFq11eHWpRq+Uh7/fPR9IQd84cq2C/6RgRuh0=",
             "BaseHookName": "CanUseDoor",
             "HookCategory": "Structure"
           }
@@ -340,7 +340,7 @@
                 "System.String"
               ]
             },
-            "MsilHash": "icil6EFsLfrL9l3lsGmILfvkuQtglroM10BUkEs5hUY=",
+            "MSILHash": "icil6EFsLfrL9l3lsGmILfvkuQtglroM10BUkEs5hUY=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -377,7 +377,7 @@
                 "CommandSenderInfo"
               ]
             },
-            "MsilHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
+            "MSILHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -413,7 +413,7 @@
                 "CommandSenderInfo"
               ]
             },
-            "MsilHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
+            "MSILHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
             "BaseHookName": "IOnServerCommand",
             "HookCategory": "Server"
           }
@@ -450,7 +450,7 @@
                 "DamageResponse"
               ]
             },
-            "MsilHash": "6P965DtDddHk2WQwWQgPuNQZTOuCPfcQf/3BHgrmvHs=",
+            "MSILHash": "6P965DtDddHk2WQwWQgPuNQZTOuCPfcQf/3BHgrmvHs=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -488,7 +488,7 @@
                 "System.String"
               ]
             },
-            "MsilHash": "Mx9BS37wL5JEqYbl8D1dU7CTXuzh1lRuYIoJa2XxxGo=",
+            "MSILHash": "Mx9BS37wL5JEqYbl8D1dU7CTXuzh1lRuYIoJa2XxxGo=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -524,7 +524,7 @@
                 "System.Single"
               ]
             },
-            "MsilHash": "PiHTf+eCl0N4mzYNYZeBd7HB6o/jm/AjQsbWvIujye4=",
+            "MSILHash": "PiHTf+eCl0N4mzYNYZeBd7HB6o/jm/AjQsbWvIujye4=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -567,7 +567,7 @@
                 "System.Collections.Generic.List`1<System.Int32>"
               ]
             },
-            "MsilHash": "AFwZ0WjBTlLeLDZ29O2fObtQ8zTEGtLRzmnfPbmwdDU=",
+            "MSILHash": "AFwZ0WjBTlLeLDZ29O2fObtQ8zTEGtLRzmnfPbmwdDU=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -604,7 +604,7 @@
                 "ClientInfo"
               ]
             },
-            "MsilHash": "4JieS2YvdD/E1Fn+zLnw1MfNYMrbEMr0GIAWtYkJgfo=",
+            "MSILHash": "4JieS2YvdD/E1Fn+zLnw1MfNYMrbEMr0GIAWtYkJgfo=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -628,7 +628,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MsilHash": "X+aQdQBebEOI5Ah+HBDiDbhWXmIpC/sjPGENSkj8lLY=",
+            "MSILHash": "X+aQdQBebEOI5Ah+HBDiDbhWXmIpC/sjPGENSkj8lLY=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -666,7 +666,7 @@
                 "PlayerProfile"
               ]
             },
-            "MsilHash": "PAtOI7kGWPI57dVX1Gl5DspzZhPlOqIhdGQC29nFSvQ=",
+            "MSILHash": "6FpRrd8uOWKroLlSVm5gfrzg3BpRq7a/YKWmt3stTvE=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -705,7 +705,7 @@
                 "PlayerProfile"
               ]
             },
-            "MsilHash": "PAtOI7kGWPI57dVX1Gl5DspzZhPlOqIhdGQC29nFSvQ=",
+            "MSILHash": "6FpRrd8uOWKroLlSVm5gfrzg3BpRq7a/YKWmt3stTvE=",
             "BaseHookName": "OnPlayerConnected",
             "HookCategory": "Player"
           }
@@ -733,7 +733,7 @@
                 "PlayerProfile"
               ]
             },
-            "MsilHash": "PAtOI7kGWPI57dVX1Gl5DspzZhPlOqIhdGQC29nFSvQ=",
+            "MSILHash": "6FpRrd8uOWKroLlSVm5gfrzg3BpRq7a/YKWmt3stTvE=",
             "BaseHookName": "OnPlayerSpawn",
             "HookCategory": "Player"
           }
@@ -757,7 +757,7 @@
               "ReturnType": "System.Boolean",
               "Parameters": []
             },
-            "MsilHash": "P5YnclAle1O705We993NX8Pzu6zdwlvfgEO+ZIo3g9A=",
+            "MSILHash": "2qsljz0JCacRYV/NAgWFoSZm8LIxa4w/+oxRt2LQ5BU=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -765,7 +765,7 @@
         {
           "Type": "Initialize",
           "Hook": {
-            "InjectionIndex": 315,
+            "InjectionIndex": 312,
             "HookTypeName": "Initialize",
             "Name": "Initialize",
             "HookName": "Initialize",
@@ -777,7 +777,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MsilHash": "FcuHHxKNcXsHktInk7dyzRvkXiaVpz6svnXCDhiCumg=",
+            "MSILHash": "dWjVlP3wv1n63aDHQ9U9akcmiqF6xMOtQpuRRaN6Qv4=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -809,7 +809,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MsilHash": "FcuHHxKNcXsHktInk7dyzRvkXiaVpz6svnXCDhiCumg=",
+            "MSILHash": "dWjVlP3wv1n63aDHQ9U9akcmiqF6xMOtQpuRRaN6Qv4=",
             "BaseHookName": "Initialize",
             "HookCategory": "Server"
           }
@@ -833,7 +833,7 @@
             "FullTypeName": "System.Collections.Generic.List`1<IConsoleCommand> SdtdConsole::m_Commands",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "SdtdConsole::m_CommandsAllVariants",
@@ -852,7 +852,7 @@
             "FullTypeName": "System.Collections.Generic.List`1<SdtdConsole/CommandDescriptor> SdtdConsole::m_CommandsAllVariants",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "SdtdConsole/CommandInstance",
@@ -871,7 +871,7 @@
             "FullTypeName": "SdtdConsole/CommandInstance",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "EntityAlive::entityThatKilledMe",
@@ -890,7 +890,7 @@
             "FullTypeName": "EntityAlive EntityAlive::entityThatKilledMe",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "AdminTools::bannedUsers",
@@ -909,7 +909,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsClientInfo> AdminTools::bannedUsers",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "AdminTools::commands",
@@ -928,7 +928,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsCommandPermissions> AdminTools::commands",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "AdminTools::defaultClientPermission",
@@ -947,7 +947,7 @@
             "FullTypeName": "AdminToolsClientInfo AdminTools::defaultClientPermission",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "AdminTools::defaultCommandPermission",
@@ -966,7 +966,7 @@
             "FullTypeName": "AdminToolsCommandPermissions AdminTools::defaultCommandPermission",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "AdminTools::groupPermissions",
@@ -985,7 +985,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsGroupPermissions> AdminTools::groupPermissions",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "AdminTools::userPermissions",
@@ -1004,7 +1004,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsClientInfo> AdminTools::userPermissions",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "AdminTools::whitelistedGroups",
@@ -1023,7 +1023,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsClientInfo> AdminTools::whitelistedGroups",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "AdminTools::whitelistedUsers",
@@ -1042,7 +1042,7 @@
             "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminToolsClientInfo> AdminTools::whitelistedUsers",
             "Parameters": []
           },
-          "MsilHash": ""
+          "MSILHash": ""
         },
         {
           "Name": "AdminTools::GetAdminToolsCommandPermission",
@@ -1063,7 +1063,7 @@
               "System.String[]"
             ]
           },
-          "MsilHash": "Vs/NsMMscYTM0uxiK/1wHrUV65kXZtqluwBuuJxOCrA="
+          "MSILHash": "Vs/NsMMscYTM0uxiK/1wHrUV65kXZtqluwBuuJxOCrA="
         }
       ],
       "Fields": [
