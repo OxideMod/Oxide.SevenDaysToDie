@@ -1064,6 +1064,117 @@
             ]
           },
           "MSILHash": "Vs/NsMMscYTM0uxiK/1wHrUV65kXZtqluwBuuJxOCrA="
+        },
+        {
+          "Name": "SdtdConsole::LogCallback",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "SdtdConsole",
+          "Type": 1,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "LogCallback",
+            "FullTypeName": "System.Void",
+            "Parameters": [
+              "System.String",
+              "System.String",
+              "System.String",
+              "UnityEngine.LogType",
+              "System.DateTime",
+              "System.Int64"
+            ]
+          },
+          "MSILHash": "XJAFAsQpXhpxgcBCgpfJSZ4fscYDmacuvksc05NUbWg="
+        },
+        {
+          "Name": "SdtdConsole::RegisterCommand",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "SdtdConsole",
+          "Type": 1,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "RegisterCommand",
+            "FullTypeName": "System.Void",
+            "Parameters": [
+              "System.Collections.Generic.SortedList`2<System.String,IConsoleCommand>",
+              "System.String",
+              "IConsoleCommand"
+            ]
+          },
+          "MSILHash": "nGqdbb6RVNBfYrkdIxXQx/swR0QV4wDe1tbIBS8kuuc="
+        },
+        {
+          "Name": "SdtdConsole::executeCommand",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "SdtdConsole",
+          "Type": 1,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "executeCommand",
+            "FullTypeName": "System.Collections.Generic.List`1<System.String>",
+            "Parameters": [
+              "System.String",
+              "CommandSenderInfo"
+            ]
+          },
+          "MSILHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM="
+        },
+        {
+          "Name": "SdtdConsole::tokenizeCommand",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "SdtdConsole",
+          "Type": 1,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "tokenizeCommand",
+            "FullTypeName": "System.Collections.Generic.List`1<System.String>",
+            "Parameters": [
+              "System.String"
+            ]
+          },
+          "MSILHash": "+qDQsY3iY47nmGS3Ez1I0Zv3ohIU6qc4TPKs6a2JA8U="
+        },
+        {
+          "Name": "SdtdConsole::m_Servers",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "SdtdConsole",
+          "Type": 0,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "m_Servers",
+            "FullTypeName": "System.Collections.Generic.List`1<IConsoleServer> SdtdConsole::m_Servers",
+            "Parameters": []
+          },
+          "MSILHash": ""
         }
       ],
       "Fields": [
@@ -1075,6 +1186,133 @@
           "Flagged": false
         }
       ]
+    },
+    {
+      "AssemblyName": "LogLibrary.dll",
+      "Hooks": [],
+      "Modifiers": [
+        {
+          "Name": "Log::formatMessage",
+          "AssemblyName": "LogLibrary.dll",
+          "TypeName": "Log",
+          "Type": 1,
+          "TargetExposure": [
+            2,
+            4
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "formatMessage",
+            "FullTypeName": "System.String",
+            "Parameters": [
+              "System.String",
+              "UnityEngine.LogType",
+              "System.DateTime&",
+              "System.Int64&"
+            ]
+          },
+          "MSILHash": "rtT5vqIRVMXOZzK7Jx7XgzktTSEeehJVaDZvZr2SXbo="
+        },
+        {
+          "Name": "Log::masterLogStandalone",
+          "AssemblyName": "LogLibrary.dll",
+          "TypeName": "Log",
+          "Type": 1,
+          "TargetExposure": [
+            2,
+            4
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "masterLogStandalone",
+            "FullTypeName": "System.Void",
+            "Parameters": [
+              "System.String",
+              "UnityEngine.LogType",
+              "System.String"
+            ]
+          },
+          "MSILHash": "mYBPIt2FIEODknOa30SqF9jf6Zbc6TorIvFMY5ve+CU="
+        },
+        {
+          "Name": "Log::SendToLogListeners",
+          "AssemblyName": "LogLibrary.dll",
+          "TypeName": "Log",
+          "Type": 1,
+          "TargetExposure": [
+            2,
+            4
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "SendToLogListeners",
+            "FullTypeName": "System.Void",
+            "Parameters": [
+              "System.String",
+              "System.String",
+              "UnityEngine.LogType",
+              "System.DateTime",
+              "System.Int64",
+              "System.String"
+            ]
+          },
+          "MSILHash": "3XCTaWOo3Y0LvFzYTKxh90RVH/4Vn17x68NyWCkNnTM="
+        },
+        {
+          "Name": "Log::UnityLogCallback",
+          "AssemblyName": "LogLibrary.dll",
+          "TypeName": "Log",
+          "Type": 1,
+          "TargetExposure": [
+            2,
+            4
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "UnityLogCallback",
+            "FullTypeName": "System.Void",
+            "Parameters": [
+              "System.String",
+              "System.String",
+              "UnityEngine.LogType"
+            ]
+          },
+          "MSILHash": "/Bj18CbQ7DNLotAxaTmQB0SWn4M9C7dJidBSyEPqPlg="
+        },
+        {
+          "Name": "Log::.cctor",
+          "AssemblyName": "LogLibrary.dll",
+          "TypeName": "Log",
+          "Type": 1,
+          "TargetExposure": [
+            2,
+            4
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": ".cctor",
+            "FullTypeName": "System.Void",
+            "Parameters": []
+          },
+          "MSILHash": "OsqdIjuBOuY9i1T6ZfbdOPt00gva8tliEIDR2Ol6ma8="
+        }
+      ],
+      "Fields": []
     }
   ]
 }
