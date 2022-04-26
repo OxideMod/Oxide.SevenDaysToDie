@@ -765,7 +765,7 @@
         {
           "Type": "Initialize",
           "Hook": {
-            "InjectionIndex": 312,
+            "InjectionIndex": 315,
             "HookTypeName": "Initialize",
             "Name": "Initialize",
             "HookName": "Initialize",
