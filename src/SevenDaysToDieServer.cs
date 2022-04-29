@@ -1,4 +1,4 @@
-using Oxide.Core;
+﻿using Oxide.Core;
 using Oxide.Core.Libraries.Covalence;
 using System;
 using System.Globalization;
@@ -120,8 +120,11 @@ namespace Oxide.Game.SevenDays
         {
             get
             {
-                ulong time = GameManager.Instance.World.worldTime;
-                return Convert.ToDateTime($"{GameUtils.WorldTimeToHours(time)}:{GameUtils.WorldTimeToMinutes(time)}");
+                ulong worldTime = GameManager.Instance.World.worldTime;
+                int worldDays = GameUtils.WorldTimeToDays(worldTime);
+                int worldHours = GameUtils.WorldTimeToHours(worldTime);
+                int worldMinutes = GameUtils.WorldTimeToMinutes(worldTime);
+                return new DateTime(DateTime.Now.Year, DateTime.Now.Month, worldDays, worldHours, worldMinutes, 0);
             }
             set => GameUtils.DayTimeToWorldTime(value.Day, value.Hour, value.Minute);
         }
