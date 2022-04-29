@@ -354,7 +354,11 @@ namespace Oxide.Game.SevenDays
         /// <param name="args"></param>
         public void Command(string command, params object[] args)
         {
-            SdtdConsole.Instance.ExecuteSync($"{command} {string.Join(" ", Array.ConvertAll(args, x => x.ToString()))}", client);
+            if (!string.IsNullOrEmpty(command))
+            {
+                command = args.Length > 0 ? $"{command} {string.Join(" ", Array.ConvertAll(args, x => x.ToString()))}" : command;
+                client.SendPackage(NetPackageManager.GetPackage<NetPackageConsoleCmdClient>().Setup(command, true));
+            }
         }
 
         #endregion Chat and Commands

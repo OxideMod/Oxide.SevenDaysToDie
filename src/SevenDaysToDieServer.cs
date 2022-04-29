@@ -1,4 +1,4 @@
-﻿using Oxide.Core;
+using Oxide.Core;
 using Oxide.Core.Libraries.Covalence;
 using System;
 using System.Globalization;
@@ -242,9 +242,12 @@ namespace Oxide.Game.SevenDays
         /// <param name="args"></param>
         public void Broadcast(string message, string prefix, params object[] args)
         {
-            message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
-            string formatted = prefix != null ? $"{prefix} {message}" : message;
-            GameManager.Instance.ChatMessageServer(null, EChatType.Global, -1, formatted, null, false, null);
+            if (!string.IsNullOrEmpty(message))
+            {
+                message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
+                string formatted = prefix != null ? $"{prefix} {message}" : message;
+                GameManager.Instance.ChatMessageServer(null, EChatType.Global, -1, formatted, null, false, null);
+            }
         }
 
         /// <summary>
@@ -260,7 +263,11 @@ namespace Oxide.Game.SevenDays
         /// <param name="args"></param>
         public void Command(string command, params object[] args)
         {
-            SdtdConsole.Instance.ExecuteSync($"{command} {string.Join(" ", Array.ConvertAll(args, x => x.ToString()))}", null);
+            if (!string.IsNullOrEmpty(command))
+            {
+                command = args.Length > 0 ? $"{command} {string.Join(" ", Array.ConvertAll(args, x => x.ToString()))}" : command;
+                SdtdConsole.Instance.ExecuteSync(command, null);
+            }
         }
 
         #endregion Chat and Commands
