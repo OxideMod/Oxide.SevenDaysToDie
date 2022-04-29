@@ -86,30 +86,6 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionType": 1,
-            "InjectionIndex": -1,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "IOnServerShutdown",
-            "HookName": "IOnServerShutdown",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager",
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Cleanup",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MSILHash": "l+N+JXEV25KfdcIBynqwCIMbvUjO4M7Ic5aaXpVUBwk=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
             "InjectionType": 2,
             "InjectionIndex": -1,
             "ReturnBehavior": 0,
@@ -811,6 +787,30 @@
             },
             "MSILHash": "dWjVlP3wv1n63aDHQ9U9akcmiqF6xMOtQpuRRaN6Qv4=",
             "BaseHookName": "Initialize",
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionType": 1,
+            "InjectionIndex": -1,
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Simple",
+            "Name": "IOnServerShutdown",
+            "HookName": "IOnServerShutdown",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "GameManager",
+            "Signature": {
+              "Exposure": 1,
+              "Name": "OnApplicationQuit",
+              "ReturnType": "System.Boolean",
+              "Parameters": []
+            },
+            "MSILHash": "Z5jVFCIr9XvBet0yeWMySjzf0ZjLgpuUsfiRrCmc7Ic=",
+            "BaseHookName": null,
             "HookCategory": "Server"
           }
         }
