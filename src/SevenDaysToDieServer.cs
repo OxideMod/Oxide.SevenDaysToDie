@@ -113,46 +113,20 @@ namespace Oxide.Game.SevenDays
             set => GamePrefs.Set(EnumGamePrefs.ServerMaxPlayerCount, value);
         }
 
-        private readonly DateTime _startDate = new DateTime(2000, 1, 1);
-
-        /// <summary>
-        /// Gets/sets the current in-game date on the server
-        /// </summary>
-        public DateTime Date
-        {
-            get
-            {
-                ulong worldTime = GameManager.Instance.World.worldTime;
-                int worldDays = GameUtils.WorldTimeToDays(worldTime);
-                int worldHours = GameUtils.WorldTimeToHours(worldTime);
-                int worldMinutes = GameUtils.WorldTimeToMinutes(worldTime);
-                return _startDate.Add(new TimeSpan(worldDays, worldHours, worldMinutes, 0));
-            }
-            set
-            {
-                TimeSpan difference = value - _startDate;
-                GameManager.Instance.World.worldTime = GameUtils.DayTimeToWorldTime(difference.Days, difference.Hours, difference.Minutes);
-            }
-        }
-
         /// <summary>
         /// Gets/sets the current in-game time on the server
         /// </summary>
-        public TimeSpan Time
+        public DateTime Time
         {
             get
             {
                 ulong worldTime = GameManager.Instance.World.worldTime;
+                int worldDays = GameUtils.WorldTimeToDays(worldTime);
                 int worldHours = GameUtils.WorldTimeToHours(worldTime);
                 int worldMinutes = GameUtils.WorldTimeToMinutes(worldTime);
-                return new TimeSpan(worldHours, worldMinutes, 0);
+                return new DateTime(DateTime.Now.Year, DateTime.Now.Month, worldDays, worldHours, worldMinutes, 0);
             }
-            set
-            {
-                ulong worldTime = GameManager.Instance.World.worldTime;
-                int worldDays = GameUtils.WorldTimeToDays(worldTime);
-                GameManager.Instance.World.worldTime = GameUtils.DayTimeToWorldTime(worldDays, value.Hours, value.Minutes);
-            }
+            set => GameUtils.DayTimeToWorldTime(value.Day, value.Hour, value.Minute);
         }
 
         /// <summary>
@@ -228,11 +202,11 @@ namespace Oxide.Game.SevenDays
         /// <param name="reason"></param>
         public void Kick(string playerId, string reason)
         {
-            ClientInfo clientInfo = ConnectionManager.Instance.Clients.GetForNameOrId(playerId);
-            if (clientInfo != null)
+            ClientInfo client = ConnectionManager.Instance.Clients.GetForNameOrId(playerId);
+            if (client != null)
             {
                 GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, default, reason);
-                GameUtils.KickPlayerForClientInfo(clientInfo, kickData);
+                GameUtils.KickPlayerForClientInfo(client, kickData);
             }
         }
 
