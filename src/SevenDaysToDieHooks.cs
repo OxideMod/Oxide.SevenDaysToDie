@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Oxide.Core;
 using Oxide.Core.Configuration;
 using Oxide.Core.Libraries.Covalence;
@@ -52,12 +51,12 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Called when the player sends a message
         /// </summary>
-        /// <param name="client"></param>
+        /// <param name="clientInfo"></param>
         /// <param name="message"></param>
         [HookMethod("IOnPlayerChat")]
-        private object IOnPlayerChat(ClientInfo client, string message)
+        private object IOnPlayerChat(ClientInfo clientInfo, string message)
         {
-            if (client != null && !string.IsNullOrEmpty(message))
+            if (clientInfo != null && !string.IsNullOrEmpty(message))
             {
                 // Check if it is a chat command
                 if (message[0] == '/')
@@ -66,8 +65,8 @@ namespace Oxide.Game.SevenDays
                     if (!string.IsNullOrEmpty(cmd))
                     {
                         // Is the command blocked?
-                        object commandSpecific = Interface.CallHook("OnPlayerCommand", client, cmd, args);
-                        object commandCovalence = Interface.CallHook("OnUserCommand", client.IPlayer, cmd, args);
+                        object commandSpecific = Interface.CallHook("OnPlayerCommand", clientInfo, cmd, args);
+                        object commandCovalence = Interface.CallHook("OnUserCommand", clientInfo.IPlayer, cmd, args);
                         object canBlock = commandSpecific is null ? commandCovalence : commandSpecific;
                         if (canBlock != null)
                         {
@@ -75,9 +74,9 @@ namespace Oxide.Game.SevenDays
                         }
 
                         // Is it a valid chat command?
-                        if (!Covalence.CommandSystem.HandleChatMessage(client.IPlayer, message))
+                        if (!Covalence.CommandSystem.HandleChatMessage(clientInfo.IPlayer, message))
                         {
-                            client.IPlayer.Reply(string.Format(lang.GetMessage("UnknownCommand", this, client.IPlayer.Id), cmd));
+                            clientInfo.IPlayer.Reply(string.Format(lang.GetMessage("UnknownCommand", this, clientInfo.IPlayer.Id), cmd));
                         }
                     }
 
@@ -85,8 +84,8 @@ namespace Oxide.Game.SevenDays
                 }
 
                 // Call hooks for plugins
-                object chatSpecific = Interface.Call("OnPlayerChat", client, message);
-                object chatCovalence = Interface.Call("OnUserChat", client.IPlayer, message);
+                object chatSpecific = Interface.Call("OnPlayerChat", clientInfo, message);
+                object chatCovalence = Interface.Call("OnUserChat", clientInfo.IPlayer, message);
                 return chatSpecific is null ? chatCovalence : chatSpecific;
             }
 
@@ -96,65 +95,65 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Called when the player is attempting to connect
         /// </summary>
-        /// <param name="client"></param>
+        /// <param name="clientInfo"></param>
         /// <returns></returns>
         [HookMethod("IOnUserApprove")]
-        private object IOnUserApprove(ClientInfo client)
+        private object IOnUserApprove(ClientInfo clientInfo)
         {
-            string playerId = ((UserIdentifierSteam)client.PlatformId).ReadablePlatformUserIdentifier;
+            string playerId = ((UserIdentifierSteam)clientInfo.PlatformId).ReadablePlatformUserIdentifier;
 
             // Let covalence know
-            Covalence.PlayerManager.PlayerJoin(playerId, client.playerName);
+            Covalence.PlayerManager.PlayerJoin(playerId, clientInfo.playerName);
 
             // Call hooks for plugins
-            object loginSpecific = Interface.Call("CanClientLogin", client);
-            object loginCovalence = Interface.Call("CanUserLogin", client.playerName, playerId, client.ip);
+            object loginSpecific = Interface.Call("CanClientLogin", clientInfo);
+            object loginCovalence = Interface.Call("CanUserLogin", clientInfo.playerName, playerId, clientInfo.ip);
             object canLogin = loginSpecific is null ? loginCovalence : loginSpecific;
             if (canLogin is string || canLogin is bool loginBlocked && !loginBlocked)
             {
                 string reason = canLogin is string ? canLogin.ToString() : "Connection was rejected"; // TODO: Localization
                 GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, default, reason);
-                GameUtils.KickPlayerForClientInfo(client, kickData);
+                GameUtils.KickPlayerForClientInfo(clientInfo, kickData);
                 return true;
             }
 
             // Call hooks for plugins
-            object approvedSpecific = Interface.Call("OnUserApprove", client);
-            object approvedCovalence = Interface.Call("OnUserApproved", client.playerName, playerId, client.ip);
+            object approvedSpecific = Interface.Call("OnUserApprove", clientInfo);
+            object approvedCovalence = Interface.Call("OnUserApproved", clientInfo.playerName, playerId, clientInfo.ip);
             return approvedSpecific is null ? approvedCovalence : approvedSpecific;
         }
 
         /// <summary>
         /// Called when the player has connected
         /// </summary>
-        /// <param name="client"></param>
+        /// <param name="clientInfo"></param>
         [HookMethod("OnPlayerConnected")]
-        private void OnPlayerConnected(ClientInfo client)
+        private void OnPlayerConnected(ClientInfo clientInfo)
         {
-            string playerId = ((UserIdentifierSteam)client.PlatformId).ReadablePlatformUserIdentifier;
+            string playerId = ((UserIdentifierSteam)clientInfo.PlatformId).ReadablePlatformUserIdentifier;
 
             // Update name and groups with permissions
             if (permission.IsLoaded)
             {
-                permission.UpdateNickname(playerId, client.playerName);
+                permission.UpdateNickname(playerId, clientInfo.playerName);
                 OxideConfig.DefaultGroups defaultGroups = Interface.Oxide.Config.Options.DefaultGroups;
                 if (!permission.UserHasGroup(playerId, defaultGroups.Players))
                 {
                     permission.AddUserGroup(playerId, defaultGroups.Players);
                 }
-                if (GameManager.Instance.adminTools.IsAdmin(client) && !permission.UserHasGroup(playerId, defaultGroups.Administrators))
+                if (GameManager.Instance.adminTools.IsAdmin(clientInfo) && !permission.UserHasGroup(playerId, defaultGroups.Administrators))
                 {
                     permission.AddUserGroup(playerId, defaultGroups.Administrators);
                 }
             }
 
             // Let covalence know
-            Covalence.PlayerManager.PlayerConnected(client);
+            Covalence.PlayerManager.PlayerConnected(clientInfo);
 
             IPlayer player = Covalence.PlayerManager.FindPlayerById(playerId);
             if (player != null)
             {
-                client.IPlayer = player;
+                clientInfo.IPlayer = player;
 
                 // Call hooks for plugins
                 Interface.Call("OnUserConnected", player);
@@ -164,11 +163,11 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Called when the player has disconnected
         /// </summary>
-        /// <param name="client"></param>
+        /// <param name="clientInfo"></param>
         [HookMethod("OnPlayerDisconnected")]
-        private void OnPlayerDisconnected(ClientInfo client)
+        private void OnPlayerDisconnected(ClientInfo clientInfo)
         {
-            IPlayer player = client.IPlayer;
+            IPlayer player = clientInfo.IPlayer;
             if (player != null)
             {
                 // Call hooks for plugins
@@ -176,17 +175,17 @@ namespace Oxide.Game.SevenDays
             }
 
             // Let covalence know
-            Covalence.PlayerManager.PlayerDisconnected(client);
+            Covalence.PlayerManager.PlayerDisconnected(clientInfo);
         }
 
         /// <summary>
         /// Called when the player spawns
         /// </summary>
-        /// <param name="client"></param>
+        /// <param name="clientInfo"></param>
         [HookMethod("OnPlayerSpawn")]
-        private void OnPlayerSpawn(ClientInfo client)
+        private void OnPlayerSpawn(ClientInfo clientInfo)
         {
-            IPlayer player = client.IPlayer;
+            IPlayer player = clientInfo.IPlayer;
             if (player != null)
             {
                 // Call hooks for plugins

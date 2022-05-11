@@ -14,7 +14,7 @@ namespace Oxide.Game.SevenDays
     public class SevenDaysPlayer : IPlayer, IEquatable<IPlayer>
     {
         private static Permission libPerms;
-        private readonly ClientInfo client;
+        private readonly ClientInfo clientInfo;
         private readonly PlatformUserIdentifierAbs identifier;
 
         internal SevenDaysPlayer(string playerId, string playerName)
@@ -28,10 +28,10 @@ namespace Oxide.Game.SevenDays
             Id = playerId;
         }
 
-        internal SevenDaysPlayer(ClientInfo client) : this(((UserIdentifierSteam)client.PlatformId).ReadablePlatformUserIdentifier, client.playerName)
+        internal SevenDaysPlayer(ClientInfo clientInfo) : this(((UserIdentifierSteam)clientInfo.PlatformId).ReadablePlatformUserIdentifier, clientInfo.playerName)
         {
-            this.client = client;
-            this.identifier = client.InternalId;
+            this.clientInfo = clientInfo;
+            this.identifier = clientInfo.InternalId;
         }
 
         #region Objects
@@ -39,7 +39,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets the object that backs the player
         /// </summary>
-        public object Object => client != null ? GameManager.Instance.World.Players.dict[client.entityId] : null;
+        public object Object => clientInfo != null ? GameManager.Instance.World.Players.dict[clientInfo.entityId] : null;
 
         /// <summary>
         /// Gets the player's last command type
@@ -63,12 +63,12 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets the player's IP address
         /// </summary>
-        public string Address => client.ip;
+        public string Address => clientInfo.ip;
 
         /// <summary>
         /// Gets the player's average network ping
         /// </summary>
-        public int Ping => client.ping;
+        public int Ping => clientInfo.ping;
 
         /// <summary>
         /// Gets the player's language
@@ -78,7 +78,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Returns if the player is admin
         /// </summary>
-        public bool IsAdmin => GameManager.Instance.adminTools.IsAdmin(client);
+        public bool IsAdmin => GameManager.Instance.adminTools.IsAdmin(clientInfo);
 
         /// <summary>
         /// Gets if the player is banned
@@ -88,7 +88,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets if the player is connected
         /// </summary>
-        public bool IsConnected => client?.litenetPeerConnectId > 0L;
+        public bool IsConnected => clientInfo?.litenetPeerConnectId > 0L;
 
         /// <summary>
         /// Returns if the player is sleeping
@@ -122,7 +122,7 @@ namespace Oxide.Game.SevenDays
             if (!IsBanned)
             {
                 // Ban player with reason
-                GameManager.Instance.adminTools.AddBan(client.playerName, identifier, new DateTime(duration.Ticks), reason);
+                GameManager.Instance.adminTools.AddBan(clientInfo.playerName, identifier, new DateTime(duration.Ticks), reason);
 
                 // Kick player if connected
                 if (IsConnected)
@@ -196,7 +196,7 @@ namespace Oxide.Game.SevenDays
         public void Kick(string reason)
         {
             GameUtils.KickPlayerData kickData = new GameUtils.KickPlayerData(GameUtils.EKickReason.ManualKick, 0, default, reason);
-            GameUtils.KickPlayerForClientInfo(client, kickData);
+            GameUtils.KickPlayerForClientInfo(clientInfo, kickData);
         }
 
         /// <summary>
@@ -263,7 +263,7 @@ namespace Oxide.Game.SevenDays
         public void Position(out float x, out float y, out float z)
         {
             EntityPlayer entity = Object as EntityPlayer;
-            Vector3 pos = entity?.gameObject.transform.position ?? new Vector3();
+            Vector3 pos = entity?.position ?? new Vector3();
             x = pos.x;
             y = pos.y;
             z = pos.z;
@@ -276,7 +276,7 @@ namespace Oxide.Game.SevenDays
         public GenericPosition Position()
         {
             EntityPlayer entity = Object as EntityPlayer;
-            Vector3 pos = entity?.transform.position ?? new Vector3();
+            Vector3 pos = entity?.position ?? new Vector3();
             return new GenericPosition(pos.x, pos.y, pos.z);
         }
 
@@ -289,9 +289,9 @@ namespace Oxide.Game.SevenDays
         public void Teleport(float x, float y, float z)
         {
             NetPackageTeleportPlayer netPackageTeleportPlayer = NetPackageManager.GetPackage<NetPackageTeleportPlayer>().Setup(new Vector3(x, y, z));
-            if (client != null)
+            if (clientInfo != null)
             {
-                client.SendPackage(netPackageTeleportPlayer);
+                clientInfo.SendPackage(netPackageTeleportPlayer);
             }
             else
             {
@@ -322,7 +322,7 @@ namespace Oxide.Game.SevenDays
                 message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
                 string formatted = prefix != null ? $"{prefix} {message}" : message;
 
-                client.SendPackage(NetPackageManager.GetPackage<NetPackageChat>().Setup(EChatType.Global, client.entityId, formatted, null, false, null));
+                clientInfo.SendPackage(NetPackageManager.GetPackage<NetPackageChat>().Setup(EChatType.Global, clientInfo.entityId, formatted, null, false, null));
             }
 
         }
@@ -357,7 +357,7 @@ namespace Oxide.Game.SevenDays
             if (!string.IsNullOrEmpty(command))
             {
                 command = args.Length > 0 ? $"{command} {string.Join(" ", Array.ConvertAll(args, x => x.ToString()))}" : command;
-                client.SendPackage(NetPackageManager.GetPackage<NetPackageConsoleCmdClient>().Setup(command, true));
+                clientInfo.SendPackage(NetPackageManager.GetPackage<NetPackageConsoleCmdClient>().Setup(command, true));
             }
         }
 

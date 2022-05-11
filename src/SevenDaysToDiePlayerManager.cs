@@ -57,15 +57,15 @@ namespace Oxide.Game.SevenDays
             }
         }
 
-        internal void PlayerConnected(ClientInfo client)
+        internal void PlayerConnected(ClientInfo clientInfo)
         {
-            string playerId = ((UserIdentifierSteam)client.PlatformId).ReadablePlatformUserIdentifier;
-            SevenDaysPlayer player = new SevenDaysPlayer(client);
+            string playerId = ((UserIdentifierSteam)clientInfo.PlatformId).ReadablePlatformUserIdentifier;
+            SevenDaysPlayer player = new SevenDaysPlayer(clientInfo);
             allPlayers[playerId] = player;
             connectedPlayers[playerId] = player;
         }
 
-        internal void PlayerDisconnected(ClientInfo client) => connectedPlayers.Remove(((UserIdentifierSteam)client.PlatformId).ReadablePlatformUserIdentifier);
+        internal void PlayerDisconnected(ClientInfo clientInfo) => connectedPlayers.Remove(((UserIdentifierSteam)clientInfo.PlatformId).ReadablePlatformUserIdentifier);
 
         internal void SavePlayerData() => ProtoStorage.Save(playerData, "oxide.covalence");
 
