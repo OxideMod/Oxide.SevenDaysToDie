@@ -78,7 +78,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
+            "MSILHash": "FAgf0K/+rDFHGCxtieqFfFkv32fjs0YUwGc5bbm47w4=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -105,7 +105,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "tNLXvzmIaf6QUwjktH9u/GjEQqcuF3MxhrcW4dpiTvQ=",
+            "MSILHash": "ELAeSOMYJVUrotpunZoQ1eZ3sFN7ZaJ2vQJE7DyPRys=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -156,7 +156,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "tNLXvzmIaf6QUwjktH9u/GjEQqcuF3MxhrcW4dpiTvQ=",
+            "MSILHash": "ELAeSOMYJVUrotpunZoQ1eZ3sFN7ZaJ2vQJE7DyPRys=",
             "BaseHookName": "OnExperienceGained",
             "HookCategory": "Player"
           }
@@ -199,7 +199,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "t6drKgxDNl+I1Rz0621J951ggawJHjLice5lMVAdlUk=",
+            "MSILHash": "FAgf0K/+rDFHGCxtieqFfFkv32fjs0YUwGc5bbm47w4=",
             "BaseHookName": "OnEntityTakeDamage",
             "HookCategory": "Entity"
           }
@@ -426,7 +426,7 @@
                 "DamageResponse"
               ]
             },
-            "MSILHash": "6P965DtDddHk2WQwWQgPuNQZTOuCPfcQf/3BHgrmvHs=",
+            "MSILHash": "js6C9cOINMuPxH0duvmX0GQZ5sEN5Cc+8V9wuYlsDKw=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -733,7 +733,7 @@
               "ReturnType": "System.Boolean",
               "Parameters": []
             },
-            "MSILHash": "2qsljz0JCacRYV/NAgWFoSZm8LIxa4w/+oxRt2LQ5BU=",
+            "MSILHash": "2xUAgVmKNCvjLL8C01J8UyKsG1DyMB3csFDDWHznI5g=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
