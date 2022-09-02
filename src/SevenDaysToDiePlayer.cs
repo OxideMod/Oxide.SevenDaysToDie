@@ -88,7 +88,7 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Gets if the player is connected
         /// </summary>
-        public bool IsConnected => clientInfo?.litenetPeerConnectId > 0L;
+        public bool IsConnected => clientInfo?.netConnection != null;
 
         /// <summary>
         /// Returns if the player is sleeping
