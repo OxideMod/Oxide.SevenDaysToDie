@@ -1192,109 +1192,9 @@
       "Hooks": [],
       "Modifiers": [
         {
-          "Name": "Log::formatMessage",
+          "Name": "Logger::.cctor",
           "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Log",
-          "Type": 1,
-          "TargetExposure": [
-            2,
-            4
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "formatMessage",
-            "FullTypeName": "System.String",
-            "Parameters": [
-              "System.String",
-              "UnityEngine.LogType",
-              "System.DateTime&",
-              "System.Int64&"
-            ]
-          },
-          "MSILHash": "rtT5vqIRVMXOZzK7Jx7XgzktTSEeehJVaDZvZr2SXbo="
-        },
-        {
-          "Name": "Log::masterLogStandalone",
-          "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Log",
-          "Type": 1,
-          "TargetExposure": [
-            2,
-            4
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "masterLogStandalone",
-            "FullTypeName": "System.Void",
-            "Parameters": [
-              "System.String",
-              "UnityEngine.LogType",
-              "System.String"
-            ]
-          },
-          "MSILHash": "mYBPIt2FIEODknOa30SqF9jf6Zbc6TorIvFMY5ve+CU="
-        },
-        {
-          "Name": "Log::SendToLogListeners",
-          "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Log",
-          "Type": 1,
-          "TargetExposure": [
-            2,
-            4
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "SendToLogListeners",
-            "FullTypeName": "System.Void",
-            "Parameters": [
-              "System.String",
-              "System.String",
-              "UnityEngine.LogType",
-              "System.DateTime",
-              "System.Int64",
-              "System.String"
-            ]
-          },
-          "MSILHash": "3XCTaWOo3Y0LvFzYTKxh90RVH/4Vn17x68NyWCkNnTM="
-        },
-        {
-          "Name": "Log::UnityLogCallback",
-          "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Log",
-          "Type": 1,
-          "TargetExposure": [
-            2,
-            4
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "UnityLogCallback",
-            "FullTypeName": "System.Void",
-            "Parameters": [
-              "System.String",
-              "System.String",
-              "UnityEngine.LogType"
-            ]
-          },
-          "MSILHash": "/Bj18CbQ7DNLotAxaTmQB0SWn4M9C7dJidBSyEPqPlg="
-        },
-        {
-          "Name": "Log::.cctor",
-          "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Log",
+          "TypeName": "Logger",
           "Type": 1,
           "TargetExposure": [
             2,
@@ -1309,7 +1209,52 @@
             "FullTypeName": "System.Void",
             "Parameters": []
           },
-          "MSILHash": "OsqdIjuBOuY9i1T6ZfbdOPt00gva8tliEIDR2Ol6ma8="
+          "MSILHash": "fqAAvTY8a3pBVCGsmfA8fcwwBV9ROT8SB6rdWXF7ifU="
+        },
+        {
+          "Name": "Logger::masterLogStandalone",
+          "AssemblyName": "LogLibrary.dll",
+          "TypeName": "Logger",
+          "Type": 1,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "masterLogStandalone",
+            "FullTypeName": "System.Void",
+            "Parameters": [
+              "System.String",
+              "System.String",
+              "UnityEngine.LogType"
+            ]
+          },
+          "MSILHash": "C3JloDm6xZaq/3eCcXpj9kVnY3+k+NasSxQj6tA3IQY="
+        },
+        {
+          "Name": "Logger::formatMessage",
+          "AssemblyName": "LogLibrary.dll",
+          "TypeName": "Logger",
+          "Type": 1,
+          "TargetExposure": [
+            2
+          ],
+          "Flagged": false,
+          "Signature": {
+            "Exposure": [
+              0
+            ],
+            "Name": "formatMessage",
+            "FullTypeName": "System.String",
+            "Parameters": [
+              "System.String",
+              "System.String"
+            ]
+          },
+          "MSILHash": "9iOalKBKk8xNDT2tPzwoh5a00N8fYFy9gOTeNNPeVAU="
         }
       ],
       "Fields": []
