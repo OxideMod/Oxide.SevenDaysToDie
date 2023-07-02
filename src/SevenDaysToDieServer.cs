@@ -151,7 +151,7 @@ namespace Oxide.Game.SevenDays
             {
                 // Ban player with reason
                 PlatformUserIdentifierAbs identifier = PlatformUserIdentifierAbs.FromCombinedString(playerId);
-                GameManager.Instance.adminTools.AddBan(identifier.PlatformIdentifierString, identifier, new DateTime(duration.Ticks), reason);
+                GameManager.Instance.adminTools.Blacklist.AddBan(identifier.PlatformIdentifierString, identifier, new DateTime(duration.Ticks), reason);
 
                 // Kick player if connected
                 if (IsConnected(playerId))
@@ -168,9 +168,9 @@ namespace Oxide.Game.SevenDays
         public TimeSpan BanTimeRemaining(string playerId)
         {
             PlatformUserIdentifierAbs identifier = PlatformUserIdentifierAbs.FromPlatformAndId("Steam", playerId);
-            if (GameManager.Instance.adminTools.bannedUsers.ContainsKey(identifier))
+            if (GameManager.Instance.adminTools.Blacklist.bannedUsers.ContainsKey(identifier))
             {
-                AdminToolsClientInfo clientInfo = GameManager.Instance.adminTools.bannedUsers[identifier];
+                AdminBlacklist.BannedUser clientInfo = GameManager.Instance.adminTools.Blacklist.bannedUsers[identifier];
                 return clientInfo.BannedUntil.TimeOfDay;
             }
 
@@ -183,7 +183,7 @@ namespace Oxide.Game.SevenDays
         /// <param name="playerId"></param>
         public bool IsBanned(string playerId)
         {
-            return GameManager.Instance.adminTools.IsBanned(PlatformUserIdentifierAbs.FromPlatformAndId("Steam", playerId), out _, out _);
+            return GameManager.Instance.adminTools.Blacklist.IsBanned(PlatformUserIdentifierAbs.FromPlatformAndId("Steam", playerId), out _, out _);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Oxide.Game.SevenDays
             if (IsBanned(playerId))
             {
                 // Set to unbanned
-                GameManager.Instance.adminTools.RemoveBan(PlatformUserIdentifierAbs.FromPlatformAndId("Steam", playerId));
+                GameManager.Instance.adminTools.Blacklist.RemoveBan(PlatformUserIdentifierAbs.FromPlatformAndId("Steam", playerId));
             }
         }
 

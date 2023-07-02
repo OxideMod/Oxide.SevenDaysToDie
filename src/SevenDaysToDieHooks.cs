@@ -141,7 +141,7 @@ namespace Oxide.Game.SevenDays
                 {
                     permission.AddUserGroup(playerId, defaultGroups.Players);
                 }
-                if (GameManager.Instance.adminTools.IsAdmin(clientInfo) && !permission.UserHasGroup(playerId, defaultGroups.Administrators))
+                if (GameManager.Instance.adminTools.Users.HasEntry(clientInfo) && !permission.UserHasGroup(playerId, defaultGroups.Administrators))
                 {
                     permission.AddUserGroup(playerId, defaultGroups.Administrators);
                 }

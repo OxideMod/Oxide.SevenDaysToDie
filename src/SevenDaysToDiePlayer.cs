@@ -78,12 +78,12 @@ namespace Oxide.Game.SevenDays
         /// <summary>
         /// Returns if the player is admin
         /// </summary>
-        public bool IsAdmin => GameManager.Instance.adminTools.IsAdmin(clientInfo);
+        public bool IsAdmin => GameManager.Instance.adminTools.Users.HasEntry(clientInfo);
 
         /// <summary>
         /// Gets if the player is banned
         /// </summary>
-        public bool IsBanned => GameManager.Instance.adminTools.IsBanned(identifier, out _, out _);
+        public bool IsBanned => GameManager.Instance.adminTools.Blacklist.IsBanned(identifier, out _, out _);
 
         /// <summary>
         /// Gets if the player is connected
@@ -122,7 +122,7 @@ namespace Oxide.Game.SevenDays
             if (!IsBanned)
             {
                 // Ban player with reason
-                GameManager.Instance.adminTools.AddBan(clientInfo.playerName, identifier, new DateTime(duration.Ticks), reason);
+                GameManager.Instance.adminTools.Blacklist.AddBan(clientInfo.playerName, identifier, new DateTime(duration.Ticks), reason);
 
                 // Kick player if connected
                 if (IsConnected)
@@ -139,9 +139,9 @@ namespace Oxide.Game.SevenDays
         {
             get
             {
-                if (GameManager.Instance.adminTools.bannedUsers.ContainsKey(identifier))
+                if (GameManager.Instance.adminTools.Blacklist.bannedUsers.ContainsKey(identifier))
                 {
-                    AdminToolsClientInfo clientInfo = GameManager.Instance.adminTools.bannedUsers[identifier];
+                    AdminBlacklist.BannedUser clientInfo = GameManager.Instance.adminTools.Blacklist.bannedUsers[identifier];
                     return clientInfo.BannedUntil.TimeOfDay;
                 }
 
@@ -246,7 +246,7 @@ namespace Oxide.Game.SevenDays
             if (IsBanned)
             {
                 // Set to unbanned
-                GameManager.Instance.adminTools.RemoveBan(identifier);
+                GameManager.Instance.adminTools.Blacklist.RemoveBan(identifier);
             }
         }
 

@@ -58,13 +58,13 @@ namespace Oxide.Game.SevenDays
             /// Gets the variant commands for the command
             /// </summary>
             /// <returns></returns>
-            public override string[] GetCommands() => new[] { Command };
+            protected override string[] getCommands() => new[] { Command };
 
             /// <summary>
             /// Gets the description for the command
             /// </summary>
             /// <returns></returns>
-            public override string GetDescription()
+            protected override string getDescription()
             {
                 return "See plugin documentation for command description"; // TODO: Implement when possible and localize
             }
@@ -73,7 +73,7 @@ namespace Oxide.Game.SevenDays
             /// Gets the help for the command
             /// </summary>
             /// <returns></returns>
-            public override string GetHelp()
+            protected override string getHelp()
             {
                 return "See plugin documentation for command help"; // TODO: Implement when possible and localize
             }
@@ -230,9 +230,9 @@ namespace Oxide.Game.SevenDays
 
             // Register the command permission
             string[] commands = newCommand.SevenDaysToDieCommand.GetCommands();
-            if (!GameManager.Instance.adminTools.IsPermissionDefinedForCommand(commands) && newCommand.SevenDaysToDieCommand.DefaultPermissionLevel != 0)
+            if (!GameManager.Instance.adminTools.Commands.IsPermissionDefined(commands) && newCommand.SevenDaysToDieCommand.DefaultPermissionLevel != 0)
             {
-                GameManager.Instance.adminTools.AddCommandPermission(command, newCommand.SevenDaysToDieCommand.DefaultPermissionLevel, false);
+                GameManager.Instance.adminTools.Commands.AddCommand(command, newCommand.SevenDaysToDieCommand.DefaultPermissionLevel, false);
             }
         }
 
