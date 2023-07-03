@@ -1,5 +1,3 @@
-#Requires -Version 6.0
-
 param (
     [Parameter(Mandatory=$true)][string]$game_name,
     [Parameter(Mandatory=$true)][string]$dotnet,
@@ -14,6 +12,15 @@ param (
 )
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+# Check PowerShell version
+$ps_version = $PSVersionTable.PSVersion.Major
+if ($ps_version -le 5)
+{
+    Write-Host "Error: PowerShell version 6 or higher required to continue, $ps_version currently installed"
+    if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
+    exit 1
+}
 
 # Format project name and set depot ID if provided
 $project = "Oxide." + $game_name
@@ -32,7 +39,7 @@ $references_file = Join-Path $tools_dir ".references"
 New-Item "$tools_dir", "$managed_dir" -ItemType Directory -Force | Out-Null
 
 # Set URLs of dependencies and tools to download
-$steam_depotdl_url = "https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.4.6/depotdownloader-2.4.6.zip"
+$steam_depotdl_url = "https://img.mrblue.io/ed3a2b1054f5482e95832dba85953955.zip"
 $de4dot_url = "https://github.com/0xd4d/de4dot/suites/507020524/artifacts/2658127"
 $patcher_url = "https://github.com/OxideMod/Oxide.Patcher/releases/download/latest/uModPatcherConsole.exe"
 
@@ -94,7 +101,7 @@ function Get-Downloader {
         # Download and extract DepotDownloader
         Write-Host "Downloading latest version of DepotDownloader"
         try {
-            Start-BitsTransfer $steam_depotdl_url $steam_depotdl_zip
+            Invoke-WebRequest $steam_depotdl_url -OutFile $steam_depotdl_zip -UseBasicParsing
         } catch {
             Write-Host "Error: Could not download DepotDownloader"
             Write-Host $_.Exception | Format-List -Force
@@ -216,7 +223,7 @@ function Get-Deobfuscators {
             # Download and extract de4dot
             Write-Host "Downloading latest version of de4dot" # TODO: Get and show version
             try {
-                Start-BitsTransfer $de4dot_url $de4dot_zip
+                Invoke-WebRequest $de4dot_url -OutFile $de4dot_zip -UseBasicParsing
             } catch {
                 Write-Host "Error: Could not download de4dot"
                 Write-Host $_.Exception | Format-List -Force
