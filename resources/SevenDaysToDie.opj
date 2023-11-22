@@ -605,7 +605,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "ZqRXGrLFABurrnr/93kr+aDkQqZJpmfji6uFBfgjs3I=",
+            "MSILHash": "krFFFT5w/m9Ua0JQJz9G0WXhaVSxG5aTjLdmtwTwQuY=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -643,7 +643,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "mU5xwmp8re204q3cwK5lr7PH6ckDZ+Xc0p4xn+xbFU0=",
+            "MSILHash": "klDJJPg8niKK38+lOdSrQOaXFF3hxdMQRfzOQpDfDCM=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -682,7 +682,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "mU5xwmp8re204q3cwK5lr7PH6ckDZ+Xc0p4xn+xbFU0=",
+            "MSILHash": "klDJJPg8niKK38+lOdSrQOaXFF3hxdMQRfzOQpDfDCM=",
             "BaseHookName": "OnPlayerConnected",
             "HookCategory": "Player"
           }
@@ -710,7 +710,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "mU5xwmp8re204q3cwK5lr7PH6ckDZ+Xc0p4xn+xbFU0=",
+            "MSILHash": "klDJJPg8niKK38+lOdSrQOaXFF3hxdMQRfzOQpDfDCM=",
             "BaseHookName": "OnPlayerSpawn",
             "HookCategory": "Player"
           }
@@ -727,14 +727,14 @@
             "Name": "IOnServerInitialized",
             "HookName": "IOnServerInitialized",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager/<startGameCo>d__129",
+            "TypeName": "GameManager/<startGameCo>d__126",
             "Signature": {
               "Exposure": 0,
               "Name": "MoveNext",
               "ReturnType": "System.Boolean",
               "Parameters": []
             },
-            "MSILHash": "FIZ+zUVIgjAdV9DuFmS3AxCtKwbpCR92eBqJRJj6XpE=",
+            "MSILHash": "Mg7ZzJ46/yi+ZYmL+bsEfk/uU/EGI+Taob6uB2H+G1k=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
