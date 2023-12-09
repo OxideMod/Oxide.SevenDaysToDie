@@ -59,9 +59,10 @@ namespace Oxide.Game.SevenDays
             if (clientInfo != null && !string.IsNullOrEmpty(message))
             {
                 // Check if it is a chat command
-                if (message[0] == '/')
+                string chatCommandPrefix = CommandHandler.GetChatCommandPrefix(message);
+                if (chatCommandPrefix != null)
                 {
-                    Covalence.CommandSystem.ParseCommand(message.TrimStart('/'), out string cmd, out string[] args);
+                    Covalence.CommandSystem.ParseCommand(message.Substring(chatCommandPrefix.Length), out string cmd, out string[] args);
                     if (!string.IsNullOrEmpty(cmd))
                     {
                         // Is the command blocked?
