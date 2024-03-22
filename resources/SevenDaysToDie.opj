@@ -354,7 +354,7 @@
                 "CommandSenderInfo"
               ]
             },
-            "MSILHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
+            "MSILHash": "oW6uxZT+BX9WZi97VNSQgzSyvZf2EadB2np8BWEjxZo=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -390,7 +390,7 @@
                 "CommandSenderInfo"
               ]
             },
-            "MSILHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM=",
+            "MSILHash": "oW6uxZT+BX9WZi97VNSQgzSyvZf2EadB2np8BWEjxZo=",
             "BaseHookName": "IOnServerCommand",
             "HookCategory": "Server"
           }
@@ -465,7 +465,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "YDPM3oZE7f55utewY+6o8GQC0XAn11Nup5gbQb67ppk=",
+            "MSILHash": "UI0RMWKoyq/6KcaLvz6dFHGDttBRM7GLchzxXc/itD4=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
