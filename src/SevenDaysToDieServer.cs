@@ -249,7 +249,7 @@ namespace Oxide.Game.SevenDays
             {
                 message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
                 string formatted = prefix != null ? $"{prefix} {message}" : message;
-                GameManager.Instance.ChatMessageServer(null, EChatType.Global, -1, formatted, null, false, null);
+                GameManager.Instance.ChatMessageServer(null, EChatType.Global, -1, formatted, null, EMessageSender.Server);
             }
         }
 
