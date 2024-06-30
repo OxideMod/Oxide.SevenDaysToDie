@@ -15,7 +15,7 @@
     <TargetFramework>net48</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <SteamAppId>294420</SteamAppId>
-    <SteamBranch>public</SteamBranch>
+    <SteamBranch>latest_experimental</SteamBranch>
     <SteamLogin>anonymous</SteamLogin>
     <GamePlatform>windows;linux</GamePlatform>
     <GameExe>7DaysToDieServer.exe;7DaysToDieServer</GameExe>
@@ -31,6 +31,7 @@
     <PackageReference Include="Oxide.Unity" Version="2.0.*" />
     <Reference Include="Assembly-CSharp" />
     <Reference Include="Assembly-CSharp-firstpass" />
+    <Reference Include="NGUI" />
     <Reference Include="LogLibrary" />
     <Reference Include="mscorlib" />
     <Reference Include="UnityEngine" />
@@ -40,7 +41,7 @@
     <None Remove="Bundle\**; dependencies\**; *.config; *.opj" />
   </ItemGroup>
   <ItemGroup>
-    <PatchedFiles Include="$(TargetDir)\Assembly-CSharp.dll" />
+    <PatchedFiles Include="$(TargetDir)\Assembly-CSharp.dll; $(TargetDir)\LogLibrary.dll" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <Import Project="..\Game.targets" />

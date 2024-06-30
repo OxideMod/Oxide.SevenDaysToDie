@@ -58,13 +58,13 @@ namespace Oxide.Game.SevenDays
             /// Gets the variant commands for the command
             /// </summary>
             /// <returns></returns>
-            protected override string[] getCommands() => new[] { Command };
+            public override string[] getCommands() => new[] { Command };
 
             /// <summary>
             /// Gets the description for the command
             /// </summary>
             /// <returns></returns>
-            protected override string getDescription()
+            public override string getDescription()
             {
                 return "See plugin documentation for command description"; // TODO: Implement when possible and localize
             }
@@ -73,7 +73,7 @@ namespace Oxide.Game.SevenDays
             /// Gets the help for the command
             /// </summary>
             /// <returns></returns>
-            protected override string getHelp()
+            public override string getHelp()
             {
                 return "See plugin documentation for command help"; // TODO: Implement when possible and localize
             }
