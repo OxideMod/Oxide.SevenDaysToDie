@@ -322,7 +322,7 @@ namespace Oxide.Game.SevenDays
                 message = args.Length > 0 ? string.Format(Formatter.ToRoKAnd7DTD(message), args) : Formatter.ToRoKAnd7DTD(message);
                 string formatted = prefix != null ? $"{prefix} {message}" : message;
 
-                clientInfo.SendPackage(NetPackageManager.GetPackage<NetPackageChat>().Setup(EChatType.Global, clientInfo.entityId, formatted, null, false, null));
+                clientInfo.SendPackage(NetPackageManager.GetPackage<NetPackageChat>().Setup(EChatType.Global, clientInfo.entityId, formatted, null, EMessageSender.SenderIdAsPlayer));
             }
 
         }

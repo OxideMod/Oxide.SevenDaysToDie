@@ -24,7 +24,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "vU0d0vvxj1L5Ax33MywdSrpzm2Tv7/M9Wg3q8RNyWpo=",
+            "MSILHash": "LXflKdDYEsaohlH+uyahXkN+jMl17VFRbLxXYnRk8n8=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -50,7 +50,7 @@
                 "Entity"
               ]
             },
-            "MSILHash": "hQ6n7cEQEH94MR7vonjp8clrsq8EKQ353ihQjsUaZFY=",
+            "MSILHash": "2KXnV2Z6s8vsptgSkzgqAeJ94eUo3qCYdBF+VS+qtwY=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -79,7 +79,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "aFFiFpSeoY5JRo3aVvjahNnCh9bDVul61GWiqaJp6LA=",
+            "MSILHash": "++em9DrKPLv/k5NJtQP7pcpxGi8xa09eEUvUL5ocGrg=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -98,15 +98,16 @@
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "Progression",
             "Signature": {
-              "Exposure": 0,
+              "Exposure": 2,
               "Name": "AddLevelExpRecursive",
               "ReturnType": "System.Void",
               "Parameters": [
                 "System.Int32",
-                "System.String"
+                "System.String",
+                "System.Boolean"
               ]
             },
-            "MSILHash": "/HQ6I6AM+Vw+S2y0pU6/Kl2Del/Q6WFZcE0PqVy4lj0=",
+            "MSILHash": "4wqQ6KXnlp1Rp50PkcDSA3wzff9+8KOdQ0FMwoSo+rs=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -114,7 +115,7 @@
         {
           "Type": "Modify",
           "Hook": {
-            "InjectionIndex": 172,
+            "InjectionIndex": 170,
             "RemoveCount": 2,
             "Instructions": [
               {
@@ -149,15 +150,16 @@
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "Progression",
             "Signature": {
-              "Exposure": 0,
+              "Exposure": 2,
               "Name": "AddLevelExpRecursive",
               "ReturnType": "System.Void",
               "Parameters": [
                 "System.Int32",
-                "System.String"
+                "System.String",
+                "System.Boolean"
               ]
             },
-            "MSILHash": "/HQ6I6AM+Vw+S2y0pU6/Kl2Del/Q6WFZcE0PqVy4lj0=",
+            "MSILHash": "4wqQ6KXnlp1Rp50PkcDSA3wzff9+8KOdQ0FMwoSo+rs=",
             "BaseHookName": "OnExperienceGained",
             "HookCategory": "Player"
           }
@@ -200,7 +202,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "aFFiFpSeoY5JRo3aVvjahNnCh9bDVul61GWiqaJp6LA=",
+            "MSILHash": "++em9DrKPLv/k5NJtQP7pcpxGi8xa09eEUvUL5ocGrg=",
             "BaseHookName": "OnEntityTakeDamage",
             "HookCategory": "Entity"
           }
@@ -346,7 +348,7 @@
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "SdtdConsole",
             "Signature": {
-              "Exposure": 0,
+              "Exposure": 2,
               "Name": "executeCommand",
               "ReturnType": "System.Collections.Generic.List`1<System.String>",
               "Parameters": [
@@ -382,7 +384,7 @@
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "SdtdConsole",
             "Signature": {
-              "Exposure": 0,
+              "Exposure": 2,
               "Name": "executeCommand",
               "ReturnType": "System.Collections.Generic.List`1<System.String>",
               "Parameters": [
@@ -420,14 +422,14 @@
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "EntityAlive",
             "Signature": {
-              "Exposure": 1,
+              "Exposure": 2,
               "Name": "ClientKill",
               "ReturnType": "System.Void",
               "Parameters": [
                 "DamageResponse"
               ]
             },
-            "MSILHash": "uF7GNMwvl6Sz87E7Ey/M+gmEtQZ78P78CPf39H+3pk4=",
+            "MSILHash": "PueoCOSGma1PUmlUtU/DJ6/biVRrWNMKmwPf+GoRWp4=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -465,7 +467,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "UI0RMWKoyq/6KcaLvz6dFHGDttBRM7GLchzxXc/itD4=",
+            "MSILHash": "ANWbp9EO44k6vuYa4TYQp/QSkUEGzG0u7n3dk3kQqNM=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -539,12 +541,11 @@
                 "EChatType",
                 "System.Int32",
                 "System.String",
-                "System.String",
-                "System.Boolean",
-                "System.Collections.Generic.List`1<System.Int32>"
+                "System.Collections.Generic.List`1<System.Int32>",
+                "EMessageSender"
               ]
             },
-            "MSILHash": "OLjp5sTms+lhRvU/A1BBWOtqjS5x4/SXQ6hM64LQfzI=",
+            "MSILHash": "RrpzcVW/Saphnq/vLpRdozSI+LU4b9ETP3wFbA7nE/4=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -619,9 +620,9 @@
               {
                 "Name": "Group1",
                 "Patterns": [
-                  "ldarg.1",
-                  "ldfld System.String ClientInfo::playerName",
-                  "callvirt System.Void EntityAlive::set_EntityName(System.String)"
+                  "ldloc.s V_6",
+                  "ldc.i4.1",
+                  "stfld System.Boolean Entity::isEntityRemote"
                 ]
               }
             ],
@@ -643,7 +644,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "klDJJPg8niKK38+lOdSrQOaXFF3hxdMQRfzOQpDfDCM=",
+            "MSILHash": "mGt65FPhqWU+az2c0d+p0tf+5YQJHYJ0SSBTEHK1c3E=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -682,7 +683,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "klDJJPg8niKK38+lOdSrQOaXFF3hxdMQRfzOQpDfDCM=",
+            "MSILHash": "mGt65FPhqWU+az2c0d+p0tf+5YQJHYJ0SSBTEHK1c3E=",
             "BaseHookName": "OnPlayerConnected",
             "HookCategory": "Player"
           }
@@ -710,7 +711,7 @@
                 "PlayerProfile"
               ]
             },
-            "MSILHash": "klDJJPg8niKK38+lOdSrQOaXFF3hxdMQRfzOQpDfDCM=",
+            "MSILHash": "mGt65FPhqWU+az2c0d+p0tf+5YQJHYJ0SSBTEHK1c3E=",
             "BaseHookName": "OnPlayerSpawn",
             "HookCategory": "Player"
           }
@@ -727,14 +728,14 @@
             "Name": "IOnServerInitialized",
             "HookName": "IOnServerInitialized",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager/<startGameCo>d__126",
+            "TypeName": "GameManager/<startGameCo>d__134",
             "Signature": {
-              "Exposure": 0,
+              "Exposure": 2,
               "Name": "MoveNext",
               "ReturnType": "System.Boolean",
               "Parameters": []
             },
-            "MSILHash": "Mg7ZzJ46/yi+ZYmL+bsEfk/uU/EGI+Taob6uB2H+G1k=",
+            "MSILHash": "pb1r1O5GwO48nu18gYxFJgNV6wJxqgeUQmeZDHgMj5s=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -742,19 +743,19 @@
         {
           "Type": "Initialize",
           "Hook": {
-            "InjectionIndex": 336,
+            "InjectionIndex": 330,
             "HookTypeName": "Initialize",
             "Name": "Initialize",
             "HookName": "Initialize",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "GameManager",
             "Signature": {
-              "Exposure": 1,
+              "Exposure": 2,
               "Name": "Awake",
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "sGARL2TwA5ey6YCJP8CKOKud9wzT/WumWOMlczQ5Krc=",
+            "MSILHash": "kL5knNJ0vG9TjwBQxFnM7cc4pAHQiw+nEX37TFfi9qs=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -781,12 +782,12 @@
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "GameManager",
             "Signature": {
-              "Exposure": 1,
+              "Exposure": 2,
               "Name": "Awake",
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "sGARL2TwA5ey6YCJP8CKOKud9wzT/WumWOMlczQ5Krc=",
+            "MSILHash": "kL5knNJ0vG9TjwBQxFnM7cc4pAHQiw+nEX37TFfi9qs=",
             "BaseHookName": "Initialize",
             "HookCategory": "Server"
           }
@@ -805,7 +806,7 @@
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "GameManager",
             "Signature": {
-              "Exposure": 1,
+              "Exposure": 2,
               "Name": "OnApplicationQuit",
               "ReturnType": "System.Boolean",
               "Parameters": []
@@ -816,349 +817,7 @@
           }
         }
       ],
-      "Modifiers": [
-        {
-          "Name": "SdtdConsole::m_Commands",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "SdtdConsole",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "m_Commands",
-            "FullTypeName": "System.Collections.Generic.List`1<IConsoleCommand> SdtdConsole::m_Commands",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "SdtdConsole::m_CommandsAllVariants",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "SdtdConsole",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "m_CommandsAllVariants",
-            "FullTypeName": "System.Collections.Generic.List`1<SdtdConsole/CommandDescriptor> SdtdConsole::m_CommandsAllVariants",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "SdtdConsole/CommandInstance",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "SdtdConsole/CommandInstance",
-          "Type": 3,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "CommandInstance",
-            "FullTypeName": "SdtdConsole/CommandInstance",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "EntityAlive::entityThatKilledMe",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "EntityAlive",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              1
-            ],
-            "Name": "entityThatKilledMe",
-            "FullTypeName": "EntityAlive EntityAlive::entityThatKilledMe",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "SdtdConsole::LogCallback",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "SdtdConsole",
-          "Type": 1,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "LogCallback",
-            "FullTypeName": "System.Void",
-            "Parameters": [
-              "System.String",
-              "System.String",
-              "System.String",
-              "UnityEngine.LogType",
-              "System.DateTime",
-              "System.Int64"
-            ]
-          },
-          "MSILHash": "XJAFAsQpXhpxgcBCgpfJSZ4fscYDmacuvksc05NUbWg="
-        },
-        {
-          "Name": "SdtdConsole::RegisterCommand",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "SdtdConsole",
-          "Type": 1,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "RegisterCommand",
-            "FullTypeName": "System.Void",
-            "Parameters": [
-              "System.Collections.Generic.SortedList`2<System.String,IConsoleCommand>",
-              "System.String",
-              "IConsoleCommand"
-            ]
-          },
-          "MSILHash": "nGqdbb6RVNBfYrkdIxXQx/swR0QV4wDe1tbIBS8kuuc="
-        },
-        {
-          "Name": "SdtdConsole::executeCommand",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "SdtdConsole",
-          "Type": 1,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "executeCommand",
-            "FullTypeName": "System.Collections.Generic.List`1<System.String>",
-            "Parameters": [
-              "System.String",
-              "CommandSenderInfo"
-            ]
-          },
-          "MSILHash": "leWk6ZA1pUPJY4PE0PNSC5ffIi2lurCuEs+Ty4XTvZM="
-        },
-        {
-          "Name": "SdtdConsole::tokenizeCommand",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "SdtdConsole",
-          "Type": 1,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "tokenizeCommand",
-            "FullTypeName": "System.Collections.Generic.List`1<System.String>",
-            "Parameters": [
-              "System.String"
-            ]
-          },
-          "MSILHash": "+qDQsY3iY47nmGS3Ez1I0Zv3ohIU6qc4TPKs6a2JA8U="
-        },
-        {
-          "Name": "SdtdConsole::m_Servers",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "SdtdConsole",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "m_Servers",
-            "FullTypeName": "System.Collections.Generic.List`1<IConsoleServer> SdtdConsole::m_Servers",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "AdminCommands::GetAdminToolsCommandPermission",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "AdminCommands",
-          "Type": 1,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "GetAdminToolsCommandPermission",
-            "FullTypeName": "AdminCommands/CommandPermission",
-            "Parameters": [
-              "System.String[]"
-            ]
-          },
-          "MSILHash": "q8gHR5dN85mdXxkKtV85gM63phfT1u27ofQGDsF4N4U="
-        },
-        {
-          "Name": "AdminCommands::commands",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "AdminCommands",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "commands",
-            "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminCommands/CommandPermission> AdminCommands::commands",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "AdminCommands::defaultCommandPermission",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "AdminCommands",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "defaultCommandPermission",
-            "FullTypeName": "AdminCommands/CommandPermission AdminCommands::defaultCommandPermission",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "AdminUsers::groupPermissions",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "AdminUsers",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "groupPermissions",
-            "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminUsers/GroupPermission> AdminUsers::groupPermissions",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "AdminUsers::userPermissions",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "AdminUsers",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "userPermissions",
-            "FullTypeName": "System.Collections.Generic.Dictionary`2<PlatformUserIdentifierAbs,AdminUsers/UserPermission> AdminUsers::userPermissions",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "AdminWhitelist::whitelistedGroups",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "AdminWhitelist",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "whitelistedGroups",
-            "FullTypeName": "System.Collections.Generic.Dictionary`2<System.String,AdminWhitelist/WhitelistGroup> AdminWhitelist::whitelistedGroups",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "AdminWhitelist::whitelistedUsers",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "AdminWhitelist",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "whitelistedUsers",
-            "FullTypeName": "System.Collections.Generic.Dictionary`2<PlatformUserIdentifierAbs,AdminWhitelist/WhitelistUser> AdminWhitelist::whitelistedUsers",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        },
-        {
-          "Name": "AdminBlacklist::bannedUsers",
-          "AssemblyName": "Assembly-CSharp.dll",
-          "TypeName": "AdminBlacklist",
-          "Type": 0,
-          "TargetExposure": [
-            2
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "bannedUsers",
-            "FullTypeName": "System.Collections.Generic.Dictionary`2<PlatformUserIdentifierAbs,AdminBlacklist/BannedUser> AdminBlacklist::bannedUsers",
-            "Parameters": []
-          },
-          "MSILHash": ""
-        }
-      ],
+      "Modifiers": [],
       "Fields": [
         {
           "Name": "IPlayer",
@@ -1168,82 +827,6 @@
           "Flagged": false
         }
       ]
-    },
-    {
-      "AssemblyName": "LogLibrary.dll",
-      "Hooks": [],
-      "Modifiers": [
-        {
-          "Name": "Log::masterLogStandalone",
-          "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Log",
-          "Type": 1,
-          "TargetExposure": [
-            2,
-            4
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "masterLogStandalone",
-            "FullTypeName": "System.Void",
-            "Parameters": [
-              "System.String",
-              "UnityEngine.LogType",
-              "System.String"
-            ]
-          },
-          "MSILHash": "XvoCGUMivZgKLrQQd0HlAQ1Lu3DhBvPhehS5MEE/y84="
-        },
-        {
-          "Name": "Log::formatMessage",
-          "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Log",
-          "Type": 1,
-          "TargetExposure": [
-            2,
-            4
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": "formatMessage",
-            "FullTypeName": "System.String",
-            "Parameters": [
-              "System.String",
-              "UnityEngine.LogType",
-              "System.DateTime&",
-              "System.Int64&"
-            ]
-          },
-          "MSILHash": "rtT5vqIRVMXOZzK7Jx7XgzktTSEeehJVaDZvZr2SXbo="
-        },
-        {
-          "Name": "Log::.cctor",
-          "AssemblyName": "LogLibrary.dll",
-          "TypeName": "Log",
-          "Type": 1,
-          "TargetExposure": [
-            2,
-            4
-          ],
-          "Flagged": false,
-          "Signature": {
-            "Exposure": [
-              0
-            ],
-            "Name": ".cctor",
-            "FullTypeName": "System.Void",
-            "Parameters": []
-          },
-          "MSILHash": "OsqdIjuBOuY9i1T6ZfbdOPt00gva8tliEIDR2Ol6ma8="
-        }
-      ],
-      "Fields": []
     }
   ]
 }
