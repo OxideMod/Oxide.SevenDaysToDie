@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+   inputs:
+      message:
+        description: 'Release note'
+        required: true
 
 jobs:
   build:
