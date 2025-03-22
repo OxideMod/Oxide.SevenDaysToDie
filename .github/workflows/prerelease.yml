@@ -5,24 +5,26 @@ on:
     branches-ignore:
       - master
   workflow_dispatch:
-   inputs:
+    inputs:
       message:
-        description: 'Build note'
-        required: false
+        description: 'Release note'
+        required: true
 
 jobs:
   build:
     name: Run Build
-    uses: OxideMod/Actions/.github/workflows/game-build.yaml@main
+    uses: OxideMod/Actions/.github/workflows/game-build.yml@main
     with:
       game: "SevenDaysToDie"
       branch-postfix: "-${{ github.ref_name }}"
     secrets:
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
   deploy:
     name: Deploy to S3
-    uses: OxideMod/Actions/.github/workflows/r2-publish.yaml@main
+    uses: OxideMod/Actions/.github/workflows/r2-publish.yml@main
     needs: build
     with:
       generate-filehash: true
