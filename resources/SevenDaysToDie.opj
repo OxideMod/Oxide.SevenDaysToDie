@@ -1,6 +1,6 @@
 {
   "Name": "7 Days to Die",
-  "TargetDirectory": "D:\\Servers\\7DaysToDie\\7DaysToDieServer_Data\\Managed",
+  "TargetDirectory": "D:\\Servers\\7DaysToDie-experimental\\7DaysToDieServer_Data\\Managed",
   "Manifests": [
     {
       "AssemblyName": "Assembly-CSharp.dll",
@@ -354,7 +354,7 @@
                 "DamageResponse"
               ]
             },
-            "MSILHash": "455qLPgAbHRQeTrGJ6nSGanrBV2wQ+PGVxqMZeiXNNA=",
+            "MSILHash": "t4EdT16jpsOX3POf1MmHrf/pBrrDrRQaX/Nj6m8/U/4=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
