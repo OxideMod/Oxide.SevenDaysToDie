@@ -79,7 +79,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "++em9DrKPLv/k5NJtQP7pcpxGi8xa09eEUvUL5ocGrg=",
+            "MSILHash": "G93DBjTjmlmbPntMHR8NwNLhjKz0yb0+E4oOJlrZReg=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -107,7 +107,7 @@
                 "System.Boolean"
               ]
             },
-            "MSILHash": "2fGd5TATHJOn5eoNg/lbRaMotnUgsakPotASjGNHte8=",
+            "MSILHash": "ja1FcnSLl5Ddi0eM9xJrQP1K9N0MeYU/z+vP/32RyP8=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -115,7 +115,7 @@
         {
           "Type": "Modify",
           "Hook": {
-            "InjectionIndex": 171,
+            "InjectionIndex": 173,
             "RemoveCount": 2,
             "Instructions": [
               {
@@ -159,7 +159,7 @@
                 "System.Boolean"
               ]
             },
-            "MSILHash": "2fGd5TATHJOn5eoNg/lbRaMotnUgsakPotASjGNHte8=",
+            "MSILHash": "ja1FcnSLl5Ddi0eM9xJrQP1K9N0MeYU/z+vP/32RyP8=",
             "BaseHookName": "OnExperienceGained",
             "HookCategory": "Player"
           }
@@ -202,7 +202,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "++em9DrKPLv/k5NJtQP7pcpxGi8xa09eEUvUL5ocGrg=",
+            "MSILHash": "G93DBjTjmlmbPntMHR8NwNLhjKz0yb0+E4oOJlrZReg=",
             "BaseHookName": "OnEntityTakeDamage",
             "HookCategory": "Entity"
           }
@@ -316,10 +316,11 @@
                 "System.String",
                 "System.ValueTuple`2<PlatformUserIdentifierAbs,System.String>",
                 "System.ValueTuple`2<PlatformUserIdentifierAbs,System.String>",
-                "System.String"
+                "System.String",
+                "System.UInt64"
               ]
             },
-            "MSILHash": "1TeKQc0ZWeAmQay6BALbiNiMVTWj+Sw1v4KWloktpl8=",
+            "MSILHash": "sqI1u/bA7hCAGqsw1u64nP/afAEAADguH8710wifyjY=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -429,7 +430,7 @@
                 "DamageResponse"
               ]
             },
-            "MSILHash": "PueoCOSGma1PUmlUtU/DJ6/biVRrWNMKmwPf+GoRWp4=",
+            "MSILHash": "7Op7mHXQ0cn924SWJrkgVVtQ9xn6fOF624Fb25sp6zk=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -503,7 +504,7 @@
                 "System.Single"
               ]
             },
-            "MSILHash": "PiHTf+eCl0N4mzYNYZeBd7HB6o/jm/AjQsbWvIujye4=",
+            "MSILHash": "YIzoe4XI2z5tUfCHepZ4myZMi0JRpb3KHlC2bjuf1MM=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
@@ -542,10 +543,11 @@
                 "System.Int32",
                 "System.String",
                 "System.Collections.Generic.List`1<System.Int32>",
-                "EMessageSender"
+                "EMessageSender",
+                "GeneratedTextManager/BbCodeSupportMode"
               ]
             },
-            "MSILHash": "ozLcXoLYpxp1iThOoT+1CA7qwF6AdrUIsEgpNB7eZCI=",
+            "MSILHash": "UUF9tq1rYfKE11maXR/8XCG7fo1xStpJ8tY+dAkPvFY=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -582,33 +584,9 @@
                 "ClientInfo"
               ]
             },
-            "MSILHash": "4JieS2YvdD/E1Fn+zLnw1MfNYMrbEMr0GIAWtYkJgfo=",
+            "MSILHash": "BDC0iUZ0+eKutpFaR3G67tc+1ZQgYWyUHyanJZ8vDEw=",
             "BaseHookName": null,
             "HookCategory": "Player"
-          }
-        },
-        {
-          "Type": "Simple",
-          "Hook": {
-            "InjectionType": 2,
-            "InjectionIndex": -1,
-            "ReturnBehavior": 0,
-            "ArgumentBehavior": 0,
-            "ArgumentString": null,
-            "HookTypeName": "Simple",
-            "Name": "OnServerSave [2]",
-            "HookName": "OnServerSave",
-            "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "AdminTools",
-            "Signature": {
-              "Exposure": 2,
-              "Name": "Save",
-              "ReturnType": "System.Void",
-              "Parameters": []
-            },
-            "MSILHash": "krFFFT5w/m9Ua0JQJz9G0WXhaVSxG5aTjLdmtwTwQuY=",
-            "BaseHookName": null,
-            "HookCategory": "Server"
           }
         },
         {
@@ -641,10 +619,11 @@
               "Parameters": [
                 "ClientInfo",
                 "System.Int32",
-                "PlayerProfile"
+                "PlayerProfile",
+                "System.Int32"
               ]
             },
-            "MSILHash": "cV0nF7TT9MugleWUhICQ/hUL1E7TeHautC9KtI5ZtTc=",
+            "MSILHash": "8RjZ0BwwW0qhj1cgQOTnf2N8M1KRqza2ZPc4PGSa3cc=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -680,10 +659,11 @@
               "Parameters": [
                 "ClientInfo",
                 "System.Int32",
-                "PlayerProfile"
+                "PlayerProfile",
+                "System.Int32"
               ]
             },
-            "MSILHash": "cV0nF7TT9MugleWUhICQ/hUL1E7TeHautC9KtI5ZtTc=",
+            "MSILHash": "8RjZ0BwwW0qhj1cgQOTnf2N8M1KRqza2ZPc4PGSa3cc=",
             "BaseHookName": "OnPlayerConnected",
             "HookCategory": "Player"
           }
@@ -708,10 +688,11 @@
               "Parameters": [
                 "ClientInfo",
                 "System.Int32",
-                "PlayerProfile"
+                "PlayerProfile",
+                "System.Int32"
               ]
             },
-            "MSILHash": "cV0nF7TT9MugleWUhICQ/hUL1E7TeHautC9KtI5ZtTc=",
+            "MSILHash": "8RjZ0BwwW0qhj1cgQOTnf2N8M1KRqza2ZPc4PGSa3cc=",
             "BaseHookName": "OnPlayerSpawn",
             "HookCategory": "Player"
           }
@@ -735,7 +716,7 @@
               "ReturnType": "System.Boolean",
               "Parameters": []
             },
-            "MSILHash": "IH6C2CPwKbRAbCIvCmmB7r+pNu0LJv84+OvnuzX2W90=",
+            "MSILHash": "w+CdSY1nNXw9VnNRuH8m4+15ybQ6Y2H7+Je2EIFoeQ4=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -743,7 +724,7 @@
         {
           "Type": "Initialize",
           "Hook": {
-            "InjectionIndex": 330,
+            "InjectionIndex": 347,
             "HookTypeName": "Initialize",
             "Name": "Initialize",
             "HookName": "Initialize",
@@ -755,7 +736,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "5LPqjJhRgIc9oVIG1JrvOrSGiXGA59FedvkK0pgIwis=",
+            "MSILHash": "7rbYyvpDY2EGKN12cNUvDkU6INMtCIIedA36I7Yh/Wg=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -787,7 +768,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "5LPqjJhRgIc9oVIG1JrvOrSGiXGA59FedvkK0pgIwis=",
+            "MSILHash": "7rbYyvpDY2EGKN12cNUvDkU6INMtCIIedA36I7Yh/Wg=",
             "BaseHookName": "Initialize",
             "HookCategory": "Server"
           }
@@ -812,6 +793,40 @@
               "Parameters": []
             },
             "MSILHash": "p+TgayeMniRvMxihtVAFSk+bP3bCrRVB3Atlp2O2AoU=",
+            "BaseHookName": null,
+            "HookCategory": "Server"
+          }
+        },
+        {
+          "Type": "Pattern",
+          "Hook": {
+            "CaptureGroupPosition": 1,
+            "CaptureGroupName": "Group1",
+            "CaptureGroups": [
+              {
+                "Name": "Group1",
+                "Patterns": [
+                  "ldloc.0",
+                  "call System.Void System.Threading.Monitor::Exit(System.Object)",
+                  "endfinally"
+                ]
+              }
+            ],
+            "ReturnBehavior": 0,
+            "ArgumentBehavior": 0,
+            "ArgumentString": null,
+            "HookTypeName": "Pattern",
+            "Name": "OnServerSave [2]",
+            "HookName": "OnServerSave",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "AdminTools",
+            "Signature": {
+              "Exposure": 2,
+              "Name": "Save",
+              "ReturnType": "System.Void",
+              "Parameters": []
+            },
+            "MSILHash": "sr44Ark6uIzp3A9Fc99V49gHqNK2J+IYBueWsYaYLBc=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
