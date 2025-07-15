@@ -8,7 +8,8 @@ param (
     [string]$steam_appid = "0",
     [string]$steam_branch = "public",
     [string]$steam_depot = "",
-    [string]$steam_access = "anonymous"
+    [string]$steam_access = "anonymous",
+    [string]$references_override = ""
 )
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -39,7 +40,7 @@ $references_file = Join-Path $tools_dir ".references"
 New-Item "$tools_dir", "$managed_dir" -ItemType Directory -Force | Out-Null
 
 # Set URLs of dependencies and tools to download
-$steam_depotdl_url = "https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.7.4/DepotDownloader-windows-x64.zip"
+$steam_depotdl_url = "https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_3.4.0/DepotDownloader-windows-x64.zip"
 $de4dot_url = "https://github.com/0xd4d/de4dot/suites/507020524/artifacts/2658127"
 $patcher_url = "https://github.com/OxideMod/Oxide.Patcher/releases/download/latest/uModPatcherConsole.exe"
 
@@ -78,8 +79,13 @@ function Find-Dependencies {
         Write-Host "Getting references for $steam_branch branch of $steam_appid"
         try {
             # TODO: Exclude dependencies included in repository
-            ($xml.selectNodes("//Reference") | Select-Object Include -ExpandProperty Include) -Replace "\S+$", "regex:$&.dll" | Out-File $references_file
-            Write-Host "References:" ((Get-Content $references_file).Replace('regex:', '') -Join ', ')
+            if ($references_override) {
+                $references_override | Out-File $references_file
+                Write-Host "References:" ((Get-Content $references_file) -Join ', ')
+            } else {
+                ($xml.selectNodes("//Reference") | Select-Object Include -ExpandProperty Include) -Replace "\S+$", "regex:$&.dll" | Out-File $references_file
+                Write-Host "References:" ((Get-Content $references_file).Replace('regex:', '') -Join ', ')
+            }
         } catch {
             Write-Host "Error: Could not get references or none found in $project.csproj"
             Write-Host $_.Exception | Format-List -Force
@@ -151,6 +157,10 @@ function Get-Dependencies {
                 exit 1
             }
         }
+        elseif ($steam_access.ToLower() -eq "anonymous")
+        {
+            $steam_access = ""
+        }
 
         # Cleanup existing game files, else they are not always the latest
         #Remove-Item $managed_dir -Recurse -Force
@@ -159,7 +169,7 @@ function Get-Dependencies {
 
         # Attempt to run DepotDownloader to get game DLLs
         try {
-            Write-Host "$steam_access -app $steam_appid -branch $steam_branch $steam_depot -os $platform -dir $platform_dir -filelist $references_file"
+            Write-Host "$steam_access -app $steam_appid -branch $steam_branch $steam_depot -os $platform -dir $deps_dir"
             Start-Process $steam_depotdl_dll -WorkingDirectory $tools_dir -ArgumentList "$steam_access -app $steam_appid -branch $steam_branch $steam_depot -os $platform -dir $platform_dir -filelist $references_file" -NoNewWindow -Wait
         } catch {
             Write-Host "Error: Could not start or complete getting dependencies"
@@ -224,6 +234,7 @@ function Get-Deobfuscators {
             Write-Host "Downloading latest version of de4dot" # TODO: Get and show version
             try {
                 Invoke-WebRequest $de4dot_url -OutFile $de4dot_zip -UseBasicParsing
+                #Invoke-WebRequest "https://github.com/0xd4d/de4dot/suites/266206734/artifacts/128547" -Out "$de4dot_dir\de4dot.zip"
             } catch {
                 Write-Host "Error: Could not download de4dot"
                 Write-Host $_.Exception | Format-List -Force
@@ -278,20 +289,20 @@ function Start-Deobfuscator {
 function Get-Patcher {
     # TODO: MD5 comparison of local patcher file and remote header
     # Check if patcher is already downloaded
-    #if (!(Test-Path $patcher_exe) -or (Get-Item $patcher_exe).LastWriteTime -lt (Get-Date).AddDays(-7)) {
+    if (!(Test-Path $patcher_exe) -or (Get-Item $patcher_exe).LastWriteTime -lt (Get-Date).AddDays(-7)) {
         # Download latest patcher build
         Write-Host "Downloading latest patcher"
         try {
-            Start-BitsTransfer $patcher_url $patcher_exe
+            Invoke-WebRequest $patcher_url -OutFile $patcher_exe -UseBasicParsing
         } catch {
             Write-Host "Error: Could not download patcher"
             Write-Host $_.Exception | Format-List -Force
             if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
             exit 1
         }
-    #} else {
-    #    Write-Host "Recent build of patcher already downloaded"
-    #}
+    } else {
+        Write-Host "Recent build of patcher already downloaded"
+    }
 
     Start-Patcher
 }
