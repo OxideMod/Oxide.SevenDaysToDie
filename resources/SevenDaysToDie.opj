@@ -584,7 +584,7 @@
                 "ClientInfo"
               ]
             },
-            "MSILHash": "BDC0iUZ0+eKutpFaR3G67tc+1ZQgYWyUHyanJZ8vDEw=",
+            "MSILHash": "GJhefNAnKrCbSAmxKi4JUrLgbA9Aqw/m+HeLrFUrKjo=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -623,7 +623,7 @@
                 "System.Int32"
               ]
             },
-            "MSILHash": "8RjZ0BwwW0qhj1cgQOTnf2N8M1KRqza2ZPc4PGSa3cc=",
+            "MSILHash": "6RYRdZjNWCn4OCIEZnpq2xVceaHELEudr+qS9VHQLtI=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -663,7 +663,7 @@
                 "System.Int32"
               ]
             },
-            "MSILHash": "8RjZ0BwwW0qhj1cgQOTnf2N8M1KRqza2ZPc4PGSa3cc=",
+            "MSILHash": "6RYRdZjNWCn4OCIEZnpq2xVceaHELEudr+qS9VHQLtI=",
             "BaseHookName": "OnPlayerConnected",
             "HookCategory": "Player"
           }
@@ -692,7 +692,7 @@
                 "System.Int32"
               ]
             },
-            "MSILHash": "8RjZ0BwwW0qhj1cgQOTnf2N8M1KRqza2ZPc4PGSa3cc=",
+            "MSILHash": "6RYRdZjNWCn4OCIEZnpq2xVceaHELEudr+qS9VHQLtI=",
             "BaseHookName": "OnPlayerSpawn",
             "HookCategory": "Player"
           }
@@ -826,7 +826,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "sr44Ark6uIzp3A9Fc99V49gHqNK2J+IYBueWsYaYLBc=",
+            "MSILHash": "i2R37Qy42NKsR8xnmjSWZpB1ceFiuG9OtOpDMI6j3a4=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
