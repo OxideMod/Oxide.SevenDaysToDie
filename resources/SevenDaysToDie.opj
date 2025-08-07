@@ -724,7 +724,7 @@
         {
           "Type": "Initialize",
           "Hook": {
-            "InjectionIndex": 347,
+            "InjectionIndex": 358,
             "HookTypeName": "Initialize",
             "Name": "Initialize",
             "HookName": "Initialize",
@@ -736,7 +736,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "7rbYyvpDY2EGKN12cNUvDkU6INMtCIIedA36I7Yh/Wg=",
+            "MSILHash": "eidwRCiSY/CiMzwWeAAIQvwASd3EH87uozHlfjtlOc8=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -768,7 +768,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "7rbYyvpDY2EGKN12cNUvDkU6INMtCIIedA36I7Yh/Wg=",
+            "MSILHash": "eidwRCiSY/CiMzwWeAAIQvwASd3EH87uozHlfjtlOc8=",
             "BaseHookName": "Initialize",
             "HookCategory": "Server"
           }
