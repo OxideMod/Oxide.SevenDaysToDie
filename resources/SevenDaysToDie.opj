@@ -547,7 +547,7 @@
                 "System.Int32"
               ]
             },
-            "MSILHash": "eFbJGgN/ErZNdYPK4BaLsAkJkQPHcDJkXFA1RAdYf2s=",
+            "MSILHash": "jZKGz9XiiPozt1XiUrTdR4c2qN88vzs18xAp4ORdPbA=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -587,7 +587,7 @@
                 "System.Int32"
               ]
             },
-            "MSILHash": "eFbJGgN/ErZNdYPK4BaLsAkJkQPHcDJkXFA1RAdYf2s=",
+            "MSILHash": "jZKGz9XiiPozt1XiUrTdR4c2qN88vzs18xAp4ORdPbA=",
             "BaseHookName": "OnPlayerConnected",
             "HookCategory": "Player"
           }
@@ -616,7 +616,7 @@
                 "System.Int32"
               ]
             },
-            "MSILHash": "eFbJGgN/ErZNdYPK4BaLsAkJkQPHcDJkXFA1RAdYf2s=",
+            "MSILHash": "jZKGz9XiiPozt1XiUrTdR4c2qN88vzs18xAp4ORdPbA=",
             "BaseHookName": "OnPlayerSpawn",
             "HookCategory": "Player"
           }
@@ -633,14 +633,14 @@
             "Name": "IOnServerInitialized",
             "HookName": "IOnServerInitialized",
             "AssemblyName": "Assembly-CSharp.dll",
-            "TypeName": "GameManager/<startGameCo>d__138",
+            "TypeName": "GameManager/<startGameCo>d__139",
             "Signature": {
               "Exposure": 2,
               "Name": "MoveNext",
               "ReturnType": "System.Boolean",
               "Parameters": []
             },
-            "MSILHash": "NuhjcJUAmRuPS61zOISZMyKDSoxK9lTirMdl6sQGY7o=",
+            "MSILHash": "xYF9FhuLZrkzaOPUeRn856sO7s7fc+nQW+iSYOs2cx0=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -660,7 +660,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "TlVM7KRWWw4Leaw3Fm/idE/gHJEfgnwk9Q56ifdm/uI=",
+            "MSILHash": "Ac41CG5cPNuG5M8+5DVy055oO/Zi5K3Nf1c8isstyOU=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -692,7 +692,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "TlVM7KRWWw4Leaw3Fm/idE/gHJEfgnwk9Q56ifdm/uI=",
+            "MSILHash": "Ac41CG5cPNuG5M8+5DVy055oO/Zi5K3Nf1c8isstyOU=",
             "BaseHookName": "Initialize",
             "HookCategory": "Server"
           }
