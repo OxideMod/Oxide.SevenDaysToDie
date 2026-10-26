@@ -640,7 +640,7 @@
               "ReturnType": "System.Boolean",
               "Parameters": []
             },
-            "MSILHash": "xYF9FhuLZrkzaOPUeRn856sO7s7fc+nQW+iSYOs2cx0=",
+            "MSILHash": "W9treUDNPuWgDa8Wsi3GC9hXHNzuDkUvUvxffa0LCNY=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
